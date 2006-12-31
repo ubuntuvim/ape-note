@@ -68,8 +68,8 @@
         </ul>
     </section>
     <footer class="ape-note-nav-footer">
-        <div class="ape-note-menu-toggle">
-            <i role="button" class="icon-minimise"></i>
+        <div class="ape-note-menu-toggle" {{action 'closeMenu' this}}>
+            <i role="button" class={{if isCloseIcon 'icon-minimise' 'icon-maximise'}}></i>
         </div>
         <a class="ape-note-nav-footer-sitelink" target="_blank" href="http://blog.ddlisting.com/">View blog</a>
         <div class="ape-note-help-menu">
@@ -107,5 +107,5 @@
             </div>
         </div>
     </footer>
-    <div class="ape-note-autonav-toggle" data-ember-action="1154"></div>
+    <div class="ape-note-autonav-toggle" onmousemove={{action 'showLeftMenu'}}></div>
 <!-- </nav> -->
