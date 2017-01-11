@@ -1,53 +1,27 @@
-# Ape-note
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+# apc-note
+一个异常简洁的笔记应用，一个让你爱不释手的笔记应用，遇上我是你的荣幸。
 
-## Prerequisites
 
-You will need the following things properly installed on your computer.
+## 项目安装
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/ubuntuvim/apc-note.git`
 * `cd ape-note`
 * `npm install`
 * `bower install`
 
-## Running / Development
+## 运行项目
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* 访问[http://localhost:4200](http://localhost:4200).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
+### 打包项目
 
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+### 发布
 
-Specify what it takes to deploy your app.
+如何发布项目到自己的服务器请参考下面地址的说明。
 
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+[发布说明](https://github.com/ubuntuvim/study-note/blob/master/%E5%85%B6%E4%BB%96%E7%AC%94%E8%AE%B0/%E9%83%A8%E7%BD%B2Ember%E9%A1%B9%E7%9B%AE%E5%88%B0Tomcat.md)
