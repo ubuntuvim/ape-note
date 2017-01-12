@@ -25,3 +25,8 @@
 如何发布项目到自己的服务器请参考下面地址的说明。
 
 [发布说明](https://github.com/ubuntuvim/study-note/blob/master/%E5%85%B6%E4%BB%96%E7%AC%94%E8%AE%B0/%E9%83%A8%E7%BD%B2Ember%E9%A1%B9%E7%9B%AE%E5%88%B0Tomcat.md)
+
+## 感谢
+
+折叠左侧菜单[startbootstrap-simple-sidebar](https://github.com/BlackrockDigital/startbootstrap-simple-sidebar)
+tree菜单[collapsible-tree-menu](http://bootsnipp.com/snippets/featured/collapsible-tree-menu)
