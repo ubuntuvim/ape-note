@@ -1,0 +1,29 @@
+// 导航样式
+.my-navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    border: 0;
+}
+.navbar .navbar-header .navbar-brand a {
+    color: #777;
+}
+.navbar .navbar-header .navbar-brand span {
+	font-family: segoe-script;
+	color: #555 !important;
+	font-weight: bold;
+	font-size: 24px;
+}
+// 导航中logo样式
+.navbar .navbar-header .navbar-brand .iconfont {
+    font-size: 30px;
+}
+// 导航的搜索框
+.navbar .collapse .navbar-form .form-group {
+
+}
+.navbar .collapse .navbar-form .form-group input {
+    border-radius: 15px;
+}
+.navbar .collapse .navbar-form .form-group .glyphicon-search {
+    opacity: 0.6;
+}

@@ -1,35 +1,51 @@
 {{!yield}}
-
+{{! 左侧菜单}}
 <div id="wrapper">
 
 	<!-- Sidebar -->
 	<div id="sidebar-wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="well" style="width:300px; padding: 8px 0;">
-					<div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+				<div class="well ape-note-well">
+					<div class="tree-menu">
 						<ul class="nav nav-list">
 							<li>
-								<div class="tree-toggler nav-header">Header 1Header 1</div>
-								<ul class="nav nav-list tree">
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
+								<div class="tree-toggler nav-header sidebar-header">
+									<span class="glyphicon glyphicon-play"></span>&nbsp;默认笔记本
+								</div>
+								<ul class="nav nav-list tree collapse">
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;阿里云服务器配置</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;部署新浪git命令</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;创建npm插件</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;发布项目，加入CRUD功能</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;模型、保存数据到数据库</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;使用ember-simple-auth实现Ember.js应用的权限控制</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;ember项目部署</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;git使用笔记</a></li>
 								</ul>
 							</li>
 							<li class="divider"></li>
-							<li><label class="tree-toggler nav-header">Header 2</label>
-								<ul class="nav nav-list tree">
-									<li><a href="#">Link</a></li>
-									<li><a href="#">Link</a></li>
+							<li>
+								<div class="tree-toggler nav-header sidebar-header">
+									<span class="glyphicon glyphicon-play"></span>&nbsp;&nbsp;技术学习
+								</div>
+								<ul class="nav nav-list tree collapse">
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;阿里云服务器配置阿里云服务器配置阿里云服务器配置</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;部署新浪git命令</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;创建npm插件</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;发布项目，加入CRUD功能</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;模型、保存数据到数据库</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;使用ember-simple-auth实现Ember.js应用的权限控制</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;ember项目部署</a></li>
+									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;git使用笔记</a></li>
 								</ul>
 							</li>
 						</ul>
+
+						<!-- 收起左侧菜单面板 -->
+						<div class="close-menu-panel">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -37,15 +53,83 @@
 	</div>
 	<!-- /#sidebar-wrapper -->
 
-	<!-- Page Content -->
+	<!-- 右边主要内容区 -->
 	<div id="page-content-wrapper">
 		<div class="container-fluid">
+			<!-- 笔记信息 -->
+			<!-- <div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<form role="form">
+						<div class="form-group has-default has-feedback">
+						  <input type="text" class="form-control" id="inputSuccess2">
+						  <span class="glyphicon glyphicon-plus form-control-feedback"></span>
+						</div>
+					</form>
+				</div>
+			</div> -->
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h2>Simple SidebarSimple SidebarSimple Sidebar</h2>
+				</div>
+			</div>
+
+			<!-- 标签、工具条、字数 -->
+			<div class="row label-createTime-count">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					标签&nbsp;
+					<!--  <span class="glyphicon glyphicon-tags"></span>&nbsp; -->
+					<span class="label label-default">Java</span>
+					<span class="label label-default">Linux</span>
+					<span class="label label-default">Default</span>
+					&nbsp;&nbsp;<span>创建时间：2017/01/12</span>&nbsp;|&nbsp;
+					<span>字数：320</span>
+					<div class="edit-share-setting-tools">
+						<span class="glyphicon glyphicon-edit" title="编辑"></span>&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-fullscreen" title="全屏"></span>&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-share" title="分享"></span>&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-cog" title="更多"></span>
+					</div>
+					<hr>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
 					<h1>Simple Sidebar</h1>
 					<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
 					<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-					<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h1>Simple Sidebar</h1>
+					<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+					<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h1>Simple Sidebar</h1>
+					<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+					<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h1>Simple Sidebar</h1>
+					<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+					<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h1>Simple Sidebar</h1>
+					<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+					<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
 				</div>
 			</div>
 		</div>
