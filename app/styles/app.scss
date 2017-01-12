@@ -1,2 +1,22 @@
 @import "bootstrap";
-// @import "bootstrap/theme";  //加阴影等效果
+@import "sidebar";
+
+@font-face {
+  font-family: segoe-script;
+  src: url('/assets/fonts/segoe-script.ttf');
+}
+
+// 导航样式
+.my-navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.navbar-brand {
+	font-family: segoe-script;
+	color: #333 !important;
+	font-weight: bold;
+	font-size: 24px;
+}
+.tree-toggler {
+	cursor: pointer;
+}

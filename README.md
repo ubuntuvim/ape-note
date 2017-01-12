@@ -1,5 +1,5 @@
 
-# apc-note
+# ape-note
 一个异常简洁的笔记应用，一个让你爱不释手的笔记应用，遇上我是你的荣幸。
 
 
@@ -28,13 +28,14 @@
 
 [发布说明](https://github.com/ubuntuvim/study-note/blob/master/%E5%85%B6%E4%BB%96%E7%AC%94%E8%AE%B0/%E9%83%A8%E7%BD%B2Ember%E9%A1%B9%E7%9B%AE%E5%88%B0Tomcat.md)
 
-
 ## 感谢
 
 ### UI
 
 1. 猿笔记基于[bootstrap](http://www.bootcss.com/)开发，bootstrap是什么我就不啰嗦了，做前端的应该都知道它。
 2. [ember-bootstrap](https://www.npmjs.com/package/ember-bootstrap)一个封装了bootstrap的ember组件库，有现成的直接用。
+3. 折叠左侧菜单[startbootstrap-simple-sidebar](https://github.com/BlackrockDigital/startbootstrap-simple-sidebar)
+4. tree菜单[collapsible-tree-menu](http://bootsnipp.com/snippets/featured/collapsible-tree-menu)
 
 ### 后端服务
 
