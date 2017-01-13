@@ -4,19 +4,21 @@ export default Ember.Component.extend({
 	didInsertElement() {
 		
 		// 折叠、展开左侧菜单按钮
-		Ember.$(".ape-note-well .tree-menu .close-menu-panel .glyphicon").click(function() {
+		var gcId = Ember.$(".ape-note-well .tree-menu .close-menu-panel .glyphicon-chevron");
+		gcId.click(function() {
 			var wid;
 			var glthis = Ember.$(this);
 			var isClose = (wid = Ember.$("#wrapper")).hasClass("toggled");
 			if (!isClose) {  //关闭状态
 				// 按钮也移动到最左侧，并且调换方向
 				// Ember.$(this).parent().css("left", "0");
-				glthis.parent().animate({left: "0px"}, function() {
+				// $(selector).animate(styles,speed,easing,callback)
+				glthis.parent().animate({left: "0px"}, "normal", function() {
 					// 替换另外一个反方向图片
 					glthis.addClass("glyphicon-chevron-right");
 				});
 			} else {
-				glthis.parent().animate({left: "250px"}, function() {
+				glthis.parent().animate({left: "250px"}, "normal", function() {
 					// 替换另外一个反方向图片
 					glthis.removeClass("glyphicon-chevron-right");
 				});

@@ -6,6 +6,9 @@
   font-family: segoe-script;
   src: url('/assets/fonts/segoe-script.ttf');
 }
+ 
 body {
     overflow: hidden;
+	::-webkit-scrollbar{width:0px};
+	font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
 }

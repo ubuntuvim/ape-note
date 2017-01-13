@@ -37,6 +37,10 @@
     padding: 15px;
     overflow-y: auto;
     height: 100vh;
+	color: #2f2f2f;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
 }
 // 设置右侧顶部标题样式
 #page-content-wrapper .container-fluid .row form .has-feedback .form-control-feedback {
@@ -48,19 +52,24 @@
 // 标签、创建时间、字数工具栏
 #page-content-wrapper .container-fluid .label-createTime-count .label {
     border-radius: 15px;
-    background-color: #999;
+    background-color: #a7a7a7;
     font-weight: 500;
+	padding: .2em .4em .2em;
 }
-#page-content-wrapper .container-fluid .label-createTime-count .edit-share-setting-tools {
-    display: inline;
-    position: absolute;
-    right: 30px;
-}
+
 #page-content-wrapper .container-fluid .label-createTime-count .edit-share-setting-tools .glyphicon {
     font-size: 16px;
     color: #777;
     cursor: pointer;
 }
+#page-content-wrapper .container-fluid .label-createTime-count .create-time {
+	color: #969696;
+	font-size: 10px;
+	position: absolute;
+    top: 6px;
+}
+
+
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
@@ -123,24 +132,48 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: 100vh;
+	background: #efefef;
 }
 // 收起左侧菜单面板图标
+#page-content-wrapper .close-menu-panel,
 .ape-note-well .tree-menu .close-menu-panel {
     position: fixed;
     z-index: 99999;
     left: 250px;
     /* top: 100vh; */
-    height: 30px;
-    width: 20px;
-    background: #f5f5f5;
+    height: 155px;
+    width: 25px;
+	    /* background: #efefef; */
     bottom: 0px;
-    border-radius: 0 5px;
+    border-radius: 0 5px 5px 0;
+    opacity: 0.8;
+    color: #999;
 }
+
+#page-content-wrapper .close-menu-panel .glyphicon,
 .ape-note-well .tree-menu .close-menu-panel .glyphicon {
-    top: 7px;
+	font-size: 15px;
+    padding-left: 4px;
+	padding-bottom: 5px;
+    padding-top: 5px;
+	top: 7px;
     left: 2px;
     cursor: pointer;
 }
+#page-content-wrapper .close-menu-panel .glyphicon-chevron-left,
+.ape-note-well .tree-menu .close-menu-panel .glyphicon-chevron-left {
+	padding-bottom: 10px;
+}
+#page-content-wrapper .close-menu-panel .edit-share-setting-tools,
+.ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools {
+    display: inline;
+	
+}
+#page-content-wrapper .close-menu-panel .edit-share-setting-tools .glyphicon,
+.ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools .glyphicon {
+	padding-bottom: 10px;
+}
+
 .ape-note-well .nav-list .sidebar-header {
     text-indent: 10px;
     line-height: 40px;
@@ -161,6 +194,9 @@
 .ape-note-well .nav-list-link:visited {
     color: #555;
 }
+.ape-note-well .nav-list-link:hover {
+	border-left:solid 2px #555;
+}
 // 用于设置展开笔记本时左侧图标旋转90度
 .rotation90 {
     // margin:100px auto  0;
@@ -170,8 +206,8 @@
     top: -4px;
     right: -3px;
 }
-
-@media(min-width:768px) {
+// 只要是大于1像素的都显示左侧笔记列表
+@media(min-width:1px) {
     #wrapper {
         padding-left: 250px;
     }
