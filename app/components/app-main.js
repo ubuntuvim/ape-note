@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	didInsertElement() {
-		
+
 		// 折叠、展开左侧菜单按钮
 		var gcId = Ember.$(".ape-note-well .tree-menu .close-menu-panel .glyphicon-chevron");
 		gcId.click(function() {
@@ -11,17 +11,20 @@ export default Ember.Component.extend({
 			var isClose = (wid = Ember.$("#wrapper")).hasClass("toggled");
 			if (!isClose) {  //关闭状态
 				// 按钮也移动到最左侧，并且调换方向
-				// Ember.$(this).parent().css("left", "0");
+				Ember.$(this).parent().css("left", "0");
 				// $(selector).animate(styles,speed,easing,callback)
-				glthis.parent().animate({left: "0px"}, "normal", function() {
-					// 替换另外一个反方向图片
-					glthis.addClass("glyphicon-chevron-right");
-				});
+				// wid.animate({left: "0px"}, "normal");
+				// glthis.parent().animate({left: "0px"}, "normal", function() {
+				// 	// 替换另外一个反方向图片
+				// 	glthis.addClass("glyphicon-chevron-right");
+				// });
+				glthis.addClass("glyphicon-chevron-right");
 			} else {
-				glthis.parent().animate({left: "250px"}, "normal", function() {
-					// 替换另外一个反方向图片
+				Ember.$(this).parent().css("left", "250px");
+				// glthis.parent().animate({left: "250px"}, "normal", function() {
+				// 	// 替换另外一个反方向图片
 					glthis.removeClass("glyphicon-chevron-right");
-				});
+				// });
 			}
 			wid.toggleClass("toggled");
 		});

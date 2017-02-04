@@ -1,6 +1,6 @@
-
+// 左侧笔记本列表
 #wrapper {
-    padding-left: 0;
+    padding-left: 250px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -8,7 +8,7 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 0;
 }
 
 #sidebar-wrapper {
@@ -25,22 +25,27 @@
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
     padding-bottom: 30px;
-}
-
-#wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }
 
+#wrapper.toggled #sidebar-wrapper {
+    width: 0 !important;
+}
+
+// 右侧主要内容区
 #page-content-wrapper {
     width: 100%;
-    position: absolute;
-    padding: 15px;
     overflow-y: auto;
     height: 100vh;
 	color: #2f2f2f;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
+    padding: 20px 40px;
+    padding-bottom: 100px;
+}
+#page-content-wrapper .container-fluid .row .word-break {
+    word-break: break-all;
 }
 // 设置右侧顶部标题样式
 #page-content-wrapper .container-fluid .row form .has-feedback .form-control-feedback {
@@ -71,8 +76,8 @@
 
 
 #wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
+    position: relative;
+    margin-right: 0;
 }
 
 .sidebar-nav {
@@ -127,6 +132,7 @@
     padding: 0;
     border-radius: 0;
     border: 0;
+    margin-bottom: 0;
 }
 .ape-note-well .tree-menu {
     overflow-y: scroll;
@@ -148,6 +154,11 @@
     border-radius: 0 5px 5px 0;
     opacity: 0.8;
     color: #999;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 #page-content-wrapper .close-menu-panel .glyphicon,
@@ -167,7 +178,7 @@
 #page-content-wrapper .close-menu-panel .edit-share-setting-tools,
 .ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools {
     display: inline;
-	
+
 }
 #page-content-wrapper .close-menu-panel .edit-share-setting-tools .glyphicon,
 .ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools .glyphicon {
@@ -181,21 +192,10 @@
     margin-left: -10px;
     cursor: pointer;
 }
-.ape-note-well .nav-list .sidebar-header .glyphicon-play {
-    color: #666;
-    font-size: 15px;
-}
-.ape-note-well .nav-list li ul {
-    // margin-left: 15px;
-}
-.ape-note-well .nav-list-link {
-    padding-left: 20px;
-}
-.ape-note-well .nav-list-link:visited {
-    color: #555;
-}
-.ape-note-well .nav-list-link:hover {
-	border-left:solid 2px #555;
+.ape-note-well .nav-list .sidebar-header .glyphicon {
+    color: #777;
+    font-size: 10px;
+    top: -1px;
 }
 // 用于设置展开笔记本时左侧图标旋转90度
 .rotation90 {
@@ -203,34 +203,19 @@
     -moz-transform:rotate(90deg);
     -webkit-transform:rotate(90deg);
     filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-    top: -4px;
-    right: -3px;
+    top: -6px !important;
+    right: -6px;
 }
-// 只要是大于1像素的都显示左侧笔记列表
-@media(min-width:1px) {
-    #wrapper {
-        padding-left: 250px;
-    }
 
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
+.ape-note-well .nav-list li ul {
+    // margin-left: 15px;
+}
+.ape-note-well .nav-list-link:focus,
+.ape-note-well .nav-list-link:visited,
+.ape-note-well .nav-list-link {
+    padding-left: 20px;
+    color: #555 !important;
+}
+.ape-note-well .nav-list-link:hover {
+	border-left:solid 1px #555;
 }
