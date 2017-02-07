@@ -1,0 +1,23 @@
+{{! 新建笔记本}}
+<div class="modal fade create-notebook-modal-sm" id="createNotebookModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">新增笔记本</h4>
+      </div>
+      <div class="modal-body">
+          <form>
+              <div class="form-group">
+                <!-- <label for="title">笔记本</label> -->
+                {{input type="text" value=title class="form-control" id="title" placeholder="笔记本"}}
+              </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-info" {{action 'saveNotebook'}}>保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>

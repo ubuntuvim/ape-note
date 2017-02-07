@@ -9,11 +9,19 @@
 
     {{content-for "head"}}
 
-    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link rel="stylesheet" href="{{rootURL}}assets/ape-note.css">
 
     <!-- 自定义外部样式 -->
     <link rel="stylesheet" href="//at.alicdn.com/t/font_uhubpjzed5z5mi.css" charset="utf-8">
+
+    <!-- <link rel="stylesheet" href="{{rootURL}}assets/editormd/css/editormd.css"> -->
+
+    <!-- <link rel="stylesheet" href="{{rootURL}}assets/editormd/lib/codemirror/codemirror.min.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/editormd/lib/codemirror/addon/dialog/dialog.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/editormd/lib/codemirror/addon/search/matchesonscrollbar.css"> -->
+
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/ape-note.css">
+
 
     {{content-for "head-footer"}}
 
@@ -21,8 +29,18 @@
   <body>
     {{content-for "body"}}
 
+    <script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/codemirror/codemirror.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/editormd.js"></script>
+
+
+    <script src="https://cdn.wilddog.com/sdk/js/2.4.3/wilddog.js"></script>
+
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/ape-note.js"></script>
+
+    <script type="text/javascript">
+    </script>
 
     {{content-for "body-footer"}}
 

@@ -44,6 +44,10 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-{{app-main}}
+{{app-main store=store model=model}}
+
+{{! 创建笔记本}}
+{{create-notebook-modal store=store model=model}}
+
 
 {{outlet}}

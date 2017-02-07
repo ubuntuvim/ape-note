@@ -1,6 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
+	fileStatus: 1,  //文件状态：1-查看；2-编辑；3-全屏
+
+	//笔记本列表
+	// notebooks: Ember.computed(function() {
+	// 	// console.log(this.store.findAll('notebook'));
+	// 	return Ember.RSVP.hash({
+    //         todos: this.store.findAllPagination(this.store, 'notebook')
+    //     });
+
+	// }),
+
 	didInsertElement() {
 
 		// 折叠、展开左侧菜单按钮

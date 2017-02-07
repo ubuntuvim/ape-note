@@ -9,22 +9,24 @@
 				<div class="well ape-note-well">
 					<div class="tree-menu">
 						<ul class="nav nav-list">
+							{{#each model.notebooks as |item|}}
 							<li>
 								<div class="tree-toggler nav-header sidebar-header">
-									<span class="glyphicon glyphicon-chevron-right"></span>&nbsp;默认笔记本
+									<span class="glyphicon glyphicon-chevron-right"></span>&nbsp;{{item.title}}
 								</div>
 								<ul class="nav nav-list tree collapse">
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;阿里云服务器配置</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;部署新浪git命令</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;创建npm插件</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;发布项目，加入CRUD功能</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;模型、保存数据到数据库</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;使用ember-simple-auth实现Ember.js应用的权限控制</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;ember项目部署</a></li>
-									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;git使用笔记</a></li>
+									{{#each item.note as |note|}}
+									<li>
+										{{#link-to 'notebook.note' item.id note.id class="nav-list-link"}}
+											<span class="glyphicon glyphicon-file"></span>&nbsp;{{note.title}}
+										{{/link-to}}
+									</li>
+									{{/each}}
 								</ul>
 							</li>
 							<li class="divider"></li>
+							{{/each}}
+							{{!
 							<li>
 								<div class="tree-toggler nav-header sidebar-header">
 									<span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;技术学习
@@ -40,6 +42,7 @@
 									<li><a class="nav-list-link" href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;git使用笔记</a></li>
 								</ul>
 							</li>
+							}}
 						</ul>
 
 						<!-- 收起左侧菜单面板 -->
@@ -53,6 +56,24 @@
 							<span class="glyphicon glyphicon-chevron glyphicon-chevron-left"></span>
 						</div>
 					</div>
+
+					<div class="new-folder-file dropup">
+
+						<a class="btn btn-default dropdown-toggle" id="dropdownMenu"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="glyphicon glyphicon-plus"></span>&nbsp;新建
+						</a>
+
+   					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+   					    <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建Markdown笔记</a></li>
+   					    <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建普通笔记</a></li>
+   					    <li role="separator" class="divider"></li>
+   					    <li data-toggle="modal" data-target=".create-notebook-modal-sm">
+							<a href="#" ><span class="glyphicon glyphicon-book"></span>&nbsp;新建笔记本</a>
+						</li>
+   					  </ul>
+
+					</div>
 				</div>
 			</div>
 		</div>
@@ -63,7 +84,7 @@
 	<div id="page-content-wrapper">
 		<div class="container-fluid">
 			<!-- 笔记信息 -->
-			<!-- <div class="row">
+			{{! <div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<form role="form">
 						<div class="form-group has-default has-feedback">
@@ -72,10 +93,10 @@
 						</div>
 					</form>
 				</div>
-			</div> -->
+			</div> }}
 			<!-- 显示笔记页面 -->
 			{{show-note}}
-			
+
 		</div>
 	</div>
 	<!-- /#page-content-wrapper -->

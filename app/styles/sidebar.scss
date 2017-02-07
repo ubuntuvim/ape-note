@@ -34,15 +34,20 @@
 
 // 右侧主要内容区
 #page-content-wrapper {
-    width: 100%;
+    // width: 768px;
+    // min-width: 768px;
     overflow-y: auto;
     height: 100vh;
 	color: #2f2f2f;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
-    padding: 20px 40px;
+    padding: 20px 60px;
     padding-bottom: 100px;
+    display: flex;
+}
+#page-content-wrapper .container-fluid {
+    width: 100%;
 }
 #page-content-wrapper .container-fluid .row .word-break {
     word-break: break-all;
@@ -54,27 +59,6 @@
 #page-content-wrapper .container-fluid .row form .has-feedback .form-control {
     padding-left: 30px;
 }
-// 标签、创建时间、字数工具栏
-#page-content-wrapper .container-fluid .label-createTime-count .label {
-    border-radius: 15px;
-    background-color: #a7a7a7;
-    font-weight: 500;
-	padding: .2em .4em .2em;
-}
-
-#page-content-wrapper .container-fluid .label-createTime-count .edit-share-setting-tools .glyphicon {
-    font-size: 16px;
-    color: #777;
-    cursor: pointer;
-}
-#page-content-wrapper .container-fluid .label-createTime-count .create-time {
-	color: #969696;
-	font-size: 10px;
-	position: absolute;
-    top: 6px;
-}
-
-
 #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
@@ -139,6 +123,27 @@
     overflow-x: hidden;
     height: 100vh;
 	background: #efefef;
+    padding-bottom: 50px;
+}
+// 左侧底部新建按钮
+.ape-note-well .new-folder-file {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.ape-note-well .new-folder-file .dropdown-menu li a {
+    color: #555;
+}
+.ape-note-well .new-folder-file .dropdown-menu li a .glyphicon {
+    color: #777;
+}
+.ape-note-well .new-folder-file #dropdownMenu:hover,
+.ape-note-well .new-folder-file #dropdownMenu:focus,
+.ape-note-well .new-folder-file #dropdownMenu {
+    width: 250px;
+    border: 0;
+    border-radius: 0;
+    background-color: #ccc;
 }
 // 收起左侧菜单面板图标
 #page-content-wrapper .close-menu-panel,
@@ -184,7 +189,6 @@
 .ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools .glyphicon {
 	padding-bottom: 10px;
 }
-
 .ape-note-well .nav-list .sidebar-header {
     text-indent: 10px;
     line-height: 40px;
