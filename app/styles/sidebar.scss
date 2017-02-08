@@ -199,6 +199,15 @@
     margin-left: -10px;
     cursor: pointer;
 }
+.ape-note-well .nav-list .notebook-list .sidebar-header:hover {
+	background-color: #dedede;
+}
+.ape-note-well .nav-list .notebook-list .sidebar-header a {
+	color: #555;
+}
+.ape-note-well .nav-list .notebook-list .sidebar-header a:hover {
+	text-decoration: none;
+}
 .ape-note-well .nav-list .sidebar-header .glyphicon {
     color: #777;
     font-size: 10px;

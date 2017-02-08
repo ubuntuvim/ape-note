@@ -1,4 +1,9 @@
-﻿store提供了统一的获取数据的接口。包括创建新记录、修改记录、删除记录等，更多有关[Store API](http://devdocs.io/ember/data/classes/ds.store)请点击网址看详细信息。
+﻿**目录**
+
+[TOC]
+
+
+store提供了统一的获取数据的接口。包括创建新记录、修改记录、删除记录等，更多有关[Store API](http://devdocs.io/ember/data/classes/ds.store)请点击网址看详细信息。
 
 为了演示这些方法的使用我们结合firebase，关于firebase与Ember的整合前面的文章已经介绍，就不过多介绍了。
 做好准备工作：

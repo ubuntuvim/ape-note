@@ -10,14 +10,16 @@
 					<div class="tree-menu">
 						<ul class="nav nav-list">
 							{{#each model.notebooks as |item|}}
-							<li>
+							<li class="notebook-list">
 								<div class="tree-toggler nav-header sidebar-header">
-									<span class="glyphicon glyphicon-chevron-right"></span>&nbsp;{{item.title}}
+									{{#link-to "notebook.note" item.id 2}}
+										<span class="glyphicon glyphicon-chevron-right"></span>&nbsp;{{item.title}}
+									{{/link-to}}
 								</div>
 								<ul class="nav nav-list tree collapse">
 									{{#each item.note as |note|}}
 									<li>
-										{{#link-to 'notebook.note' item.id note.id class="nav-list-link"}}
+										{{#link-to "notebook.note" item.id note.id class="nav-list-link"}}
 											<span class="glyphicon glyphicon-file"></span>&nbsp;{{note.title}}
 										{{/link-to}}
 									</li>
