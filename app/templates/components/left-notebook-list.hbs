@@ -1,0 +1,31 @@
+<div id="sidebar-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="well ape-note-well">
+                <div class="tree-menu">
+                    <ul class="nav nav-list">
+                        {{#each model.notebooks as |item|}}
+                        <li class="notebook-list">
+                            <div class="tree-toggler nav-header sidebar-header">
+                                {{#link-to 'notebook' item.id}}
+                                    <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;{{item.title}}
+                                {{/link-to}}
+                            </div>
+                            <ul class="nav nav-list tree collapse">
+                                {{#each item.note as |note|}}
+                                <li>
+                                    {{#link-to "notebook.note" item.id note.id class="nav-list-link"}}
+                                        <span class="glyphicon glyphicon-file"></span>&nbsp;{{note.title}}
+                                    {{/link-to}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

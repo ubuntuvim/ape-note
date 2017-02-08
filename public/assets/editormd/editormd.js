@@ -62,6 +62,8 @@
     editormd.version      = "1.5.0";
     editormd.homePage     = "https://pandao.github.io/editor.md/";
     editormd.classPrefix  = "editormd-";
+    // 左侧列表宽度
+    editormd.LEFT_MENU_WIDTH = 250;
 
     editormd.toolbarModes = {
         full : [
@@ -724,11 +726,13 @@
             {
                 this.cm.setValue(settings.value);
             }
-
+            // var w = (editor.width()-250)/2 + "px !important";
+            // console.log('w - ' + w);
             this.codeMirror.css({
                 fontSize : settings.fontSize,
                 width    : (!settings.watch) ? "100%" : "50%"
             });
+            // this.codeMirror.css("width", "");
 
             if (settings.autoHeight)
             {
@@ -1877,6 +1881,8 @@
 
         resize : function(width, height) {
 
+            console.log('width = ' + width);
+
             width  = width  || null;
             height = height || null;
 
@@ -1886,6 +1892,13 @@
             var toolbar    = this.toolbar;
             var settings   = this.settings;
             var codeMirror = this.codeMirror;
+
+            // console.log('state = ' + state);
+            // console.log('preview = ' + preview);
+            // console.log('settings = ' + settings);
+            // console.log('codeMirror = ' + codeMirror);
+            // console.log('settings.watch = ' + settings.watch);
+
 
             if (width)
             {
@@ -1921,8 +1934,10 @@
 
             if(settings.watch)
             {
-                codeMirror.width(editor.width() / 2);
-                preview.width((!state.preview) ? editor.width() / 2 : editor.width());
+                // console.log('editor.width() = ' + editor.width());
+                ////////////////////////////////////////
+                codeMirror.width((editor.width()-editormd.LEFT_MENU_WIDTH) / 2);
+                preview.width((!state.preview) ? (editor.width()-editormd.LEFT_MENU_WIDTH) / 2 : editor.width()-editormd.LEFT_MENU_WIDTH);
 
                 this.previewContainer.css("padding", settings.autoHeight ? "20px 20px 50px 40px" : "20px");
 
@@ -2477,6 +2492,8 @@
 
         previewing : function() {
 
+            console.log('00000000000000');
+
             var _this            = this;
             var editor           = this.editor;
             var preview          = this.preview;
@@ -2506,11 +2523,25 @@
             {
                 this.state.preview = true;
 
+                /////////////////// 设置左侧菜单 --------------------
                 if (this.state.fullscreen) {
                     preview.css("background", "#fff");
                 }
+                $("#sidebar-wrapper").css("width", 0);
+                //
+                // console.log('eeeeeee');
+                // codeMirror.width(editor.width() / 2);
+                // preview.width(editor.width() / 2);
 
                 editor.find("." + this.classPrefix + "preview-close-btn").show().bind(editormd.mouseOrTouch("click", "touchend"), function(){
+                    //检查是否在全屏状态下
+                    var offset = _this.state.fullscreen ? 0 : editormd.LEFT_MENU_WIDTH;
+
+                    $("#sidebar-wrapper").css("width", offset);
+
+                    codeMirror.width((editor.width()-offset) / 2);
+                    preview.width((editor.width()-offset) / 2);
+
                     _this.previewed();
                 });
 
@@ -2607,9 +2638,10 @@
         fullscreen : function() {
 
 			//左侧笔记列表收缩
-			$("#wrapper").toggleClass("toggled");
+			// $("#wrapper").toggleClass("toggled");
 			$("#sidebar-wrapper").css("width", 0);
-		
+
+
             var _this            = this;
             var state            = this.state;
             var editor           = this.editor;
@@ -2643,7 +2675,13 @@
                     height   : $(window).height()
                 }).addClass(fullscreenClass);
 
+                editor.css("margin-top", "50px");
+
                 this.resize();
+                var w = (editor.width()) / 2;
+                this.codeMirror.width(w);
+                preview.width(w);
+
 
                 $.proxy(settings.onfullscreen, this)();
 
@@ -2667,11 +2705,11 @@
 
         fullscreenExit : function() {
 
-			
+
 			//左侧笔记列表展开
-			$("#wrapper").toggleClass("toggled");
+			// $("#wrapper").toggleClass("toggled");
 			$("#sidebar-wrapper").css("width", 250);
-			
+
             var editor            = this.editor;
             var settings          = this.settings;
             var toolbar           = this.toolbar;
@@ -2690,7 +2728,13 @@
                 height   : editor.data("oldHeight")
             }).removeClass(fullscreenClass);
 
+            editor.css("top", 0);
+
             this.resize();
+
+            var w = (editor.width()-250) / 2;
+            this.codeMirror.width(w);
+            this.preview.width(w);
 
             $.proxy(settings.onfullscreenExit, this)();
 

@@ -28,8 +28,8 @@
 #page-content-wrapper {
     // width: 768px;
     // min-width: 768px;
-    overflow-y: auto;
-    height: 100% !important;
+    // overflow-y: auto;
+    height: 100%;
 	color: #2f2f2f;
     font-size: 16px;
     font-weight: 400;
@@ -37,25 +37,25 @@
     //padding: 20px 60px;
     //padding-bottom: 100px;
 	//padding-left: 20px;
-    display: flex;
+    // display: flex;
 	margin-top: 50px;
 	//
 	//position: fixed;
 	overflow: hidden;
 }
-#page-content-wrapper .container-fluid {
-    width: 100%;
-}
-#page-content-wrapper .container-fluid .row .word-break {
-    word-break: break-all;
-}
-// 设置右侧顶部标题样式
-#page-content-wrapper .container-fluid .row form .has-feedback .form-control-feedback {
-    left: 0 !important;
-}
-#page-content-wrapper .container-fluid .row form .has-feedback .form-control {
-    padding-left: 30px;
-}
+// #page-content-wrapper .container-fluid {
+//     width: 100%;
+// }
+// #page-content-wrapper .container-fluid .row .word-break {
+//     word-break: break-all;
+// }
+// // 设置右侧顶部标题样式
+// #page-content-wrapper .container-fluid .row form .has-feedback .form-control-feedback {
+//     left: 0 !important;
+// }
+// #page-content-wrapper .container-fluid .row form .has-feedback .form-control {
+//     padding-left: 30px;
+// }
 
 #wrapper.toggled #page-content-wrapper {
     position: relative;
@@ -128,16 +128,18 @@
     position: fixed;
     right: 50px;
     bottom: 100px;
+    z-index: 1100;
 }
 .new-folder-file #dropdownMenu {
 	color: #555;
 	border-radius: 150px;
-    height: 45px;
-    width: 45px;
-    padding: 15px;
+    height: 46px;
+    width: 46px;
+    padding: 14px;
 	background-color: #afafaf;
     color: white;
-    border: 1px solid #999;
+    border: 1px solid #afafaf;
+    padding-left: 16px;
 }
 .new-folder-file #dropdownMenu:hover {
     background-color: #999;
@@ -149,49 +151,49 @@
     color: #777;
 }
 // 收起左侧菜单面板图标
-#page-content-wrapper .close-menu-panel,
-.ape-note-well .tree-menu .close-menu-panel {
-    position: fixed;
-    z-index: 99999;
-    left: 250px;
-    /* top: 100vh; */
-    height: 155px;
-    width: 25px;
-	    /* background: #efefef; */
-    bottom: 0px;
-    border-radius: 0 5px 5px 0;
-    opacity: 0.8;
-    color: #999;
+// #page-content-wrapper .close-menu-panel,
+// .ape-note-well .tree-menu .close-menu-panel {
+//     position: fixed;
+//     z-index: 99999;
+//     left: 250px;
+//     /* top: 100vh; */
+//     height: 155px;
+//     width: 25px;
+// 	    /* background: #efefef; */
+//     bottom: 0px;
+//     border-radius: 0 5px 5px 0;
+//     opacity: 0.8;
+//     color: #999;
+//
+//     -webkit-transition: all 0.5s ease;
+//     -moz-transition: all 0.5s ease;
+//     -o-transition: all 0.5s ease;
+//     transition: all 0.5s ease;
+// }
 
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#page-content-wrapper .close-menu-panel .glyphicon,
-.ape-note-well .tree-menu .close-menu-panel .glyphicon {
-	font-size: 15px;
-    padding-left: 4px;
-	padding-bottom: 5px;
-    padding-top: 5px;
-	top: 7px;
-    left: 2px;
-    cursor: pointer;
-}
-#page-content-wrapper .close-menu-panel .glyphicon-chevron-left,
-.ape-note-well .tree-menu .close-menu-panel .glyphicon-chevron-left {
-	padding-bottom: 10px;
-}
-#page-content-wrapper .close-menu-panel .edit-share-setting-tools,
-.ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools {
-    display: inline;
-
-}
-#page-content-wrapper .close-menu-panel .edit-share-setting-tools .glyphicon,
-.ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools .glyphicon {
-	padding-bottom: 10px;
-}
+// #page-content-wrapper .close-menu-panel .glyphicon,
+// .ape-note-well .tree-menu .close-menu-panel .glyphicon {
+// 	font-size: 15px;
+//     padding-left: 4px;
+// 	padding-bottom: 5px;
+//     padding-top: 5px;
+// 	top: 7px;
+//     left: 2px;
+//     cursor: pointer;
+// }
+// #page-content-wrapper .close-menu-panel .glyphicon-chevron-left,
+// .ape-note-well .tree-menu .close-menu-panel .glyphicon-chevron-left {
+// 	padding-bottom: 10px;
+// }
+// #page-content-wrapper .close-menu-panel .edit-share-setting-tools,
+// .ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools {
+//     display: inline;
+//
+// }
+// #page-content-wrapper .close-menu-panel .edit-share-setting-tools .glyphicon,
+// .ape-note-well .tree-menu .close-menu-panel .edit-share-setting-tools .glyphicon {
+// 	padding-bottom: 10px;
+// }
 .ape-note-well .nav-list .sidebar-header {
     text-indent: 10px;
     line-height: 40px;
