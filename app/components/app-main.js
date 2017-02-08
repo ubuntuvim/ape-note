@@ -15,6 +15,7 @@ export default Ember.Component.extend({
 
 	didInsertElement() {
 
+	/*
 		// 折叠、展开左侧菜单按钮
 		var gcId = Ember.$(".ape-note-well .tree-menu .close-menu-panel .glyphicon-chevron");
 		gcId.click(function() {
@@ -40,6 +41,7 @@ export default Ember.Component.extend({
 			}
 			wid.toggleClass("toggled");
 		});
+		*/
 		// 笔记本展开、折叠状态设置
 		Ember.$('.tree-toggler').click(function () {
 			// 设置左侧的图标

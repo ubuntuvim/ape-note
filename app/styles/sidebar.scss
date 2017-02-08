@@ -1,10 +1,6 @@
 // 左侧笔记本列表
 #wrapper {
     padding-left: 250px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
 }
 
 #wrapper.toggled {
@@ -20,16 +16,12 @@
     margin-left: -250px;
     overflow-y: auto;
     background: #ffffff;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
     padding-bottom: 30px;
     width: 250px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 0 !important;
+    //width: 0 !important;
 }
 
 // 右侧主要内容区
@@ -37,14 +29,19 @@
     // width: 768px;
     // min-width: 768px;
     overflow-y: auto;
-    height: 100vh;
+    height: 100% !important;
 	color: #2f2f2f;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
-    padding: 20px 60px;
-    padding-bottom: 100px;
+    //padding: 20px 60px;
+    //padding-bottom: 100px;
+	//padding-left: 20px;
     display: flex;
+	margin-top: 50px;
+	//
+	//position: fixed;
+	overflow: hidden;
 }
 #page-content-wrapper .container-fluid {
     width: 100%;
@@ -59,6 +56,7 @@
 #page-content-wrapper .container-fluid .row form .has-feedback .form-control {
     padding-left: 30px;
 }
+
 #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
@@ -125,25 +123,30 @@
 	background: #efefef;
     padding-bottom: 50px;
 }
-// 左侧底部新建按钮
-.ape-note-well .new-folder-file {
+// 右侧新建按钮
+.new-folder-file {
     position: fixed;
-    left: 0;
-    bottom: 0;
+    right: 50px;
+    bottom: 100px;
 }
-.ape-note-well .new-folder-file .dropdown-menu li a {
+.new-folder-file #dropdownMenu {
+	color: #555;
+	border-radius: 150px;
+    height: 45px;
+    width: 45px;
+    padding: 15px;
+	background-color: #afafaf;
+    color: white;
+    border: 1px solid #999;
+}
+.new-folder-file #dropdownMenu:hover {
+    background-color: #999;
+}
+.new-folder-file .dropdown-menu li a {
     color: #555;
 }
-.ape-note-well .new-folder-file .dropdown-menu li a .glyphicon {
+.new-folder-file .dropdown-menu li a .glyphicon {
     color: #777;
-}
-.ape-note-well .new-folder-file #dropdownMenu:hover,
-.ape-note-well .new-folder-file #dropdownMenu:focus,
-.ape-note-well .new-folder-file #dropdownMenu {
-    width: 250px;
-    border: 0;
-    border-radius: 0;
-    background-color: #ccc;
 }
 // 收起左侧菜单面板图标
 #page-content-wrapper .close-menu-panel,

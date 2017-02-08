@@ -2526,8 +2526,8 @@
                 previewContainer.addClass(this.classPrefix + "preview-active");
 
                 preview.show().css({
-                    position  : "",
-                    top       : 0,
+                    position  : "fixed",
+                    top       : "50px !important",
                     width     : editor.width(),
                     height    : (settings.autoHeight && !this.state.fullscreen) ? "auto" : editor.height()
                 });
@@ -2606,6 +2606,10 @@
 
         fullscreen : function() {
 
+			//左侧笔记列表收缩
+			$("#wrapper").toggleClass("toggled");
+			$("#sidebar-wrapper").css("width", 0);
+		
             var _this            = this;
             var state            = this.state;
             var editor           = this.editor;
@@ -2663,6 +2667,11 @@
 
         fullscreenExit : function() {
 
+			
+			//左侧笔记列表展开
+			$("#wrapper").toggleClass("toggled");
+			$("#sidebar-wrapper").css("width", 250);
+			
             var editor            = this.editor;
             var settings          = this.settings;
             var toolbar           = this.toolbar;

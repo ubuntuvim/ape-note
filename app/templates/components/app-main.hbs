@@ -45,7 +45,7 @@
 							}}
 						</ul>
 
-						<!-- 收起左侧菜单面板 -->
+						<!-- 收起左侧菜单面板
 						<div class="close-menu-panel">
 							<div class="edit-share-setting-tools">
 								<span class="glyphicon glyphicon-edit" title="编辑"></span>&nbsp;
@@ -55,25 +55,10 @@
 							</div>
 							<span class="glyphicon glyphicon-chevron glyphicon-chevron-left"></span>
 						</div>
+						-->
 					</div>
 
-					<div class="new-folder-file dropup">
-
-						<a class="btn btn-default dropdown-toggle" id="dropdownMenu"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="glyphicon glyphicon-plus"></span>&nbsp;新建
-						</a>
-
-   					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-   					    <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建Markdown笔记</a></li>
-   					    <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建普通笔记</a></li>
-   					    <li role="separator" class="divider"></li>
-   					    <li data-toggle="modal" data-target=".create-notebook-modal-sm">
-							<a href="#" ><span class="glyphicon glyphicon-book"></span>&nbsp;新建笔记本</a>
-						</li>
-   					  </ul>
-
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -81,25 +66,25 @@
 	<!-- /#sidebar-wrapper -->
 
 	<!-- 右边主要内容区 -->
-	<div id="page-content-wrapper">
-		<div class="container-fluid">
-			<!-- 笔记信息 -->
-			{{! <div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<form role="form">
-						<div class="form-group has-default has-feedback">
-						  <input type="text" class="form-control" id="inputSuccess2">
-						  <span class="glyphicon glyphicon-plus form-control-feedback"></span>
-						</div>
-					</form>
-				</div>
-			</div> }}
-			<!-- 显示笔记页面 -->
-			{{show-note}}
-
-		</div>
-	</div>
-	<!-- /#page-content-wrapper -->
+	{{show-note}}
 
 </div>
 <!-- /#wrapper -->
+
+<div class="new-folder-file dropup">
+
+	<a class="btn btn-default dropdown-toggle" id="dropdownMenu"
+		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<span class="glyphicon glyphicon-plus"></span>
+	</a>
+
+  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+	<li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建Markdown笔记</a></li>
+	<li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建普通笔记</a></li>
+	<li role="separator" class="divider"></li>
+	<li data-toggle="modal" data-target=".create-notebook-modal-sm">
+		<a href="#" ><span class="glyphicon glyphicon-book"></span>&nbsp;新建笔记本</a>
+	</li>
+  </ul>
+
+</div>

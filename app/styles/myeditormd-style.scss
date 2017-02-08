@@ -1,0 +1,119 @@
+﻿// 覆盖editormd的样式
+.CodeMirror {
+    width: 50% ;
+	height: 100vh !important;
+	padding-bottom: 100px;
+	//padding-top: 10px;
+}
+.editormd-preview {
+	width: 50% ;
+	height: 100vh !important;
+	padding-bottom: 100px;
+	//padding-top: 10px;
+}
+.CodeMirror-lines {
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
+.CodeMirror-scroll {
+	padding-bottom: 60px !important;
+}
+.CodeMirror-gutters{
+	height: 100vh;
+}
+
+.editormd-preview-close-btn {
+	z-index: 1100;
+    background-color: #afafaf;
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    padding: 13px;
+    padding-left: 15px;
+	top: 100px;
+}
+.editormd-preview-close-btn:hover {
+	text-decoration: none;
+    color: white;
+}
+.editormd-preview-theme-dark {
+    color: #777;
+    background:#2C2827;
+}
+
+.editormd-preview-theme-dark .editormd-toc-menu > .markdown-toc {
+    background:#fff;
+    border:none;
+}
+
+.editormd-preview-theme-dark .editormd-toc-menu > .markdown-toc h1{
+    border-color:#ddd;
+}
+
+.editormd-preview-theme-dark .markdown-body h1,
+.editormd-preview-theme-dark .markdown-body h2,
+.editormd-preview-theme-dark .markdown-body hr {
+    border-color: #222;
+}
+
+.editormd-preview-theme-dark .editormd-preview-container  blockquote {
+    color: #555;
+    border-color: #333;
+    background: #222;
+    padding: 0.5em;
+}
+
+.editormd-preview-theme-dark .editormd-preview-container abbr {
+    background:#ff9900;
+    color: #fff;
+    padding: 1px 3px;
+    border-radius: 3px;
+}
+
+.editormd-preview-theme-dark .editormd-preview-container code {
+    background: #5A9600;
+    color: #fff;
+    border: none;
+    padding: 1px 3px;
+    border-radius: 3px;
+}
+
+.editormd-preview-theme-dark .editormd-preview-container table {
+    border: none;
+}
+
+.editormd-preview-theme-dark .editormd-preview-container .fa-emoji {
+    color: #B4BF42;
+}
+
+.editormd-preview-theme-dark .editormd-preview-container .katex {
+    color: #FEC93F;
+}
+
+.editormd-preview-theme-dark [class*=editormd-logo] {
+    color: #2196F3;
+}
+
+.editormd-preview-theme-dark .sequence-diagram text {
+    fill: #fff;
+}
+
+.editormd-preview-theme-dark .sequence-diagram rect,
+.editormd-preview-theme-dark .sequence-diagram path {
+    color:#fff;
+    fill : #64D1CB;
+    stroke : #64D1CB;
+}
+
+.editormd-preview-theme-dark .flowchart rect,
+.editormd-preview-theme-dark .flowchart path {
+    stroke : #A6C6FF;
+}
+
+.editormd-preview-theme-dark .flowchart rect {
+    fill: #A6C6FF;
+}
+
+.editormd-preview-theme-dark .flowchart text {
+    fill: #5879B4;
+}
