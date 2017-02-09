@@ -11,6 +11,7 @@ Router.map(function() {
       this.route('note', { path: '/note/:note_id' });
       this.route('new');
     });
+	this.route('test');
 });
 
 export default Router;

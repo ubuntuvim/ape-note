@@ -7,6 +7,7 @@ export default Ember.Component.extend({
     id: 'editormd',
 
     didInsertElement() {
+		var ember = this;
 		Ember.$.get('/assets/md-files/test.md', function(md) {
 
 			var editor = editormd("editormd", {
@@ -60,26 +61,31 @@ export default Ember.Component.extend({
 					    "list-ul", "list-ol", "hr", "|",
 					    "link", "image", "code", "table", "emoji", "|",
 					    "watch", "preview", "fullscreen", "|",
-					    "help", "info"
+					    "help", "info", "|",
+						"save"
 				    ];
 			    },
 				lang: {
+					// 工具类的title提示
 					toolbar: {
-						preview          : "全窗口预览"
+						preview          : "全窗口预览", 
+						save			 :  "保存"
 					}
 				}
-				/*
+				
 				// 指定自定义工具栏的图标
 				,toolbarIconsClass : {
-					//testIcon : "fa-gears"  // 指定一个FontAawsome的图标类
+					//save : "fa-floppy-o"  // 指定一个FontAawsome的图标类
 				},
 				// 指定自定义工具栏的图标的提示文字
 				toolbarIconTexts : {
-					//testIcon2 : "测试按钮"  // 如果没有图标，则可以这样直接插入内容，可以是字符串或HTML标签
+					//save : "保存"  // 如果没有图标，则可以这样直接插入内容，可以是字符串或HTML标签
 				},
 				// 用于增加自定义工具栏的功能，可以直接插入HTML标签，不使用默认的元素创建图标
 				toolbarCustomIcons : {
-					file   : "&lt;input type="file" accept=".md" /&gt;"
+					//name属性指定执行的方法
+					save : "<a href=\"javascript:;\" title=\"保存\" unselectable=\"on\">\
+							<i class=\"fa fa-floppy-o\" name=\"save\" unselectable=\"on\"></i></a>"
 				},
 
 				// 自定义工具栏按钮的事件处理
@@ -90,28 +96,36 @@ export default Ember.Component.extend({
 					 // @param {Object}      cursor     CodeMirror的光标对象，可获取光标所在行和位置
 					 // @param {String}      selection  编辑器选中的文本
 					 //
-					testIcon : function(cm, icon, cursor, selection) {
-
-						//var cursor    = cm.getCursor();     //获取当前光标对象，同cursor参数
-						//var selection = cm.getSelection();  //获取当前选中的文本，同selection参数
-
-						// 替换选中文本，如果没有选中文本，则直接插入
-						cm.replaceSelection("[" + selection + ":testIcon]");
-
-						// 如果当前没有选中的文本，将光标移到要输入的位置
-						if(selection === "") {
-							cm.setCursor(cursor.line, cursor.ch + 1);
-						}
-
-						// this == 当前editormd实例
-						console.log("testIcon =>", this, cm, icon, cursor, selection);
-					},
-
-					testIcon2 : function(cm, icon, cursor, selection) {
-						cm.replaceSelection("[" + selection + ":testIcon2](" + icon.html() + ")");
-						console.log("testIcon2 =>", this, icon.html());
+					save : function(cm, icon, cursor, selection) {
+				
+						/*
+						let blogPost = this.get('store').peekRecord('blog-post', 1);
+						let comment = this.get('store').createRecord('comment', {
+						});
+						blogPost.get('comments').pushObject(comment);
+						comment.save().then(function () {
+						  blogPost.save();
+						});*/
+						var notebookId = '-KcWrZB3HUE9yVyYgIEe';
+						// 获取输入内容
+						//console.log("content = " + this.getMarkdown());
+						let notebook = ember.store.peekRecord('notebook', notebookId);
+						let note = ember.store.createRecord('note', {
+							userId: 'test',
+							title: 'test title',
+							content: this.getMarkdown(),
+							notebookId: notebookId,
+							notebook: notebook
+						});
+						
+						notebook.get('notes').pushObject(note);
+						note.save().then(() => {
+							notebook.save().then(() => {
+								console.log("笔记保存成功。。。。");
+							});
+						});
 					}
-				},*/
+				},
 
 			//toolbarIcons: 'simple'
             });  // editor

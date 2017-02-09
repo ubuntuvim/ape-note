@@ -12,10 +12,14 @@
                                 {{/link-to}}
                             </div>
                             <ul class="nav nav-list tree collapse">
-                                {{#each item.note as |note|}}
+								<li>
+									item.notes.len={{item.notes.length}}
+								</li>
+								
+                                {{#each item.notes as |nt|}}
                                 <li>
-                                    {{#link-to "notebook.note" item.id note.id class="nav-list-link"}}
-                                        <span class="glyphicon glyphicon-file"></span>&nbsp;{{note.title}}
+                                    {{#link-to "notebook.note" item.id nt.id class="nav-list-link"}}
+                                        <span class="glyphicon glyphicon-file"></span>&nbsp;{{nt.title}}
                                     {{/link-to}}
                                 </li>
                                 {{/each}}
