@@ -24,6 +24,12 @@
 	padding-bottom: 100px;
 	position: relative !important;
 }
+.editormd .editormd-preview .editormd-preview-container {
+    padding-top: 50px !important;
+}
+.editormd .editormd-preview .editormd-preview-active {
+    margin-top: -30px;
+}
 .CodeMirror-lines {
 	//padding-top: 10px !important;
 	padding-bottom: 160px !important;

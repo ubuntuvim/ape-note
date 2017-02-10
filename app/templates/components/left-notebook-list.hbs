@@ -12,10 +12,6 @@
                                 {{/link-to}}
                             </div>
                             <ul class="nav nav-list tree collapse">
-								<li>
-									item.notes.len={{item.notes.length}}
-								</li>
-								
                                 {{#each item.notes as |nt|}}
                                 <li>
                                     {{#link-to "notebook.note" item.id nt.id class="nav-list-link"}}

@@ -417,7 +417,7 @@
             }
 
             var appendElements = [
-                (!settings.readOnly) ? "<a href=\"javascript:;\" class=\"fa fa-close " + classPrefix + "preview-close-btn\"></a>" : "",
+                (!settings.readOnly) ? "<a href=\"javascript:;\" class=\"fa fa-edit " + classPrefix + "preview-close-btn\" title='编辑'></a>" : "",
                 ( (settings.saveHTMLToTextarea) ? "<textarea class=\"" + classNames.textarea.html + "\" name=\"" + id + "-html-code\"></textarea>" : "" ),
                 "<div class=\"" + classPrefix + "preview\"><div class=\"markdown-body " + classPrefix + "preview-container\"></div></div>",
                 "<div class=\"" + classPrefix + "container-mask\" style=\"display:block;\"></div>",
@@ -1881,8 +1881,6 @@
 
         resize : function(width, height) {
 
-            console.log('width = ' + width);
-
             width  = width  || null;
             height = height || null;
 
@@ -1892,12 +1890,6 @@
             var toolbar    = this.toolbar;
             var settings   = this.settings;
             var codeMirror = this.codeMirror;
-
-            // console.log('state = ' + state);
-            // console.log('preview = ' + preview);
-            // console.log('settings = ' + settings);
-            // console.log('codeMirror = ' + codeMirror);
-            // console.log('settings.watch = ' + settings.watch);
 
 
             if (width)
@@ -2491,9 +2483,7 @@
          */
 
         previewing : function() {
-
-            console.log('00000000000000');
-
+           
             var _this            = this;
             var editor           = this.editor;
             var preview          = this.preview;
@@ -2524,24 +2514,27 @@
                 this.state.preview = true;
 
                 /////////////////// 设置左侧菜单 --------------------
+                //检查是否在全屏状态下
+                var offset = this.state.fullscreen ? 0 : editormd.LEFT_MENU_WIDTH;
+                $("#sidebar-wrapper").css("width", offset);
+
                 if (this.state.fullscreen) {
                     preview.css("background", "#fff");
                 }
-                $("#sidebar-wrapper").css("width", 0);
+                
                 //
                 // console.log('eeeeeee');
                 // codeMirror.width(editor.width() / 2);
                 // preview.width(editor.width() / 2);
 
                 editor.find("." + this.classPrefix + "preview-close-btn").show().bind(editormd.mouseOrTouch("click", "touchend"), function(){
-                    //检查是否在全屏状态下
-                    var offset = _this.state.fullscreen ? 0 : editormd.LEFT_MENU_WIDTH;
-
-                    $("#sidebar-wrapper").css("width", offset);
-
-                    codeMirror.width((editor.width()-offset) / 2);
-                    preview.width((editor.width()-offset) / 2);
-
+                    if (!_this.state.watching) {
+                        codeMirror.width(editor.width());
+                        preview.width(0);
+                    } else {
+                        codeMirror.width((editor.width()-offset) / 2);
+                        preview.width((editor.width()-offset) / 2);
+                    }
                     _this.previewed();
                 });
 
@@ -2558,7 +2551,7 @@
 
                 preview.show().css({
                     position  : "fixed",
-                    top       : "50px !important",
+                    top       : "0px !important",
                     width     : editor.width(),
                     height    : (settings.autoHeight && !this.state.fullscreen) ? "auto" : editor.height()
                 });
@@ -2678,10 +2671,16 @@
                 editor.css("margin-top", "50px");
 
                 this.resize();
-                var w = (editor.width()) / 2;
-                this.codeMirror.width(w);
-                preview.width(w);
-
+                
+                
+                if (!_this.state.watching) {
+                    this.codeMirror.width(editor.width());
+                    preview.width(0);
+                } else {
+                    var w = (editor.width()) / 2;
+                    this.codeMirror.width(w);
+                    preview.width(w);
+                }
 
                 $.proxy(settings.onfullscreen, this)();
 
@@ -2732,9 +2731,14 @@
 
             this.resize();
 
-            var w = (editor.width()-250) / 2;
-            this.codeMirror.width(w);
-            this.preview.width(w);
+            if (!this.state.watching) {
+                this.codeMirror.width(editor.width());
+                this.preview.width(0);
+            } else {
+                var w = (editor.width()-editormd.LEFT_MENU_WIDTH) / 2;
+                this.codeMirror.width(w);
+                this.preview.width(w);
+            }
 
             $.proxy(settings.onfullscreenExit, this)();
 
