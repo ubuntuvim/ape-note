@@ -1,0 +1,30 @@
+// 专门用于覆盖notebook现有的样式
+.ape-note-nav-menu-icon i {
+    font-size: 45px;
+    margin-left: -12px;
+    margin-top: 10px;
+}
+.gh-nav-menu-details-blog {
+    margin-top: -17px;
+}
+
+.ape-note-nav .dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	float: left;
+	margin: 2px 0 0;
+	padding: 10px;
+	min-width: 200px;
+	border: 1px solid #dfe1e3;
+	background-color: #fff;
+	background-clip: padding-box;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,.1) 0 2px 6px;
+	list-style: none;
+	text-align: left;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 1.4rem;
+	font-weight: 400
+}

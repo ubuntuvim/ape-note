@@ -1,0 +1,24 @@
+{{! app/templates/v2/notebook.hbs
+笔记列表，当前页面划分为2部分，左边是固定宽度的笔记列表面板，右边是笔记信息（新建、编辑）}}
+
+<div>
+    <div class="ape-note-app">
+        <a href="javascript:;" class="sr-only sr-only-focusable">Skip to main content</a>
+        <aside class="ape-note-alerts">
+        </aside>
+        <div class="ape-note-viewport">
+            {{! 左侧导航以及笔记本列表，标签列表}}
+            {{v2/ape-note-left-nav store=store model=model}}
+
+
+            {{v2/ape-note-right-main-view store=store model=model}}
+
+            <aside class="gh-notifications">
+                <!---->
+            </aside>
+            <div class="content-cover">
+                <!---->
+            </div>
+        </div>
+    </div>
+</div>

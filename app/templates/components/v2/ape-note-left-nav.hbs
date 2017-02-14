@@ -1,0 +1,111 @@
+{{! app/templates/v2/ape-note-left-nav.hbs
+    左侧导航以及笔记本列表，标签列表}}
+<!-- <nav class="ape-note-nav"> -->
+    <section class="dropdown">
+        <header type="button"  class="ape-note-nav-menu dropdown-toggle"
+            id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="ape-note-nav-menu-icon">
+                <i class="iconfont">&#xe609;</i>
+            </div>
+            <div class="ape-note-nav-menu-details">
+                <div class="ape-note-nav-menu-details-blog">1527254027@qq.com</div>
+                <div class="ape-note-nav-menu-details-user">ubuntuvim</div>
+            </div>
+            {{fa-icon "fa-angle-down" size=2}}
+        </header>
+        <ul class="dropdown-menu dropdown-triangle-top js-user-menu-dropdown-menu dropdown-menu-right"
+            role="menu" style="right:-20px;left:auto;" aria-labelledby="dropdownMenu2">
+            <li role="presentation">
+                <a href="/ghost/about/" tabindex="-1" class="ape-note-nav-menu-about dropdown-item js-nav-item ape-note-nav-menu-about dropdown-item js-nav-item">
+                    <i class="icon-shop"></i>About Ghost</a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+                <a href="/ghost/team/ubuntuvim/" tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                    <i class="icon-user"></i>Your Profile</a>
+            </li>
+            <li role="presentation">
+                <a href="/ghost/signout/" tabindex="-1" class="dropdown-item user-menu-signout dropdown-item user-menu-signout">
+                    <i class="icon-signout"></i>Sign Out</a>
+            </li>
+        </ul>
+    </section>
+    <section class="ape-note-nav-body">
+        <section class="ape-note-nav-search">
+            <div class="ape-note-nav-search-input">
+                <select autocomplete="off" class="ember-selectize selectized" tabindex="-1" style="display: none;">
+                    <option value="" selected="selected"></option>
+                </select>
+                <div class="selectize-control ember-selectize multi plugin-remove_button">
+                    <div class="selectize-input items not-full">
+                        <input type="text" autocomplete="off" tabindex="0"
+                            placeholder="搜索……" style="opacity: 1; position: relative; left: 0px;">
+                    </div>
+                    <div class="selectize-dropdown multi ember-selectize plugin-remove_button"
+                        style="display: none; width: 204px; top: 31px; left: 0px;">
+                        <div class="selectize-dropdown-content"></div>
+                        <div class="dropdown-empty-message" style="display: none;">Nothing found…</div>
+                    </div>
+                </div>
+                <button class="ape-note-nav-search-button">
+                    {{fa-icon "fa-search" size=4}}
+                    <span class="sr-only">搜索……</span>
+                </button>
+            </div>
+        </section>
+        <ul class="ape-note-nav-list ape-note-nav-main">
+            <li>
+                <a href="/ghost/editor/" class="ape-note-nav-main-editor ape-note-nav-main-editor">
+                    {{fa-icon "fa-book" size=4}}我的笔记本</a>
+            </li>
+        </ul>
+        <ul class="ape-note-nav-list ape-note-nav-settings">
+            <li class="ape-note-nav-list-h">标签</li>
+            <li>
+                <a href="/ghost/settings/tags/" class="ape-note-nav-settings-tags ape-note-nav-settings-tags">
+                    {{fa-icon "fa-tag" size=4}} Java</a>
+            </li>
+        </ul>
+    </section>
+    <footer class="ape-note-nav-footer">
+        <div class="ape-note-menu-toggle">
+            <i role="button" class="icon-minimise"></i>
+        </div>
+        <a class="ape-note-nav-footer-sitelink" target="_blank" href="http://blog.ddlisting.com/">View blog</a>
+        <div class="ape-note-help-menu">
+            <div role="button" class="closed">
+                <div class="ape-note-help-button">
+                    <i class="icon-question">
+                        <span class="hidden">Help</span></i>
+                </div>
+            </div>
+            <div class="dropdown closed fade-out closed">
+                <ul class="dropdown-menu dropdown-triangle-bottom" role="menu">
+                    <li role="presentation">
+                        <a class="dropdown-item help-menu-support" role="menuitem" tabindex="-1" href="http://support.ghost.org/" target="_blank">
+                            <i class="icon-ambulance"></i>Support Center</a>
+                    </li>
+                    <li role="presentation">
+                        <a class="dropdown-item help-menu-tweet" role="menuitem" tabindex="-1" href="https://twitter.com/intent/tweet?text=%40TryGhost+Hi%21+Can+you+help+me+with+&amp;related=TryGhost" target="_blank" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <i class="icon-twitter"></i>Tweet @TryGhost!</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li role="presentation">
+                        <a class="dropdown-item help-menu-how-to" role="menuitem" tabindex="-1" href="http://support.ghost.org/how-to-use-ghost/" target="_blank">
+                            <i class="icon-book"></i>How to Use Ghost</a>
+                    </li>
+                    <li role="presentation">
+                        <a class="dropdown-item help-menu-markdown" role="menuitem" tabindex="-1" href="" data-ember-action="1153">
+                            <i class="icon-markdown"></i>Markdown Help</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li role="presentation">
+                        <a class="dropdown-item help-menu-wishlist" role="menuitem" tabindex="-1" href="http://ideas.ghost.org/" target="_blank">
+                            <i class="icon-idea"></i>Wishlist</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="ape-note-autonav-toggle" data-ember-action="1154"></div>
+<!-- </nav> -->
