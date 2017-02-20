@@ -1,0 +1,20 @@
+{{! app/templates/v2/compontents/ape-note-app.hbs 新版首页}}
+<!-- <div class="ape-note-app"> -->
+<a href="javascript:;" class="sr-only sr-only-focusable">Skip to main content</a>
+<aside class="ape-note-alerts">
+</aside>
+<div class="ape-note-viewport">
+    {{! 左侧导航以及笔记本列表，标签列表}}
+    {{v2/ape-note-left-nav store=store model=model}}
+
+
+    {{v2/ape-note-right-main-view store=store model=model}}
+
+    <aside class="gh-notifications">
+        <!---->
+    </aside>
+    <div class="content-cover">
+        <!---->
+    </div>
+</div>
+<!-- </div> -->
