@@ -1,0 +1,22 @@
+{{! app/templates/v2/components/app-note-right-main-note-list.hbs }}
+<section class="content-list js-content-list ">
+    <section class="content-list-content js-content-scrollbox content-list-content js-content-scrollbox">
+        <ol class="posts-list">
+            {{#each model.notes as |note|}}
+            <li {{action 'setActive' note.id}} id={{note.id}} class="note-list">
+                {{#link-to 'v2.notebook.note.show' note.notebook.id note.id title="查看笔记" class="permalink"}}
+                    <h3 class="entry-title">{{note.title}}</h3>
+                    <section class="entry-meta">
+                        <!-- <span class="avatar" style="background-image: url(/shared/img/user-image.png)">
+                            <img src="/shared/img/user-image.png" title="ubuntuvim">
+                        </span>
+                        <span class="author">ubuntuvim</span> -->
+                        <span class="status">
+                            <time class="date published" datetime="Mon Feb 13 2017 18:44:10 GMT+0800">{{note.timestamp}}</time></span>
+                    </section>
+                {{/link-to}}
+            </li>
+            {{/each}}
+        </ol>
+    </section>
+</section> 
