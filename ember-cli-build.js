@@ -30,5 +30,7 @@ module.exports = function(defaults) {
   // app.import("bower_components/editor.md/editormd.js");
   // app.import("bower_components/editor.md/editormd.amd.js");
 
+  app.import("bower_components/showdown/dist/showdown.js");
+
   return app.toTree();
 };

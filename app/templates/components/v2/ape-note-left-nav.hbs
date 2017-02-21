@@ -1,7 +1,7 @@
 {{! app/templates/v2/ape-note-left-nav.hbs
     左侧导航以及笔记本列表，标签列表}}
 <!-- <nav class="ape-note-nav"> -->
-    <section class="dropdown">
+    <section class="dropdown ape-note-nav-header">
         <header type="button"  class="ape-note-nav-menu dropdown-toggle"
             id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="ape-note-nav-menu-icon">
@@ -11,13 +11,15 @@
                 <div class="ape-note-nav-menu-details-blog">1527254027@qq.com</div>
                 <div class="ape-note-nav-menu-details-user">ubuntuvim</div>
             </div>
-            {{fa-icon "fa-angle-down" size=2}}
+            {{!fa-icon "fa-angle-down" size=2}}
+            <i class="icon-arrow"></i>
         </header>
         <ul class="dropdown-menu dropdown-triangle-top js-user-menu-dropdown-menu dropdown-menu-right"
             role="menu" style="right:-20px;left:auto;" aria-labelledby="dropdownMenu2">
             <li role="presentation">
-                <a href="/ghost/about/" tabindex="-1" class="ape-note-nav-menu-about dropdown-item js-nav-item ape-note-nav-menu-about dropdown-item js-nav-item">
-                    <i class="icon-shop"></i>About Ghost</a>
+                {{#link-to 'v2.notebook' class="ape-note-nav-menu-about dropdown-item js-nav-item ape-note-nav-menu-about dropdown-item js-nav-item"}}
+                    <i class="fa fa-home"></i>笔记首页
+                {{/link-to}}
             </li>
             <li class="divider"></li>
             <li role="presentation">
@@ -39,7 +41,7 @@
                 <div class="selectize-control ember-selectize multi plugin-remove_button">
                     <div class="selectize-input items not-full">
                         <input type="text" autocomplete="off" tabindex="0"
-                            placeholder="搜索……" style="opacity: 1; position: relative; left: 0px;">
+                            placeholder="搜索……" style="opacity: 1; position: relative; left: 0px; top: 1px;">
                     </div>
                     <div class="selectize-dropdown multi ember-selectize plugin-remove_button"
                         style="display: none; width: 204px; top: 31px; left: 0px;">
@@ -48,16 +50,21 @@
                     </div>
                 </div>
                 <button class="ape-note-nav-search-button">
-                    {{fa-icon "fa-search" size=4}}
+                    {{!fa-icon "fa-search" size=4}}
+                    <i class="icon-search"></i>
                     <span class="sr-only">搜索……</span>
                 </button>
             </div>
         </section>
+        {{! 笔记本列表}}
         <ul class="ape-note-nav-list ape-note-nav-main">
+            {{#each model.notebooks as |item|}}
             <li>
-                <a href="/ghost/editor/" class="ape-note-nav-main-editor ape-note-nav-main-editor">
-                    {{fa-icon "fa-book" size=4}}我的笔记本</a>
+                {{#link-to 'v2.notebook.note' item.id class="ape-note-nav-main-editor ape-note-nav-main-editor"}}
+                    {{fa-icon "fa-book" size=4}}{{item.title}}
+                {{/link-to}}
             </li>
+            {{/each}}
         </ul>
         <ul class="ape-note-nav-list ape-note-nav-settings">
             <li class="ape-note-nav-list-h">标签</li>
@@ -67,11 +74,36 @@
             </li>
         </ul>
     </section>
-    <footer class="ape-note-nav-footer">
-        <div class="ape-note-menu-toggle" {{action 'closeMenu' this}}>
-            <i role="button" class={{if isCloseIcon 'icon-minimise' 'icon-maximise'}}></i>
+    <footer class="ape-note-nav-footer dropup">
+        <div class="ape-note-menu-toggle" {{action 'closeMenu'}}>
+            <i role="button" class={{if isCloseIcon 'icon-minimise' 'icon-maximise'}} id="clonseMenuIconId"></i>
         </div>
-        <a class="ape-note-nav-footer-sitelink" target="_blank" href="http://blog.ddlisting.com/">View blog</a>
+
+        <!-- <a class="ape-note-nav-footer-sitelink" target="_blank" href="http://blog.ddlisting.com/">View blog</a> -->
+        {{!#link-to 'v2.notebook.note.new' }}
+        {{! 右边悬浮工具按钮}}
+        <!-- <div class="dropup"> -->
+           <a class="ape-note-nav-footer-sitelink dropdown-toggle" id="dropdownMenu"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="icon-add"></i>&nbsp;新建
+           </a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+               <li>
+                   {{!#link-to 'v2.notebook.note.new' model.notebook.id}}
+                    <!-- <span class="glyphicon glyphicon-file"></span> -->
+                    <a style="cursor: pointer;" {{action 'newNote' model.notebook.id}}>
+                        <i class="icon-markdown"></i>&nbsp;新建Markdown笔记
+                    </a>
+                   {{!/link-to}}
+               </li>
+               <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建普通笔记</a></li>
+               <li role="separator" class="divider"></li>
+               <li data-toggle="modal" data-target=".create-notebook-modal-sm">
+                   <a style="cursor: pointer;"><i class="icon-book"></i>&nbsp;新建笔记本</a>
+               </li>
+          </ul>
+      <!-- </div> -->
+
         <div class="ape-note-help-menu">
             <div role="button" class="closed">
                 <div class="ape-note-help-button">

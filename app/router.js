@@ -14,13 +14,16 @@ Router.map(function() {
   this.route('test');
 
   this.route('v2', function() {
-    this.route('notebook', function() {
-      this.route('note', function() {
-        this.route('new');
-        this.route('edit');
+      this.route('notebook', function() {
+          this.route('note', { path: '/:notebook_id' }, function() {
+              //  新建笔记
+              this.route('new', { path: '/new' });
+              this.route('edit', { path: '/edit/:note_id' });
+              this.route('show', { path: '/show/:note_id' });
+          });
       });
-    });
   });
+  this.route('icon');
 });
 
 export default Router;

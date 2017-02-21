@@ -4,12 +4,12 @@ import Ember from 'ember';
 // import createMarkdownEditor from '../utils/create-markdown-editor';
 
 export default Ember.Component.extend({
-    attributeBindings: ['id'],
-    id: 'editormd',
+    // attributeBindings: ['id'],
+    // id: 'editormd',
 
-    didRender() {
+    didInsertElement() {  //didRender  didInsertElement
 
-    	$("#page-content-wrapper").empty().append("<div id=\"editormd\"></div>");
+    	// this.$("#appMainPanel").empty().append("<div id=\"editormd\"></div>");
     	var that = this;
 		//md, store, type
 		// createMarkdownEditor(this.get('md'), this.store, this.get('type'));
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 			//  theme : "ambiance",
 			//  previewTheme : "ambiance",
 			//  editorTheme : "ambiance",
-			markdown : this.get('md'),
+			markdown : this.get('content'),
 			codeFold : true,
 			placeholder: "请输入您的笔记内容。",
 			//syncScrolling : false,
@@ -56,10 +56,10 @@ export default Ember.Component.extend({
 				//this.resize("100%", 640);
 				 if ('show' === that.get('type')) {
 					//加载完成直接进入全屏预览状态
-					this.previewing();	
-					$("#sidebar-wrapper").css("width", "250px");
+					this.previewing();
+					// $("#sidebar-wrapper").css("width", "250px");
 				 }
-				
+
 			},
 		    toolbarIcons : function() {
 			    return [
@@ -75,11 +75,11 @@ export default Ember.Component.extend({
 			lang: {
 				// 工具类的title提示
 				toolbar: {
-					preview          : "全窗口预览", 
+					preview          : "全窗口预览",
 					save			 :  "保存"
 				}
 			}
-			
+
 			// 指定自定义工具栏的图标
 			,toolbarIconsClass : {
 				//save : "fa-floppy-o"  // 指定一个FontAawsome的图标类
@@ -104,7 +104,7 @@ export default Ember.Component.extend({
 				 // @param {String}      selection  编辑器选中的文本
 				 //
 				save : function(cm, icon, cursor, selection) {
-			
+
 					/*
 					let blogPost = this.get('store').peekRecord('blog-post', 1);
 					let comment = this.get('store').createRecord('comment', {
@@ -124,7 +124,7 @@ export default Ember.Component.extend({
 						notebookId: notebookId,
 						notebook: notebook
 					});
-					
+
 					notebook.get('notes').pushObject(note);
 					note.save().then(() => {
 						notebook.save().then(() => {

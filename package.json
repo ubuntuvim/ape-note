@@ -33,6 +33,7 @@
     "ember-cli-qunit": "^2.1.0",
     "ember-cli-release": "^0.2.9",
     "ember-cli-sass": "6.1.0",
+    "ember-cli-showdown": "2.11.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
@@ -43,6 +44,7 @@
     "ember-resolver": "^2.0.3",
     "emberfire": "2.0.6",
     "loader.js": "^4.0.1",
+    "showdown": "1.6.4",
     "wildember": "2.1.1"
   }
 }

@@ -62,8 +62,6 @@
     editormd.version      = "1.5.0";
     editormd.homePage     = "https://pandao.github.io/editor.md/";
     editormd.classPrefix  = "editormd-";
-    // 左侧列表宽度
-    editormd.LEFT_MENU_WIDTH = 250;
 
     editormd.toolbarModes = {
         full : [
@@ -417,7 +415,7 @@
             }
 
             var appendElements = [
-                (!settings.readOnly) ? "<a href=\"javascript:;\" class=\"fa fa-edit " + classPrefix + "preview-close-btn\" title='编辑'></a>" : "",
+                (!settings.readOnly) ? "<a href=\"javascript:;\" class=\"fa fa-close " + classPrefix + "preview-close-btn\"></a>" : "",
                 ( (settings.saveHTMLToTextarea) ? "<textarea class=\"" + classNames.textarea.html + "\" name=\"" + id + "-html-code\"></textarea>" : "" ),
                 "<div class=\"" + classPrefix + "preview\"><div class=\"markdown-body " + classPrefix + "preview-container\"></div></div>",
                 "<div class=\"" + classPrefix + "container-mask\" style=\"display:block;\"></div>",
@@ -726,13 +724,11 @@
             {
                 this.cm.setValue(settings.value);
             }
-            // var w = (editor.width()-250)/2 + "px !important";
-            // console.log('w - ' + w);
+
             this.codeMirror.css({
                 fontSize : settings.fontSize,
                 width    : (!settings.watch) ? "100%" : "50%"
             });
-            // this.codeMirror.css("width", "");
 
             if (settings.autoHeight)
             {
@@ -1534,15 +1530,15 @@
                 }
 
                 previewContainer.find(".flowchart")
-                    && previewContainer.find(".flowchart").length > 0
-                    && previewContainer.find(".flowchart").flowChart();
-            }
+                   && previewContainer.find(".flowchart").length > 0
+                   && previewContainer.find(".flowchart").flowChart();
+           }
 
-            if (settings.sequenceDiagram) {
-                previewContainer.find(".sequence-diagram")
-                    && previewContainer.find(".sequence-diagram").length > 0
-                    && previewContainer.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
-            }
+           if (settings.sequenceDiagram) {
+               previewContainer.find(".sequence-diagram")
+                   && previewContainer.find(".sequence-diagram").length > 0
+                   && previewContainer.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
+           }
 
             var preview    = $this.preview;
             var codeMirror = $this.codeMirror;
@@ -1891,7 +1887,6 @@
             var settings   = this.settings;
             var codeMirror = this.codeMirror;
 
-
             if (width)
             {
                 editor.css("width", (typeof width  === "number") ? width  + "px" : width);
@@ -1926,10 +1921,8 @@
 
             if(settings.watch)
             {
-                // console.log('editor.width() = ' + editor.width());
-                ////////////////////////////////////////
-                codeMirror.width((editor.width()-editormd.LEFT_MENU_WIDTH) / 2);
-                preview.width((!state.preview) ? (editor.width()-editormd.LEFT_MENU_WIDTH) / 2 : editor.width()-editormd.LEFT_MENU_WIDTH);
+                codeMirror.width(editor.width() / 2);
+                preview.width((!state.preview) ? editor.width() / 2 : editor.width());
 
                 this.previewContainer.css("padding", settings.autoHeight ? "20px 20px 50px 40px" : "20px");
 
@@ -2483,7 +2476,7 @@
          */
 
         previewing : function() {
-           
+
             var _this            = this;
             var editor           = this.editor;
             var preview          = this.preview;
@@ -2513,28 +2506,11 @@
             {
                 this.state.preview = true;
 
-                /////////////////// 设置左侧菜单 --------------------
-                //检查是否在全屏状态下
-                var offset = this.state.fullscreen ? 0 : editormd.LEFT_MENU_WIDTH;
-                $("#sidebar-wrapper").css("width", offset);
-
                 if (this.state.fullscreen) {
                     preview.css("background", "#fff");
                 }
-                
-                //
-                // console.log('eeeeeee');
-                // codeMirror.width(editor.width() / 2);
-                // preview.width(editor.width() / 2);
 
                 editor.find("." + this.classPrefix + "preview-close-btn").show().bind(editormd.mouseOrTouch("click", "touchend"), function(){
-                    if (!_this.state.watching) {
-                        codeMirror.width(editor.width());
-                        preview.width(0);
-                    } else {
-                        codeMirror.width((editor.width()-offset) / 2);
-                        preview.width((editor.width()-offset) / 2);
-                    }
                     _this.previewed();
                 });
 
@@ -2550,8 +2526,8 @@
                 previewContainer.addClass(this.classPrefix + "preview-active");
 
                 preview.show().css({
-                    position  : "fixed",
-                    top       : "0px !important",
+                    position  : "",
+                    top       : 0,
                     width     : editor.width(),
                     height    : (settings.autoHeight && !this.state.fullscreen) ? "auto" : editor.height()
                 });
@@ -2630,11 +2606,6 @@
 
         fullscreen : function() {
 
-			//左侧笔记列表收缩
-			// $("#wrapper").toggleClass("toggled");
-			$("#sidebar-wrapper").css("width", 0);
-
-
             var _this            = this;
             var state            = this.state;
             var editor           = this.editor;
@@ -2668,19 +2639,7 @@
                     height   : $(window).height()
                 }).addClass(fullscreenClass);
 
-                editor.css("margin-top", "50px");
-
                 this.resize();
-                
-                
-                if (!_this.state.watching) {
-                    this.codeMirror.width(editor.width());
-                    preview.width(0);
-                } else {
-                    var w = (editor.width()) / 2;
-                    this.codeMirror.width(w);
-                    preview.width(w);
-                }
 
                 $.proxy(settings.onfullscreen, this)();
 
@@ -2704,11 +2663,6 @@
 
         fullscreenExit : function() {
 
-
-			//左侧笔记列表展开
-			// $("#wrapper").toggleClass("toggled");
-			$("#sidebar-wrapper").css("width", 250);
-
             var editor            = this.editor;
             var settings          = this.settings;
             var toolbar           = this.toolbar;
@@ -2727,18 +2681,7 @@
                 height   : editor.data("oldHeight")
             }).removeClass(fullscreenClass);
 
-            editor.css("top", 0);
-
             this.resize();
-
-            if (!this.state.watching) {
-                this.codeMirror.width(editor.width());
-                this.preview.width(0);
-            } else {
-                var w = (editor.width()-editormd.LEFT_MENU_WIDTH) / 2;
-                this.codeMirror.width(w);
-                this.preview.width(w);
-            }
 
             $.proxy(settings.onfullscreenExit, this)();
 
