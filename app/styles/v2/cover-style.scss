@@ -1,0 +1,86 @@
+// 专门用于覆盖notebook现有的样式
+.ape-note-nav-menu-icon i {
+    font-size: 45px;
+    margin-left: -12px;
+    margin-top: 10px;
+    display: block;
+}
+.gh-nav-menu-details-blog {
+    margin-top: -17px;
+}
+
+.ape-note-nav .ape-note-nav-header .dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	float: left;
+	margin: 2px 0 0;
+	padding: 10px;
+	min-width: 200px;
+	border: 1px solid #dfe1e3;
+	background-color: #fff;
+	background-clip: padding-box;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,.1) 0 2px 6px;
+	list-style: none;
+	text-align: left;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 1.4rem;
+	font-weight: 400
+}
+.ape-note-nav .dropdown-menu {
+    padding: 10px !important;
+}
+.create-notebook-modal-sm .modal-header {
+    padding: 5px 15px;
+}
+.create-notebook-modal-sm .modal-header .close {
+    font-size: 30px;
+}
+.create-notebook-modal-sm .modal-header .modal-title {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 5px;
+}
+.create-notebook-modal-sm .modal-body {
+    padding-bottom: 0;
+}
+.create-notebook-modal-sm .modal-footer {
+    padding: 5px 15px;
+}
+.create-notebook-modal-sm .modal-footer .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.create-notebook-modal-sm .modal-footer .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.create-notebook-modal-sm .modal-footer .btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.create-notebook-modal-sm .modal-footer .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}

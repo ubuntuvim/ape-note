@@ -1,18 +1,23 @@
-@import "editormd";
-@import "myeditormd-style";
+
 @import "bootstrap";
-@import "common";
-@import "sidebar";
-@import "application";
+// @import "common";
+// @import "sidebar";
+// @import "application";
+//
+//
+// @font-face {
+//   font-family: segoe-script;
+//   src: url('/assets/fonts/segoe-script.ttf');
+// }
+//
+// body {
+//     overflow: hidden;
+// 	::-webkit-scrollbar{width:0px};
+// 	font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+// }
 
-
-@font-face {
-  font-family: segoe-script;
-  src: url('/assets/fonts/segoe-script.ttf');
-}
-
-body {
-    overflow: hidden;
-	::-webkit-scrollbar{width:0px};
-	font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-}
+// v2 style
+@import "v2/notebook";
+@import "v2/cover-style";
+@import "v2/editormd-v2";
+// @import "myeditormd-style";

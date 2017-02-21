@@ -3,9 +3,7 @@
  * @param store
  * @param type 初始化编辑器类型：'show'加载完毕直接显示预览,'edit'加载完毕直接进入编辑状态
  */
-export default function createMarkdownEditor(md, store, type) {
-
-	console.log("\n\ncreateMarkdownEditor = \n", md, store, type);
+export default function createMarkdownEditor(store, type) {
 
 	var editor = editormd("editormd", {
 		path : "assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
@@ -15,7 +13,7 @@ export default function createMarkdownEditor(md, store, type) {
 		//  theme : "ambiance",
 		//  previewTheme : "ambiance",
 		//  editorTheme : "ambiance",
-		markdown : md,
+		// markdown : md,
 		codeFold : true,
 		placeholder: "请输入您的笔记内容。",
 		//syncScrolling : false,
@@ -48,12 +46,12 @@ export default function createMarkdownEditor(md, store, type) {
 			//this.width("100%");
 			//this.height(480);
 			//this.resize("100%", 640);
-			if ('show' === type) {
+			// if ('show' === type) {
 				//加载完成直接进入全屏预览状态
-				// this.previewing();	
+				// this.previewing();
 				// $("#sidebar-wrapper").css("width", "250px");
-			}
-			
+			// }
+
 		},
 	    toolbarIcons : function() {
 		    return [
@@ -69,11 +67,11 @@ export default function createMarkdownEditor(md, store, type) {
 		lang: {
 			// 工具类的title提示
 			toolbar: {
-				preview          : "全窗口预览", 
+				preview          : "全窗口预览",
 				save			 :  "保存"
 			}
 		}
-		
+
 		// 指定自定义工具栏的图标
 		,toolbarIconsClass : {
 			//save : "fa-floppy-o"  // 指定一个FontAawsome的图标类
@@ -98,7 +96,7 @@ export default function createMarkdownEditor(md, store, type) {
 			 // @param {String}      selection  编辑器选中的文本
 			 //
 			save : function(cm, icon, cursor, selection) {
-		
+
 				/*
 				let blogPost = this.get('store').peekRecord('blog-post', 1);
 				let comment = this.get('store').createRecord('comment', {
@@ -118,7 +116,7 @@ export default function createMarkdownEditor(md, store, type) {
 					notebookId: notebookId,
 					notebook: notebook
 				});
-				
+
 				notebook.get('notes').pushObject(note);
 				note.save().then(() => {
 					notebook.save().then(() => {
@@ -133,5 +131,5 @@ export default function createMarkdownEditor(md, store, type) {
 
     editor.setToolbarAutoFixed();
     // editor.config("toolbarAutoFixed", true);
-	return true;
+	return editor;
 }
