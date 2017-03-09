@@ -1,0 +1,53 @@
+{{! app/templates/components/v2/notebook/notebook-list-modal.hbs 笔记本管理页面}}
+
+<div class="modal fade notebook-list-modal" id="notebookListModal" tabindex="-1" role="dialog" aria-labelledby="notebookListLabelldby">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">笔记本列表</h4>
+      </div>
+      <div class="modal-body">
+          <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>笔记本名</th>
+                    <th>最后修改时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{#each noteboos as |item|}}
+                    {{#if (eq item.status 1)}}
+                      <tr>
+                        <td>
+                            <input type="text" value={{item.title}} class="del-notebook-title-input"
+                                onblur={{action 'updateNotebookTitle' item.id}} id="nb_list_{{item.id}}">
+                        </td>
+                        <td class="not-input">
+                            {{moment-calendar item.timestamp locale='zh-cn' allow-empty=true}}
+                        </td>
+                        <td class="not-input del-notebook-btn">
+                            {{#if (eq item.isDeletable 1)}}
+                            {{#button-with-confirmation class="" title="删除"
+                                text="删笔记本会把所属笔记本的所有笔记删除，您确定要这样做吗？" tagName="span"
+                                onConfirm=(action 'delNotebook' item.id)}}
+                                <i class="icon-trash"></i>
+                                <span class="del-notebook-btn-text">删除</span>
+                             {{/button-with-confirmation}}
+                             {{else}}
+                             默认笔记本不可删除
+                             {{/if}}
+                        </td>
+                      </tr>
+                      {{/if}}
+                  {{/each}}
+                </tbody>
+          </table>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div> -->
+    </div><!-- /.modal-content -->
+  </div>
+</div>

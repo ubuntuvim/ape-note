@@ -3,4 +3,36 @@
 
 {{!v2/ape-note-app store=store model=model}}
 
-{{outlet}}
+<div class="ape-note-app">
+    <a href="javascript:;" class="sr-only sr-only-focusable">Skip to main content</a>
+    <aside class="ape-note-alerts">
+    </aside>
+    <div class="ape-note-viewport">
+        {{! 左侧导航以及笔记本列表，标签列表，显示用户所有的笔记本，标签，以及选择的当前选择的是哪个笔记本}}
+        {{v2/ape-note-left-nav store=store model=model}}
+
+
+        {{!outlet}}
+        {{! 右侧主要内容区}}
+        <main role="main" class="ape-note-main" id="appMainPanel">
+            <section class="ape-note-view content-view-container">
+                {{! 顶部标题，显示当前选择的那个笔记本，小于768px时会显示一个菜单按钮}}
+                {{v2/ape-note-right-main-header store=store model=model}}
+
+                <div class="view-container">
+                    {{! 笔记列表，某个笔记详细信息}}
+                    {{outlet}}
+                </div> <!-- // view-container -->
+
+            </section>
+        </main>
+
+
+        <aside class="gh-notifications">
+            <!---->
+        </aside>
+        <div class="content-cover">
+            <!---->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{{! app/templates/v2/notebook/note/show/detail.hbs }}
+
+<section class="content-preview js-content-preview ">
+    <section class="post-controls">
+        {{#link-to 'v2.notebook.edit' model.notebook.id model.id class="btn btn-minor post-edit" title="编辑"}}
+            <i class="icon-edit"></i>
+        {{/link-to}}
+    </section>
+    {{!删除笔记}}
+    {{v2/notebook/list/detail-del-note store=store model=model}}
+
+    <section class="content-preview-content">
+        <div class="wrapper">
+            {{!使用editormd提供的Markdown转HTML的方法直接转换}}
+            {{#v2/editor/show-markdown}}{{model.content}}{{/v2/editor/show-markdown}}
+
+            {{! 设置选中的笔记本id，在后面的子组件（v2/notebook/list/detail-cpm.js）中获取这个值，当页面刷新时候可以重新获取选中的是哪个笔记
+            为何要获取两遍的原因是让它先加载一次，保证第二个标签肯定能获取到值}}
+            <input type="hidden" value={{model.id}} id="">
+            <input type="hidden" value={{model.id}} id="selectedNoteId4Detail">
+            {{! 此组件的目的是为了设置刷新后选中的笔记}}
+            {{v2/notebook/list/detail-cpm}}
+        </div>
+    </section>
+</section>

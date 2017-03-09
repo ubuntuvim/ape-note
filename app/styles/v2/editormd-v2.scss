@@ -22,7 +22,7 @@
   overflow: hidden;
   position: relative;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  //border: 1px solid #ddd;
   font-family: "Meiryo UI", "Microsoft YaHei", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 .editormd *, .editormd *:before, .editormd *:after {
@@ -396,7 +396,7 @@
 
 .editormd-container-mask,
 .editormd-dialog-mask-con {
-  background: url(/assets/editormd/images/loading.gif) no-repeat center center;
+  // background: url(/assets/editormd/images/loading.gif) no-repeat center center;
   -webkit-background-size: 32px 32px;
   /* Chrome, iOS, Safari */
   -moz-background-size: 32px 32px;
@@ -416,13 +416,13 @@
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   .editormd-container-mask,
   .editormd-dialog-mask-con {
-    background-image: url(../images/loading@2x.gif);
+    // background-image: url(/assets/editormd/images/loading@2x.gif);
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-device-pixel-ratio: 3) {
   .editormd-container-mask,
   .editormd-dialog-mask-con {
-    background-image: url(../images/loading@3x.gif);
+    // background-image: url(/assets/editormd/images/loading@3x.gif);
   }
 }
 .editormd-code-block-dialog textarea,
@@ -738,8 +738,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+  src: url("/assets/editormd/fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("/assets/editormd/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("/assets/editormd/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("/assets/editormd/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("/assets/editormd/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("/assets/editormd/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3082,8 +3082,8 @@
 /*! prefixes.scss v0.1.0 | Author: Pandao | https://github.com/pandao/prefixes.scss | MIT license | Copyright (c) 2015 */
 @font-face {
   font-family: 'editormd-logo';
-  src: url("../fonts/editormd-logo.eot?-5y8q6h");
-  src: url(".../fonts/editormd-logo.eot?#iefix-5y8q6h") format("embedded-opentype"), url("../fonts/editormd-logo.woff?-5y8q6h") format("woff"), url("../fonts/editormd-logo.ttf?-5y8q6h") format("truetype"), url("../fonts/editormd-logo.svg?-5y8q6h#icomoon") format("svg");
+  src: url("/assets/editormd/fonts/editormd-logo.eot?-5y8q6h");
+  src: url("./assets/editormd/fonts/editormd-logo.eot?#iefix-5y8q6h") format("embedded-opentype"), url("/assets/editormd/fonts/editormd-logo.woff?-5y8q6h") format("woff"), url("/assets/editormd/fonts/editormd-logo.ttf?-5y8q6h") format("truetype"), url("/assets/editormd/fonts/editormd-logo.svg?-5y8q6h#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }

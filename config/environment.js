@@ -1,12 +1,13 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+
   var ENV = {
     modulePrefix: 'ape-note',
     environment: environment,
     rootURL: '/',
     locationType: 'hash',
-	
+
 	firebase: {
 		apiKey: 'AIzaSyCpJJfJSsm06uDpoVr5ec7cBgKvU34Ra_U',
 		authDomain: 'ape-note.firebaseapp.com',
@@ -26,7 +27,12 @@ module.exports = function(environment) {
         // 'frame-src': ''self' https://*.firebaseapp.com',
         // 'connect-src': ''self' wss://*.firebaseio.com https://*.googleapis.com'
     },
-	
+    // 链接野狗服务的设置
+    wilddogConfig:{
+        authDomain: "ape-note1.wilddog.com",
+        syncDomain: "ape-note1.wilddog.com",
+        syncURL: "https://ape-note1.wilddogio.com" //输入节点 URL
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -37,8 +43,14 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+  },
+    moment: {
+      // To cherry-pick specific locale support into your application.
+      // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
+      includeLocales: ['zh-cn'],
+      includeTimezone: 'all'
     }
-  };
+};  //ENV
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

@@ -8,8 +8,12 @@
                 <i class="iconfont">&#xe609;</i>
             </div>
             <div class="ape-note-nav-menu-details">
-                <div class="ape-note-nav-menu-details-blog">1527254027@qq.com</div>
-                <div class="ape-note-nav-menu-details-user">ubuntuvim</div>
+                <div class="ape-note-nav-menu-details-blog">
+                    {{displayName}}
+                </div>
+                <div class="ape-note-nav-menu-details-user">
+                    {{nickname}}
+                </div>
             </div>
             {{!fa-icon "fa-angle-down" size=2}}
             <i class="icon-arrow"></i>
@@ -23,12 +27,36 @@
             </li>
             <li class="divider"></li>
             <li role="presentation">
-                <a href="/ghost/team/ubuntuvim/" tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
-                    <i class="icon-user"></i>Your Profile</a>
+                <a data-toggle="modal" data-target=".notebook-list-modal" tabindex="-1"
+                    class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                    <i class="icon-list"></i>笔记本管理
+                </a>
             </li>
             <li role="presentation">
-                <a href="/ghost/signout/" tabindex="-1" class="dropdown-item user-menu-signout dropdown-item user-menu-signout">
-                    <i class="icon-signout"></i>Sign Out</a>
+                <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                    <i class="icon-tag"></i>tag管理
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+                <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                    <i class="icon-trash"></i>回收站</a>
+            </li>
+            <li role="presentation">
+                <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                    <i class="icon-settings"></i>设置
+                </a>
+            </li>
+            <li role="presentation">
+                <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                    <i class="icon-question"></i>使用帮助
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+                <a tabindex="-1" {{action 'logout'}} class="dropdown-item user-menu-signout dropdown-item user-menu-signout">
+                    <i class="icon-signout"></i>退出
+                </a>
             </li>
         </ul>
     </section>
@@ -57,27 +85,49 @@
             </div>
         </section>
         {{! 笔记本列表}}
-        <ul class="ape-note-nav-list ape-note-nav-main">
-            {{#each model.notebooks as |item|}}
-            <li>
-                {{#link-to 'v2.notebook.note' item.id class="ape-note-nav-main-editor ape-note-nav-main-editor"}}
+        <ul class="ape-note-nav-list ape-note-nav-main" id="notebookListForUseGuide">
+            {{#each noteboos as |item|}}
+            {{#if (eq item.status 1)}}
+            <li {{action 'setSelectedNotebook' item.id item.title}} title={{item.title}}>
+                {{#link-to 'v2.notebook.list' item.id class="ape-notebook-list ape-note-nav-main-editor ape-note-nav-main-editor" id=item.id}}
                     {{fa-icon "fa-book" size=4}}{{item.title}}
+                    <!-- <i class="icon-pen" {{action 'editNotebook' item.id}}></i> -->
                 {{/link-to}}
             </li>
+            {{/if}}
             {{/each}}
         </ul>
-        <ul class="ape-note-nav-list ape-note-nav-settings">
+        {{! tag标签，后面可能用到，暂时注释 ================== }}
+        <!-- <ul class="ape-note-nav-list ape-note-nav-settings">
             <li class="ape-note-nav-list-h">标签</li>
             <li>
-                <a href="/ghost/settings/tags/" class="ape-note-nav-settings-tags ape-note-nav-settings-tags">
+                <a class="ape-note-nav-settings-tags ape-note-nav-settings-tags">
                     {{fa-icon "fa-tag" size=4}} Java</a>
             </li>
-        </ul>
+        </ul> -->
     </section>
     <footer class="ape-note-nav-footer dropup">
-        <div class="ape-note-menu-toggle" {{action 'closeMenu'}}>
+        <!-- <div class="ape-note-menu-toggle" {{action 'closeMenu'}}>
             <i role="button" class={{if isCloseIcon 'icon-minimise' 'icon-maximise'}} id="clonseMenuIconId"></i>
-        </div>
+        </div> -->
+        <!-- <div class="ape-note-menu-toggle dropup">
+            <div role="button" class="closed dropdown-toggle" id="settingMenu"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-settings"></i>
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="settingMenu">
+                <li role="presentation">
+                    <a class="dropdown-item help-menu-support" role="menuitem" tabindex="-1" href="http://support.ghost.org/" target="_blank">
+                        <i class="icon-list"></i>笔记本设置
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a class="dropdown-item help-menu-tweet" role="menuitem" tabindex="-1" href="https://twitter.com/intent/tweet?text=%40TryGhost+Hi%21+Can+you+help+me+with+&amp;related=TryGhost" target="_blank" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        <i class="icon-tag"></i>tag设置
+                    </a>
+                </li>
+            </ul>
+        </div> -->
 
         <!-- <a class="ape-note-nav-footer-sitelink" target="_blank" href="http://blog.ddlisting.com/">View blog</a> -->
         {{!#link-to 'v2.notebook.note.new' }}
@@ -89,22 +139,22 @@
            </a>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
                <li>
-                   {{!#link-to 'v2.notebook.note.new' model.notebook.id}}
+                   {{!#link-to 'v2.notebook.new'}}
                     <!-- <span class="glyphicon glyphicon-file"></span> -->
-                    <a style="cursor: pointer;" {{action 'newNote' model.notebook.id}}>
+                    <a style="cursor: pointer;" href="" id="newNoteLinkId">
                         <i class="icon-markdown"></i>&nbsp;新建Markdown笔记
                     </a>
                    {{!/link-to}}
                </li>
-               <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;新建普通笔记</a></li>
+               <li><a><i class="fa fa-file-o"></i>&nbsp;新建普通笔记</a></li>
                <li role="separator" class="divider"></li>
-               <li data-toggle="modal" data-target=".create-notebook-modal-sm">
+               <li data-toggle="modal" data-target=".create-notebook-modal-sm" id="newNotebookForUseGuide">
                    <a style="cursor: pointer;"><i class="icon-book"></i>&nbsp;新建笔记本</a>
                </li>
           </ul>
       <!-- </div> -->
 
-        <div class="ape-note-help-menu">
+        <!-- <div class="ape-note-help-menu">
             <div role="button" class="closed">
                 <div class="ape-note-help-button">
                     <i class="icon-question">
@@ -137,7 +187,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </footer>
-    <div class="ape-note-autonav-toggle" onmousemove={{action 'showLeftMenu'}}></div>
+    <!-- <div class="ape-note-autonav-toggle" onmousemove={{action 'showLeftMenu'}}></div> -->
 <!-- </nav> -->

@@ -1,22 +1,32 @@
-{{! app/templates/v2/components/app-note-right-main-note-list.hbs }}
+{{! app/templates/v2/components/app-note-right-main-note-list.hbs
+中间笔记列表 }}
 <section class="content-list js-content-list ">
     <section class="content-list-content js-content-scrollbox content-list-content js-content-scrollbox">
         <ol class="posts-list">
             {{#each model.notes as |note|}}
-            <li {{action 'setActive' note.id}} id={{note.id}} class="note-list">
-                {{#link-to 'v2.notebook.note.show' note.notebook.id note.id title="查看笔记" class="permalink"}}
-                    <h3 class="entry-title">{{note.title}}</h3>
-                    <section class="entry-meta">
-                        <!-- <span class="avatar" style="background-image: url(/shared/img/user-image.png)">
-                            <img src="/shared/img/user-image.png" title="ubuntuvim">
-                        </span>
-                        <span class="author">ubuntuvim</span> -->
-                        <span class="status">
-                            <time class="date published" datetime="Mon Feb 13 2017 18:44:10 GMT+0800">{{note.timestamp}}</time></span>
-                    </section>
-                {{/link-to}}
-            </li>
+                {{#if (eq note.status 1)}}
+                <li {{action 'setActive' note.id}} id={{note.id}} class="note-list">
+                    {{#link-to 'v2.notebook.list.detail' note.notebook.id note.id title="查看笔记" class="permalink"}}
+                        <h3 class="entry-title">{{note.title}}</h3>
+                        <section class="entry-meta">
+                            <!-- <span class="avatar" style="background-image: url(/shared/img/user-image.png)">
+                                <img src="/shared/img/user-image.png" title="ubuntuvim">
+                            </span>
+                            <span class="author">ubuntuvim</span> -->
+                            <span class="status">
+                                <time class="date published">
+                                    {{moment-calendar note.timestamp locale='zh-cn' allow-empty=true}}
+                                </time>
+                            </span>
+                        </section>
+                    {{/link-to}}
+                </li>
+                {{/if}}
+            {{else}}
+            <div style="padding: 20px;">
+                <p style="color: #999;">该笔记本下还没有笔记哦。</p>
+            </div>
             {{/each}}
         </ol>
     </section>
-</section> 
+</section>

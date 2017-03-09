@@ -1,5 +1,10 @@
 {{!app/components/editor-md.hbs Markdown编辑器}}
 
+
+{{!由于自动监测输入变化而保存数据，所以第二次自动保存应该是更新，第二次保存成功后得到数据id设置到这个input上，作为标记}}
+<input type="hidden" id="autosaveFlag">
+
+
 <div class="" id="editormd">
 
 </div>

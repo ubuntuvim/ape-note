@@ -418,7 +418,10 @@
                 (!settings.readOnly) ? "<a href=\"javascript:;\" class=\"fa fa-close " + classPrefix + "preview-close-btn\"></a>" : "",
                 ( (settings.saveHTMLToTextarea) ? "<textarea class=\"" + classNames.textarea.html + "\" name=\"" + id + "-html-code\"></textarea>" : "" ),
                 "<div class=\"" + classPrefix + "preview\"><div class=\"markdown-body " + classPrefix + "preview-container\"></div></div>",
-                "<div class=\"" + classPrefix + "container-mask\" style=\"display:block;\"></div>",
+                "<div class=\"" + classPrefix + "container-mask\" style=\"display:block;\">\
+                <i class=\"fa fa-spinner fa-pulse fa-3x fa-fw\" style=\"left: 50%;position: fixed;top: 50%;\"></i>\
+                    <span class=\"sr-only\">正在加载编辑器...</span>\
+                </div>",
                 "<div class=\"" + classPrefix + "mask\"></div>"
             ].join("\n");
 
@@ -2477,6 +2480,9 @@
 
         previewing : function() {
 
+            // 控制自己添加的右上角的返回按钮
+            // $("#retunNoteList").hide();
+
             var _this            = this;
             var editor           = this.editor;
             var preview          = this.preview;
@@ -2524,7 +2530,7 @@
                 }
 
                 previewContainer.addClass(this.classPrefix + "preview-active");
-
+                // ================================================
                 preview.show().css({
                     position  : "",
                     top       : 0,
@@ -2554,6 +2560,9 @@
          */
 
         previewed : function() {
+
+            // 控制自己添加的右上角的返回按钮
+            // $("#retunNoteList").show();
 
             var editor           = this.editor;
             var preview          = this.preview;
@@ -4006,11 +4015,15 @@
         if (!editormd.isIE8)
         {
             if (settings.flowChart) {
-                div.find(".flowchart").flowChart();
+                div.find(".flowchart")
+                    && div.find(".flowchart").length > 0
+                    && div.find(".flowchart").flowChart();
             }
 
             if (settings.sequenceDiagram) {
-                div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
+                div.find(".sequence-diagram")
+                    && div.find(".sequence-diagram").length > 0
+                    && div.find(".sequence-diagram").sequenceDiagram({theme: "simple"});
             }
         }
 
@@ -4275,6 +4288,7 @@
 
         html += "<div class=\"" + classPrefix + "dialog-mask " + classPrefix + "dialog-mask-bg\"></div>";
         html += "<div class=\"" + classPrefix + "dialog-mask " + classPrefix + "dialog-mask-con\"></div>";
+        console.log('init editor.........');
         html += "</div>";
 
         editor.append(html);

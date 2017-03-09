@@ -1,0 +1,85 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">登录/注册</h3>
+              </div>
+              <div class="panel-body">
+                  <form>
+                      <!-- <div class="form-group form-control-text">
+                          <div class="col">
+                              <div class="split-title fix-flt">
+                                  <hr>
+                                  <span class="openid-text">请使用以下方式直接登录</span>
+                              </div>
+                          </div>
+                      </div>  {{! // form-group }} -->
+
+                      <div class="form-group form-group-login-icon">
+                          <i class="fa fa-qq" {{action 'qqlogin'}}></i>
+                          <i class="fa fa-weibo" {{action 'weibologin'}}></i>
+                          <!-- <i class="fa fa-weixin" {{action 'weixinlogin'}}></i> -->
+                      </div>
+
+                      <div class="form-group form-control-text">
+                          <div class="col">
+                              <div class="split-title fix-flt">
+                                  <hr>
+                                  <span class="openid-text" data-toggle="collapse"
+                                    data-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                      或邮箱登录
+                                  </span>
+                              </div>
+                          </div>
+                      </div>  {{! // form-group }}
+                      <div class="register-panel">
+                        <div class="form-group {{if isValidateRegisterEmail 'has-success' 'has-error'}}">
+                          {{input type="text" class="form-control" placeholder="邮箱" value=registerEmail}}
+                        </div>
+
+                          <div class="form-group {{if isValidateRegisterPassword 'has-success' 'has-error'}}">
+                            {{input type="password" class="form-control" placeholder="密码" value=registerPassword aria-describedby="helpBlock"}}
+                            <span id="helpBlock" class="help-block">密码长度不少于 6~20 位，由数字、字母或常用符号组成，字母区分大小写</span>
+                          </div>
+
+                          <p class="text-danger" id="registerErrorTip"></p>
+
+                          <div class="form-group">
+                              <button type="button" class="btn btn-info btn-block" {{action 'register'}}
+                                    data-loading-text="正在注册..." autocomplete="off" id="registerBtn"
+                                    disabled={{isEnableRegistedBtn2}}>注册</button>
+                          </div>
+                          <p>
+                              已有帐号？<span class="to-do" {{action 'toLogin'}}>立即登录</span>
+                          </p>
+                      </div>
+                      <div class="login-panel">
+                        <div class="form-group">
+                          {{input type="text" class="form-control" value=loginEmail placeholder="邮箱"}}
+                        </div>
+
+                          <div class="form-group">
+                            {{input type="password" class="form-control" value=loginPassword placeholder="密码"}}
+                          </div>
+
+                          <p class="text-danger" id="loginrErrorTip"></p>
+
+                          <div class="form-group">
+                              <button type="button" class="btn btn-success btn-block" {{action 'emailLogin'}}
+                                    data-loading-text="正在登录..." autocomplete="off" id="loginBtn"
+                                    disabled={{isEnableLoginBt2}}>登录</button>
+                          </div>
+                          <p>
+                              还没有猿笔记帐号？<span class="to-do" {{action 'toRegister'}}>去创建</span>
+                          </p>
+                      </div>
+                  </form>
+              </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

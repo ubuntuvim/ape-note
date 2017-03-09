@@ -13,17 +13,23 @@ Router.map(function() {
   });
   this.route('test');
 
+
   this.route('v2', function() {
-      this.route('notebook', function() {
-          this.route('note', { path: '/:notebook_id' }, function() {
-              //  新建笔记
-              this.route('new', { path: '/new' });
-              this.route('edit', { path: '/edit/:note_id' });
-              this.route('show', { path: '/show/:note_id' });
+      this.route('notebook', function() {  //显示所有笔记本
+          // 点击笔记本，显示所有笔记本下的笔记
+          this.route('list', { path: '/list/:notebook_id' }, function() {
+            //   v2/notebook/notebook_id/show/note_id/detail
+              this.route('detail', { path: '/:note_id/detail' });
           });
+
+          //  新建笔记
+          this.route('newnote', { path: '/:notebook_id/newnote' });
+          this.route('edit', { path: '/:notebook_id/note/:note_id/edit' });
       });
   });
+
   this.route('icon');
+  this.route('login');
 });
 
 export default Router;

@@ -1,0 +1,46 @@
+邮箱登录
+
+ D__authManager: nddisplayName: ""
+email: "1527254027@qq.com"
+emailVerified: false
+isAnonymous: false
+phone: ""
+phoneVerified: false
+photoURL: ""
+providerData: Array[1]
+providerId: "password"
+refreshToken: null
+uid: "62272c7e92079572436192a8bbfc"
+__proto__: Fb
+
+
+qq登录
+__authManager:nd
+displayName:"Keep Moving..."
+email:""
+emailVerified:false
+isAnonymous:false
+phone:""
+phoneVerified:false
+photoURL:"http://q.qlogo.cn/qqapp/101276357/18CE868ACF8FEE84415FA0D10353C5C8/40"
+providerData:Array[1]
+providerId:"qq"
+refreshToken:null
+uid:"cfd761b36e7b6bdfb325a1c13bf5"
+__proto__:Fb
+
+
+微博登录
+__authManager:nd
+displayName:"ubuntu的疯狂"
+email:""
+emailVerified:false
+isAnonymous:false
+phone:""
+phoneVerified:false
+photoURL:"http://tva1.sinaimg.cn/crop.28.0.360.360.50/6c3fdc8agw1erfg7g6c62j20cf0a3754.jpg"
+providerData:Array[1]
+providerId:"weibo"
+refreshToken:null
+uid:"88726437b33b1f73870121bd630e"
+__proto__:Fb

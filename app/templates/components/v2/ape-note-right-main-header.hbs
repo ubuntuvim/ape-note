@@ -1,10 +1,19 @@
+
 <header class="view-header">
     <h2 class="view-title">
         <button class="ape-note-mobilemenu-button" role="presentation">
             {{! 分辨率小于800px时，会在左上角显示一个菜单按钮}}
             {{#fa-icon "fa-bars" size=4}}<span class="sr-only">Menu</span>{{/fa-icon}}
         </button>
-        <span>{{model.notebook.title}}</span>
+
+        {{! 某个笔记，与下面的笔记本标题输入框是互斥的，在ape-note-left-nav.js和editor-md.js中设置他们的显示、隐藏关系}}
+        <input autofocus="true" placeholder="笔记标题" title="点击即可编辑标题。"
+            tabindex="1" type="text" class="ape-note-input" id="noteTitldInputId" onblur={{action 'updateNoteTitle'}}>
+        {{! 选中的笔记标题在ape-note-left-nav.js中设置}}
+        {{! 笔记本的标题}}
+        <input autofocus="true" placeholder="笔记本" title="点击即可编辑。"
+            tabindex="1" type="text" class="ape-note-input" id="notebookTitldInputId" onblur={{action 'updateNotebookTitle'}}>
+            <!-- <small>Subtext for header</small> -->
     </h2>
     <!-- <section class="view-actions">
         <a id="ember1174" href="/ghost/editor/" title="New Post" class="btn btn-green">New Post</a>

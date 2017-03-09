@@ -1,0 +1,13 @@
+{{!yield}}
+
+<section class="post-controls post-controls-del">
+    {{#button-with-confirmation class="btn btn-minor post-edit" title="删除"
+     text="确认要删除此笔记吗？" tagName="a"
+     onConfirm=(action 'delNote' model.notebook.id model.id)}}
+        <i class="icon-trash"></i>
+     {{/button-with-confirmation}}
+
+    <!-- <a class="btn btn-minor post-edit" title="删除" {{action 'delNote' model.notebook.id model.id}}>
+        <i class="icon-x"></i>
+    </a> -->
+</section>
