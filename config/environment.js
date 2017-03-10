@@ -8,12 +8,12 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'hash',
 
-	firebase: {
-		apiKey: 'AIzaSyCpJJfJSsm06uDpoVr5ec7cBgKvU34Ra_U',
-		authDomain: 'ape-note.firebaseapp.com',
-		databaseURL: 'https://ape-note.firebaseio.com',
-		storageBucket: 'ape-note.appspot.com',
-	},
+	// firebase: {
+	// 	apiKey: 'AIzaSyCpJJfJSsm06uDpoVr5ec7cBgKvU34Ra_U',
+	// 	authDomain: 'ape-note.firebaseapp.com',
+	// 	databaseURL: 'https://ape-note.firebaseio.com',
+	// 	storageBucket: 'ape-note.appspot.com',
+	// },
 	contentSecurityPolicy: {
         'default-src': "'none'",
         'script-src': "'self' 'unsafe-inline' 'unsafe-eval' *",
