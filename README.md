@@ -40,3 +40,11 @@
 
 1. 使用[wildember](https://github.com/ubuntuvim/wildember)作为连接野狗的适配器
 2. [野狗](https://www.wilddog.com/)是国内非常棒的实时服务提供商，它跟谷歌的[firebase](https://www.firebase.com)非常类似。
+
+## 更新日志
+
+### v1.0 beta
+
+2017年3月10号发布第一个预览版。
+
+此版本代码基于`v1.0`分支，分支`v2-interface`主要是对旧版本界面改造（几乎重新设计）。
