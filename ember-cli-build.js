@@ -20,15 +20,11 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  // <script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
-  // app.import("bower_components/editor.md/lib/codemirror/codemirror.min.css");
-  // app.import("bower_components/editor.md/lib/codemirror/addon/dialog/dialog.css");
-  // app.import("bower_components/editor.md/lib/codemirror/addon/search/matchesonscrollbar.css");
-  // app.import("bower_components/editor.md/lib/codemirror/codemirror.min.js");
-  //
-  // app.import("bower_components/editor.md/css/editormd.css");
-  // app.import("bower_components/editor.md/editormd.js");
-  // app.import("bower_components/editor.md/editormd.amd.js");
+  // 用户使用引导插件
+  // app.import("bower_components/jquery.cookie/jquery.cookie.js");
+  // app.import("bower_components/intro.js/minified/intro.min.js");
+  // // app.import("bower_components/intro.js/intro.js");
+  // app.import("bower_components/intro.js/minified/introjs.min.css");
 
   return app.toTree();
 };

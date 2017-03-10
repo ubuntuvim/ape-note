@@ -1,0 +1,250 @@
+html,
+body,
+.ape-note-app,
+.ape-note-viewport,
+.ape-note-main {
+    overflow: hidden;
+}
+// 专门用于覆盖notebook现有的样式
+#editormd {
+    margin: 0;
+    // padding-bottom: 50px;
+    // top: 65px;
+}
+#editormd .CodeMirror-scroll .CodeMirror-lines .CodeMirror-code {
+    // padding-bottom: 50px;
+}
+#editormd .editormd-preview-container {
+    padding-bottom: 120px !important;
+}
+.view-container {
+    overflow: hidden;
+    // padding-top: 15px;
+}
+// 设置编辑器固定在顶部。
+.editormd-toolbar {
+    position: fixed !important;
+    top: 65px !important;
+    left: 235px !important;
+}
+.editormd-toolbar .editormd-toolbar-container .editormd-menu .fa-floppy-o {
+    color: green;
+}
+.ape-note-nav-menu-icon i {
+    font-size: 45px;
+    margin-left: -12px;
+    margin-top: 10px;
+    display: block;
+}
+.gh-nav-menu-details-blog {
+    margin-top: -17px;
+}
+
+.ape-note-nav .ape-note-nav-header .dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	float: left;
+	margin: 2px 0 0;
+	padding: 10px;
+	min-width: 200px;
+	border: 1px solid #dfe1e3;
+	background-color: #fff;
+	background-clip: padding-box;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,.1) 0 2px 6px;
+	list-style: none;
+	text-align: left;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 1.4rem;
+	font-weight: 400
+}
+.ape-note-nav .dropdown-menu {
+    padding: 10px !important;
+}
+.create-notebook-modal-sm .modal-header {
+    padding: 5px 15px;
+}
+.create-notebook-modal-sm .modal-header .close {
+    font-size: 30px;
+}
+.create-notebook-modal-sm .modal-header .modal-title {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 5px;
+}
+.create-notebook-modal-sm .modal-body {
+    padding-bottom: 0;
+}
+.create-notebook-modal-sm .modal-footer {
+    padding: 5px 15px;
+}
+.create-notebook-modal-sm .modal-footer .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.create-notebook-modal-sm .modal-footer .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.create-notebook-modal-sm .modal-footer .btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.create-notebook-modal-sm .modal-footer .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+// 新建笔记，顶部标题输入框
+.view-header .view-title {
+    width: 100%;
+}
+.view-header .view-title span {
+    font-size: 24px;
+    // font-weight: 500;
+}
+.view-header .view-title input {
+    height: 55px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: 0;
+    background: 0 0;
+    color: #242628;
+    letter-spacing: -1px;
+    font-size: 2.6rem;
+    // font-weight: 400;
+    // display: none;
+}
+.editormd-menu > li > .save-link {
+    padding: 0;
+    border: 0 !important;
+    margin: 0;
+    margin-top: -20px;
+}
+.editormd-menu > li > .save-link,
+.editormd-menu > li > .save-link:hover,
+.editormd-menu > li > .save-link.active {
+    // border: 1px solid #fff;
+    background: white;
+}
+.editormd-menu > li > .save-link .autosave-title {
+    display: inline;
+    font-size: 12px;
+}
+.editormd-menu > li > a > .btn-save {
+    color: green;
+    // font-size: 24px;
+    padding: 0 !important;
+    border: 0;
+    margin-top: -40px;
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+// 展示页面右上角编辑、删除按钮
+.content-preview .post-controls{
+    position: fixed;
+    top: 85px;
+}
+.content-preview .post-controls .icon-edit {
+    color: #000;
+}
+.content-preview .post-controls-del {
+    position: fixed;
+    top: 125px;
+}
+.content-preview .post-controls .icon-trash,
+.content-preview .post-controls .icon-x {
+    color: red;
+    font-weight: bold;
+}
+#editormd .editormd-preview-container .reture-list {
+    position: fixed;
+    right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    top: 110px !important;
+}
+#editormd .editormd-preview-container .reture-list .icon-arrow2-left {
+    color: green;
+}
+#editormd .editormd-preview-container .reture-list .fa-arrow-left,
+#editormd .editormd-preview-container .reture-list .fa-save {
+    color: #aaa;
+    z-index: 1300;
+}
+// 右边内容区首页提示文字
+.content-preview .content-preview-content h6 {
+    color: #999;
+}
+// 左侧底部左边的设置按钮
+// .ape-note-menu-toggle .dropdown-menu .dropdown-item i:hover,
+// .ape-note-menu-toggle .dropdown-menu .dropdown-item:hover {
+//     color: #55595e;
+// }
+// .ape-note-menu-toggle:hover i {
+//     color: #666e70;
+// }
+
+// 左侧笔记本列表，设置当字体长度超过显示范围用省略号替代
+.ape-note-nav-body .ape-note-nav-list .ape-notebook-list {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* transition: all .3s ease; */
+    width: 100%;
+    white-space: nowrap;
+    margin-bottom: -5px;
+}
+
+// 左侧笔记本列表，编辑按钮
+.ape-note-nav-body .ape-note-nav-list .ape-notebook-list i.icon-pen {
+    position: absolute;
+    right: 15px;
+    padding: 0 4px;
+}
+.ape-note-nav-header .dropdown-menu li a {
+    cursor: pointer;
+}
+// 笔记本管理页面，输入表单
+.notebook-list-modal .modal-body .table .del-notebook-title-input {
+    height: 30px;
+    width: 98%;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+.notebook-list-modal .modal-body .table .not-input {
+    padding-top: 15px;
+}
+// 笔记本列表页面
+.notebook-list-modal .modal-body .table .del-notebook-btn {
+    color: red;
+}
+.notebook-list-modal .modal-body .table .del-notebook-btn span {
+    cursor: pointer;
+}
+.notebook-list-modal .modal-body .table .del-notebook-btn-text {
+    position: absolute;
+    margin-top: -2px;
+}

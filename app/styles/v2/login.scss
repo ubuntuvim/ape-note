@@ -1,0 +1,81 @@
+.login-container {
+    margin-top: 65px;
+}
+.login-container .form-control-text {
+    margin-top: -60px;
+}
+.col {
+    float: left;
+    width: 100%;
+}
+.split-title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3em;
+}
+.split-title hr {
+    position: absolute;
+    top: 4px;
+    width: 100%;
+    height: 1px;
+    z-index: 0;
+    border: 0;
+    background-color: #e9e9e9;
+}
+.split-title .openid-text {
+    position: relative;
+    background-color: #fff;
+    color: #ccc;
+    display: inline-block;
+    margin: 0;
+    padding: 0 1em;
+    margin-top: 39px;
+    cursor: pointer;
+}
+.login-container .panel-body .form-group {
+    max-width: 100%;
+}
+.login-container .panel-body .form-group-login-icon {
+    text-align: center;
+    padding-bottom: 40px;
+}
+.login-container .panel-body .form-group-login-icon .fa {
+    font-size: 40px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.login-container .panel-body .form-group-login-icon .fa-qq {
+    color: #60b9e1;
+    margin-right: 40px;
+}
+.login-container .panel-body .form-group-login-icon .fa-weibo {
+    color: #e34949;
+    margin-right: 40px;
+}
+.login-container .panel-body .form-group-login-icon .fa-weixin {
+    color: #56d648;
+}
+.login-container .panel-body .btn {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+}
+.login-container .panel-body .btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.login-container .panel-body .btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+// 注册面板
+.login-container .panel-body .register-panel {
+    display: none;
+}
+.login-container .panel-body .to-do {
+    color: #448aff;
+    cursor: pointer;
+}

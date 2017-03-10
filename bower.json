@@ -2,6 +2,8 @@
   "name": "ape-note",
   "dependencies": {
     "ember": "~2.8.0",
-    "ember-cli-shims": "0.1.1"
+    "ember-cli-shims": "0.1.1",
+    "jquery.cookie": "1.4.1",
+    "intro.js": "^2.4.0"
   }
 }

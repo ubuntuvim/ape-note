@@ -1,29 +1,21 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Component.extend({
-	
+
 	actions: {
-		
+
 		save() {
-			var notebookId = '-KcXFkW8ZTmIBWGuLrua';  //-KcWrZB3HUE9yVyYgIEe
-			// 获取输入内容
-			//console.log("content = " + this.getMarkdown());
-			let notebook = this.store.peekRecord('notebook', notebookId);
-			let note = this.store.createRecord('note', {
-				userId: 'test',
-				title: 'test title',
-				content: 'eeeeeeeeeeeeeeeeeeeeeeeee',
-				notebookId: notebookId,
-				notebook: notebook
-			});
-			
-			notebook.get('notes').pushObject(note);
-			note.save().then(() => {
-				notebook.save().then(() => {
-					console.log("笔记保存成功。。。。");
-				});
+			console.log('config.wilddogConfig === ',config.wilddogConfig);
+			wilddog.initializeApp(config.wilddogConfig);
+			//弹出窗口方式，QQ登录
+			var weiboProvider = new wilddog.auth.QQAuthProvider();
+			wilddog.auth().signInWithPopup(weiboProvider).then(function () {
+			    console.info("login success", wilddog.auth().currentUser);
+			}).catch(function(err){
+			    console.info("login failed", err);
 			});
 		}
-		
+
 	}
 });

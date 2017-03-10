@@ -1,0 +1,59 @@
+// 保存按钮动画效果
+.GIKW210DKB {
+    // padding: 4px 2px 0 0;
+}
+.GIKW210DKB {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+}
+.focus-editor-SaveAnimation-SaveAnimation-container {
+    height: 21px;
+    position: relative;
+    width: 20px;
+}
+
+.focus-editor-SaveAnimation-Icon-icon.focus-editor-SaveAnimation-Icon-gray {
+    background: url(https://app.yinxiang.com/redesign/global/js/focus/img/editor_save_gray@2x.gif) center;
+    -webkit-background-size: 21px 20px;
+    -moz-background-size: 21px 20px;
+    -o-background-size: 21px 20px;
+    background-size: 21px 20px;
+}
+
+.focus-editor-SaveAnimation-Icon-icon.focus-editor-SaveAnimation-Icon-gray {
+    transition: opacity 0s 1s;
+}
+
+.focus-editor-SaveAnimation-Icon-icon {
+    height: 21px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.focus-editor-SaveAnimation-Icon-icon.focus-editor-SaveAnimation-Icon-in-progress {
+    background: url(https://app.yinxiang.com/redesign/global/js/focus/img/editor_save_animation@2x.gif) center;
+    -webkit-background-size: 21px 20px;
+    -moz-background-size: 21px 20px;
+    -o-background-size: 21px 20px;
+    background-size: 21px 20px;
+}
+
+.focus-editor-SaveAnimation-Icon-icon.focus-editor-SaveAnimation-Icon-in-progress {
+    transition: opacity 0.4s ease-in-out 2.5s;
+}
+
+.focus-editor-SaveAnimation-Icon-icon.focus-editor-SaveAnimation-Icon-green {
+    background: url(https://app.yinxiang.com/redesign/global/js/focus/img/editor_save_green@2x.gif) center;
+    -webkit-background-size: 21px 20px;
+    -moz-background-size: 21px 20px;
+    -o-background-size: 21px 20px;
+    background-size: 21px 20px;
+}
+
+.focus-editor-SaveAnimation-Icon-icon.focus-editor-SaveAnimation-Icon-green {
+    transition: opacity 0.2s ease-in-out 1s;
+}

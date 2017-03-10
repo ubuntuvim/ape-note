@@ -1,0 +1,17 @@
+{{! app/templates/v2/notebook/note/show.hbs}}
+
+{{! 设置选中的笔记本id，在后面的子组件（ape-note-left-nav.js）中获取这个值，当页面刷新时候可以重新获取选中的是哪个笔记本
+为何要获取两遍的原因是让它先加载一次，保证第二个标签肯定能获取到值}}
+<input type="hidden" value={{model.notebook.title}} id="">
+<input type="hidden" value={{model.notebook.title}} id="selectedNotebookTitleInListTpl">
+{{! 页面手动刷新后，新建笔记按钮上的href属性值会重置为空，需要手动在ape-note-left-nav.js中设置选中笔记本的id值}}
+<input type="hidden" value={{model.notebook.id}} id="">
+<input type="hidden" value={{model.notebook.id}} id="selectedNotebookIdInListTpl">
+
+{{! 中间笔记列表}}
+{{v2/ape-note-right-main-note-list store=store model=model}}
+
+{{outlet}}
+
+{{! 用户使用引导}}
+{{!use-guides}}

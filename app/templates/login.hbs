@@ -1,0 +1,7 @@
+{{!app/templates/login.hbs}}
+
+{{!登录表单 }}
+{{v2/login/login-form store=store}}
+
+{{!用于重置背景颜色，由于loading效果设置了一个黑色背景，通过组件中的didInsertElement方法重置背景色}}
+{{v2/login/reset-bg-color}}

@@ -32,10 +32,9 @@
 
 ### UI
 
+0. [Markdown编辑器](https://github.com/ubuntuvim/editor.md)，最应该感谢的就是editormd了，可以说没有它就没有猿笔记。
+
 1. 猿笔记基于[bootstrap](http://www.bootcss.com/)开发，bootstrap是什么我就不啰嗦了，做前端的应该都知道它。
-2. [ember-bootstrap](https://www.npmjs.com/package/ember-bootstrap)一个封装了bootstrap的ember组件库，有现成的直接用。
-3. 折叠左侧菜单[startbootstrap-simple-sidebar](https://github.com/BlackrockDigital/startbootstrap-simple-sidebar)
-4. tree菜单[collapsible-tree-menu](http://bootsnipp.com/snippets/featured/collapsible-tree-menu)
 
 ### 后端服务
 

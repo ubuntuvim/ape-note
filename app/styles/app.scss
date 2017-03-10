@@ -1,18 +1,13 @@
-@import "editormd";
-@import "myeditormd-style";
+
 @import "bootstrap";
-@import "common";
-@import "sidebar";
-@import "application";
 
+// v2 style
+@import "v2/notebook";
+@import "v2/editormd-v2";
+// @import "myeditormd-style";
+@import "loading";
+@import "v2/autosave-btn";
+@import "v2/login";
 
-@font-face {
-  font-family: segoe-script;
-  src: url('/assets/fonts/segoe-script.ttf');
-}
-
-body {
-    overflow: hidden;
-	::-webkit-scrollbar{width:0px};
-	font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-}
+//用于覆盖前面同名样式
+@import "v2/cover-style";
