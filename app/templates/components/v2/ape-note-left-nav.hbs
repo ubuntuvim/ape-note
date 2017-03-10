@@ -52,6 +52,11 @@
                     <i class="icon-question"></i>使用帮助
                 </a>
             </li>
+            <li role="presentation">
+                {{#link-to 'intro' class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item"}}
+                    <i class="fa fa-home"></i>猿笔记主页
+                {{/link-to}}
+            </li>
             <li class="divider"></li>
             <li role="presentation">
                 <a tabindex="-1" {{action 'logout'}} class="dropdown-item user-menu-signout dropdown-item user-menu-signout">
