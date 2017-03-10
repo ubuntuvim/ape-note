@@ -7,10 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('notebook', { path: '/:notebook_id' }, function() {
-    this.route('note', { path: '/note/:note_id' });
-    this.route('new');
-  });
+
   this.route('test');
 
 

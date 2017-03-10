@@ -4288,7 +4288,7 @@
 
         html += "<div class=\"" + classPrefix + "dialog-mask " + classPrefix + "dialog-mask-bg\"></div>";
         html += "<div class=\"" + classPrefix + "dialog-mask " + classPrefix + "dialog-mask-con\"></div>";
-        console.log('init editor.........');
+        // console.log('init editor.........');
         html += "</div>";
 
         editor.append(html);

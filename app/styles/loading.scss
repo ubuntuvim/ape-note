@@ -2,15 +2,23 @@
  * Baseline styles
  */
 body {
-  background: #222;
+  // background: #999;
   // text-align: center;
   // padding: 20%;
 }
 
 .ddlisting-loading {
+    // position: fixed;
+    // left: 45%;
+    // top: 40%;
+}
+.ddlisting-loading .loading-h1 {
+    font-size: 18px;
+    color: #999;
+    margin-top: 70px;
+    left: 47%;
     position: fixed;
-    left: 45%;
-    top: 40%;
+    top: 50%;
 }
 /*
  * Loading Dots
