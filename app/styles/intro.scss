@@ -1,0 +1,110 @@
+@font-face {
+    /* font-properties */
+    font-family: segoe;
+    src:url('/assets/fonts/segoe-script.ttf'); /* IE9 */
+}
+
+.intro-navbar {
+    border-radius: 0;
+}
+.intro-navbar .navbar-header .navbar-brand i {
+    font-size: 40px;
+    color: white;
+}
+.intro-navbar .navbar-header .navbar-brand .navbar-brand-text {
+    color: white;
+    font-family: segoe;
+    margin-top: 1px;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 24px;
+}
+.intro-container-fluid {
+    overflow: auto;
+    margin-top: -20px;
+    text-align: center;
+    padding: 0;
+}
+.intro-container-fluid .carousel-control.left {
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+.intro-container-fluid .carousel-control.right {
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+.intro-container-fluid .ape-note-jumbotron {
+    border-radius: 0;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+}
+.intro-container-fluid .ape-note-jumbotron .divider {
+    color: #ccc;
+    margin: 0 5px;
+}
+
+.intro-container-fluid .ape-note-jumbotron .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.intro-container-fluid .ape-note-jumbotron .btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.intro-container-fluid .ape-note-jumbotron .btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.intro-container-fluid .ape-note-jumbotron .btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.intro-container-fluid .ape-note-jumbotron .btn-success:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+#footer {
+  background-color: #1b252e;
+  color: #9db1c5;
+  border-top: 1px solid #ccc;
+  padding: 30px 0;
+}
+#footer a {
+  color: #9db1c5;
+}
+#footer .col-md-6 {
+  text-align: center;
+}
+#footer #beian a {
+  font-size: 8px;
+}
+#aboutLeanote h2 {
+  margin: 20px 0;
+  text-align: center;
+}
+#aboutLeanote {
+  padding: 30px;
+}
+#footer h3 {
+    color: #9db1c5;
+}
+#footer .glyphicon {
+    font-size: 40px;
+}
+.footer-leanote {
+    margin-top: 20px;
+    color: #475F77;
+    text-align: center;
+}
