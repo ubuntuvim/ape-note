@@ -1,3 +1,4 @@
 {
-  "ignore_dirs": ["tmp", "dist"]
+  "ignore_dirs": ["tmp", "dist"],
+  "fsevents_try_resync": true
 }

@@ -1,6 +1,6 @@
 {
   "name": "ape-note",
-  "version": "1.1",
+  "version": "1.1.0",
   "description": "Small description for ape-note goes here",
   "private": true,
   "directories": {
@@ -20,6 +20,10 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
+    "devtron": "1.4.0",
+    "electron": "1.6.2",
+    "electron-packager": "8.5.2",
+    "electron-rebuild": "1.5.7",
     "ember-ajax": "^2.0.1",
     "ember-cli": "2.8.0",
     "ember-cli-app-version": "^1.0.0",
@@ -38,8 +42,10 @@
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.8.0",
+    "ember-electron": "1.12.7",
     "ember-export-application-global": "^1.0.5",
     "ember-font-awesome": "3.0.3",
+    "ember-inspector": "2.0.4",
     "ember-load-initializers": "^0.5.1",
     "ember-moment": "7.3.0",
     "ember-resolver": "^2.0.3",
@@ -47,5 +53,58 @@
     "loader.js": "^4.0.1",
     "md5": "2.2.1",
     "wildember": "2.1.2"
+  },
+  "dependencies": {},
+  "main": "electron.js",
+  "ember-electron": {
+    "WHAT IS THIS?": "Please see the README.md",
+    "copy-files": [
+      "electron.js",
+      "package.json"
+    ],
+    "name": null,
+    "platform": null,
+    "arch": null,
+    "version": null,
+    "app-bundle-id": null,
+    "app-category-type": null,
+    "app-copyright": null,
+    "app-version": null,
+    "asar": null,
+    "asar-unpack": null,
+    "asar-unpack-dir": null,
+    "build-version": null,
+    "cache": null,
+    "extend-info": null,
+    "extra-resource": null,
+    "helper-bundle-id": null,
+    "icon": null,
+    "ignore": null,
+    "out": null,
+    "osx-sign": {
+      "identity": null,
+      "entitlements": null,
+      "entitlements-inherit": null
+    },
+    "protocol": [],
+    "protocol-names": [],
+    "win-opts": {
+      "loading-gif": null,
+      "icon-url": null,
+      "remote-releases": null,
+      "certificate-file": null,
+      "certificate-password": null,
+      "sign-with-params": null
+    },
+    "overwrite": null,
+    "prune": null,
+    "strict-ssl": null,
+    "win32metadata": {
+      "CompanyName": null,
+      "FileDescription": null,
+      "OriginalFilename": null,
+      "ProductName": null,
+      "InternalName": null
+    }
   }
 }

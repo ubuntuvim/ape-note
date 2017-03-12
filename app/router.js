@@ -27,6 +27,10 @@ Router.map(function() {
   this.route('icon');
   this.route('login');
   this.route('intro');
+
+  this.route('oauth2', function() {
+    this.route('oschina', { path: '/oschina/:code/:state' });
+  });
 });
 
 export default Router;

@@ -620,7 +620,7 @@ img {
 }
 
 @font-face {
-	font-family:ghosticons;font-weight:400;font-style:normal;src:url(/assets/fonts/ghosticons.eot);src:url(/assets/fonts/ghosticons.eot?#iefix) format("embedded-opentype"),url(/assets/fonts/ghosticons.woff) format("woff"),url(/assets/fonts/ghosticons.ttf) format("truetype"),url(/assets/fonts/ghosticons.svg#ghosticons) format("svg")
+	font-family:ghosticons;font-weight:400;font-style:normal;src:url(http://img.ape-note.com/ghosticons.eot);src:url(http://img.ape-note.com/ghosticons.eot?#iefix) format("embedded-opentype"),url(http://img.ape-note.com/ghosticons.woff) format("woff"),url(http://img.ape-note.com/ghosticons.ttf) format("truetype"),url(http://img.ape-note.com/ghosticons.svg#ghosticons) format("svg")
 }[data-icon]:before {
 	content: attr(data-icon);
 	text-transform: none!important;

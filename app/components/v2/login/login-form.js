@@ -160,10 +160,10 @@ export default Ember.Component.extend({
         },
         // qq登录
         qqlogin() {
-
             wilddog.initializeApp(config.wilddogConfig);
 			//弹出窗口方式，QQ登录
 			var qqProvider = new wilddog.auth.QQAuthProvider();
+            // signInWithRedirect  signInWithPopup
 			wilddog.auth().signInWithPopup(qqProvider).then(() => {
                 // 首次登录初始化一个笔记本、设置登录用户到session
                 doLogin(this);
@@ -193,7 +193,33 @@ export default Ember.Component.extend({
             // }).catch(function(err){
             //     console.info("login failed", err)
             // });
-        }
+        },
+        // qq登录
+        githugLogin() {
+
+            const remote = require('electron').remote;
+            const LoginWindow = remote.BrowserWindow;
+
+            var win = new LoginWindow({ width: 400, height: 600 });
+            var url = "https://github.com/login/oauth/authorize"+
+                        "?client_id=8c9d12f4c5b920b291c4" +
+                        "&redirect_uri=http://ape-note.com/#/oauth2/oschina" +
+                        "&scope=user" +
+                        "&state="+guid();
+            win.loadURL(url);
+
+
+            // wilddog.initializeApp(config.wilddogConfig);
+			// //弹出窗口方式，QQ登录
+			// var qqProvider = new wilddog.auth.QQAuthProvider();
+            // // signInWithRedirect  signInWithPopup
+			// wilddog.auth().signInWithRedirect(qqProvider).then(() => {
+            //     // 首次登录初始化一个笔记本、设置登录用户到session
+            //     doLogin(this);
+			// }).catch(function(err){
+			//     console.error("登录错误：", err);
+			// });
+        },
     }, //actions
     didInsertElement() {
         // Ember.$("#register").click(function () {
@@ -270,4 +296,10 @@ function setUserInfoToSession(that, user) {
     // 当前帐户登录使用的身份认证提供商名称，例如 weibo，weixin
     // 属性值：邮箱-password；qq-qq；weibo-weibo
     that.get('loginUser').setToSession("providerId", user.providerId);
+}
+function guid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
 }
