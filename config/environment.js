@@ -5,7 +5,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ape-note',
     environment: environment,
-    rootURL: null,
+    rootURL: '/',
     locationType: 'hash',
 
 	// firebase: {

@@ -195,7 +195,7 @@ export default Ember.Component.extend({
             // });
         },
         // qq登录
-        githugLogin() {
+        githubLogin() {
 
             const remote = require('electron').remote;
             const LoginWindow = remote.BrowserWindow;
