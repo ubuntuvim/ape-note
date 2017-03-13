@@ -1,0 +1,82 @@
+{{! app/templates/components/recycle-bin.hbs 回收站页面}}
+
+<div class="modal fade recycle-bin-modal" id="recycleBinModal" tabindex="-1" role="dialog" aria-labelledby="recycleBinLabelldby">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">回收站</h4>
+      </div>
+      <div class="modal-body">
+          <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>笔记本</th>
+                    <th>最后修改时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{#each notebooks as |item|}}
+                      <tr>
+                        <td>
+                            {{item.title}}
+                        </td>
+                        <td class="not-input">
+                            {{moment-calendar item.timestamp locale='zh-cn' allow-empty=true}}
+                        </td>
+                        <td class="not-input del-notebook-btn">
+                            <span style="cursor: pointer;" {{action 'recycleNotebook' item.id}}>
+                                <i class="fa fa-recycle"></i>
+                                <span class="del-notebook-btn-text">恢复</span>
+                            </span>
+                        </td>
+                      </tr>
+
+                      {{else}}
+                      您的回收站没有可恢复的笔记本。
+                  {{/each}}
+                </tbody>
+          </table>
+          <hr>
+          <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>笔记</th>
+                    <th>最后修改时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{#each myNotebooks as |item|}}
+                        {{#each item.notes as |note|}}
+                            {{#if (eq note.status 0)}}
+                              <tr>
+                                <td>
+                                    {{note.title}}
+                                </td>
+                                <td class="not-input">
+                                    {{moment-calendar note.timestamp locale='zh-cn' allow-empty=true}}
+                                </td>
+                                <td class="not-input del-notebook-btn">
+                                    <span style="cursor: pointer;" {{action 'recycleNote' note.id}}>
+                                        <i class="fa fa-recycle"></i>
+                                        <span class="del-notebook-btn-text">恢复</span>
+                                    </span>
+                                </td>
+                              </tr>
+                          {{/if}}
+                      {{/each}}
+
+                      {{else}}
+                      您的回收站没有可恢复的笔记本。
+                  {{/each}}
+                </tbody>
+          </table>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div> -->
+    </div><!-- /.modal-content -->
+  </div>
+</div>

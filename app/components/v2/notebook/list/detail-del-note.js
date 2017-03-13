@@ -9,7 +9,8 @@ export default Ember.Component.extend({
          */
         delNote(notebookId, noteId) {
             this.store.findRecord('note', noteId, { backgroundReload: false }).then((n) => {
-                n.destroyRecord().then(function() {
+                n.set('status', 0);  //并不是真的删除，
+                n.save().then(function() {
                     location.href = `/#/v2/notebook/list/${notebookId}`;
                 });
             });
