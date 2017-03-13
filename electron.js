@@ -7,6 +7,7 @@ const app                  = electron.app;
 const BrowserWindow        = electron.BrowserWindow;
 const dirname              = __dirname || path.resolve(path.dirname());
 const emberAppLocation     = `file://${dirname}/dist/index.html`;
+// const emberAppLocation     = `http://localhost:4200/#/login`;
 
 let mainWindow = null;
 
@@ -50,9 +51,10 @@ app.on('ready', function onReady() {
     // If a loading operation goes wrong, we'll send Electron back to
     // Ember App entry point
     mainWindow.webContents.on('did-fail-load', () => {
-        mainWindow.loadURL('http://ape-note.com/#/intro');
+        mainWindow.loadURL(emberAppLocation);
     });
 
+    // 应用崩溃的时候回执行
     mainWindow.webContents.on('crashed', () => {
         console.log('Your Ember app (or other code) in the main window has crashed.');
         console.log('This is a serious issue that needs to be handled and/or debugged.');
@@ -67,6 +69,7 @@ app.on('ready', function onReady() {
     });
 
     mainWindow.on('closed', () => {
+        // window.globalMinWindow = null;
         mainWindow = null;
     });
 

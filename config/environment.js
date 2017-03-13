@@ -16,7 +16,7 @@ module.exports = function(environment) {
 	// },
 	contentSecurityPolicy: {
         'default-src': "'none'",
-        'script-src': "'self' 'unsafe-inline' 'unsafe-eval' *",
+        'script-src': "'self' data: chrome-extension-resource: 'unsafe-inline' *",
         'font-src': "'self' *",
         'connect-src': "'self' *",
         'img-src': "'self' *",
@@ -26,6 +26,14 @@ module.exports = function(environment) {
         // 'script-src': "'self' 'unsafe-eval' apis.google.com'",
         // 'frame-src': ''self' https://*.firebaseapp.com',
         // 'connect-src': ''self' wss://*.firebaseio.com https://*.googleapis.com'
+
+        // 'default-src': ["'none'", "*"],
+        // 'script-src':  ["'self'", "assets-cdn.github.com", "*"],
+        // 'font-src':    ["'self'", "*"],
+        // 'connect-src': ["'self'", "*"],
+        // 'img-src':     ["'self'", "*"],
+        // 'style-src':   ["'self'", "*"],
+        // 'media-src':   ["'self'", "*"]
     },
     // 链接野狗服务的设置
     wilddogConfig:{

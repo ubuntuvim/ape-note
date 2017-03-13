@@ -10,6 +10,7 @@ export default Ember.Mixin.create({
     // 重定向
     redirect(model, transition) {
         var uid = this.get('loginUser').getBySession('uid');
+        console.log('logout uid ===== ',uid);
         if (!uid) {
             // this是指调用次方法的route类
             this.transitionTo('login');

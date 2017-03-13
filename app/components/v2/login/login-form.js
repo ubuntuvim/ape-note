@@ -1,6 +1,7 @@
 // app/comontent/v2/login/login-form.js
 import Ember from 'ember';
 import config from '../../../config/environment';
+import { apiRequest, apiRequestAuth } from '../../../utils/api-requests';
 
 export default Ember.Component.extend({
 
@@ -130,6 +131,7 @@ export default Ember.Component.extend({
                     }
                     if (isExests) {
                         loginBtn.button('reset');
+                        console.log('login success....');
                         //保存成功跳转到笔记本列表页面
                         location.href = `/#/v2/notebook/list/${defaultNotebookId}`;
                     }
@@ -195,69 +197,143 @@ export default Ember.Component.extend({
             // });
         },
         // qq登录
+        // githubLogin() {
+        //     const electron             = require('electron');
+        //     const path                 = require('path');
+        //     const app                  = electron.app;
+        //     const BrowserWindow        = electron.BrowserWindow;
+        //     const dirname              = __dirname || path.resolve(path.dirname());
+        //     const emberAppLocation     = `file://${dirname}/dist/index.html`;
+        //     location.href = emberAppLocation;
+        // },
         githubLogin() {
+            const {BrowserWindow} = require('electron').remote;
+            // Your GitHub Applications Credentials
+            var options = {
+                client_id: '8c9d12f4c5b920b291c4',
+                client_secret: '871f7196a0c5c3caca9570148237ea71ad1ceb94',
+                scopes: ["user:email", "notifications"] // Scopes limit access for OAuth tokens.
+            };
+            // Build the OAuth consent page URL
+            var authWindow = new BrowserWindow({ width: 800, height: 600, show: false, 'node-integration': false });
+            var githubUrl = 'https://github.com/login/oauth/authorize?';
+            var authUrl = githubUrl + 'client_id=' + options.client_id + '&scope=' + options.scopes;
+            authWindow.loadURL(authUrl);
+            authWindow.show();
 
-            const remote = require('electron').remote;
-            const LoginWindow = remote.BrowserWindow;
+            var that = this;
+            // Handle the response from GitHub - See Update from 4/12/2015
+            authWindow.webContents.on('will-navigate', function (event, url) {
+              handleCallback(url, authWindow, that, options);
+            });
 
-            var win = new LoginWindow({ width: 400, height: 600 });
+            authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
+                // 授权之后执行这里
+                //  http://test.ape-note.com/?code=3a1496ef47c4318b6b0a
+                //  得到code
+              handleCallback(newUrl, authWindow, that, options);
+            });
 
-            // oschina
-            var client_id = "v7z5CBAoqIVBClvNcXnj";
-            var redirect_uri = "http://test.ape-note.com/oauth2/oschina";
-            // https://www.oschina.net/action/oauth2/authorize
-
-            // qq
-            // var client_id = "101276357";  //a7b213419a27ea9e7cdf92d58a678452
-            // var redirect_uri = "http://test.ape-note.com/oauth2/oschina";
-
-            // var url = "https://auth.wilddog.com/v2/ape-note1/auth/qq/callback";
-            // var url = "https://github.com/login/oauth/authorize"+
-            //             "?client_id=8c9d12f4c5b920b291c4" +
-            //             "&redirect_uri=http://test.ape-note.com" +
-            //             "&scope=user" +
-            //             "&state="+guid();
-            var url = `https://www.oschina.net/action/oauth2/authorize?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}`;
-            console.log('url == ',url);
-            win.loadURL(url);
-
-
-            // wilddog.initializeApp(config.wilddogConfig);
-			// //弹出窗口方式，QQ登录
-			// var qqProvider = new wilddog.auth.QQAuthProvider();
-            // // signInWithRedirect  signInWithPopup
-			// wilddog.auth().signInWithRedirect(qqProvider).then(() => {
-            //     // 首次登录初始化一个笔记本、设置登录用户到session
-            //     doLogin(this);
-			// }).catch(function(err){
-			//     console.error("登录错误：", err);
-			// });
-        },
-    }, //actions
-    didInsertElement() {
-        // Ember.$("#register").click(function () {
-        //     var $btn = $(this).button('loading');
-        //
-        //
-        //
-        //     Ember.run.later({}, function() {
-        //         $btn.button('reset');
-        //     }, 3000);
-        // });
-        // Ember.$("#emailLogin").click(function () {
-        //     var $btn = $(this).button('loading');
-        //
-        //
-        //
-        //     Ember.run.later({}, function() {
-        //         $btn.button('reset');
-        //     }, 3000);
-        // });
+            // Reset the authWindow on close
+            authWindow.on('close', function() {
+                BrowserWindow.getAllWindows().reload();
+                authWindow = null;
+            }, false);
+        }
     }
 });
 
-function doLogin(that) {
-    var user = wilddog.auth().currentUser;
+function handleCallback (url, authWindow, that, options) {
+  var raw_code = /code=([^&]*)/.exec(url) || null;
+  var code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
+  var error = /\?error=(.+)$/.exec(url);
+
+  if (code || error) {
+    // Close the browser if code found or error
+    authWindow.destroy();
+  }
+
+  // If there is a code, proceed to get token from github
+  if (code) {
+    requestGithubToken(options, code, authWindow, that);
+  } else if (error) {
+    alert('Oops! Something went wrong and we couldn\'t' +
+      'log you in using Github. Please try again.');
+  }
+}
+
+function requestGithubToken(options, code, authWindow, that) {
+
+    var request = require('request');
+    var url = `https://github.com/login/oauth/access_token?client_id=${options.client_id}&client_secret=${options.client_secret}&code=${code}`;
+    request(url, (error, response, body) => {
+    // console.log(error,response,body);
+    if (!error && response.statusCode === 200) {
+        var raw_access_token = /access_token=([^&]*)/.exec(body) || null;
+        var access_token = (raw_access_token && raw_access_token.length > 1) ? raw_access_token[1] : null;
+        // console.log('access_token === ',access_token);  //
+        // 获取授权用户信息
+        var getUserUrl = `https://api.github.com/user?access_token=${access_token}`;
+        var queryParams = {
+            url: getUserUrl,
+            headers: {
+                'User-Agent': 'ape-note'
+            }
+        };
+        request(queryParams, (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+                var bodyObj = JSON.parse(body);
+                var user = {
+                    uid: bodyObj.id,
+                    displayName: bodyObj.name,
+                    email: bodyObj.email,
+                    providerId: 'github',
+                    photoURL: bodyObj.avatar_url
+                };
+                // console.log('user === ',user);
+                doLogin(that, user, authWindow);
+            }
+        });
+        // const {net} = require('electron');
+        //   const request2 = net.request(queryParams);
+        //   request2.on('response', (response) => {
+        //         console.log(`STATUS: ${response.statusCode}`);
+        //         console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+        //         response.on('data', (chunk) => {
+        //             console.log(`BODY: ${chunk}`);
+        //              authWindow.destroy();
+        //         });
+        //         response.on('end', () => {
+        //             console.log('No more data in response.');
+        //         });
+        //   });
+        //   request2.end();
+    }
+});
+  // apiRequests
+  //   .post('https://github.com/login/oauth/access_token', {
+  //     client_id: options.client_id,
+  //     client_secret: options.client_secret,
+  //     code: code,
+  //   })
+  //   .end(function (err, response) {
+  //     if (response && response.ok) {
+  //         console.log('response ==== ',response);
+  //       // Success - Received Token.
+  //       // Store it in localStorage maybe?
+  //       window.localStorage.setItem('githubtoken', response.body.access_token);
+  //     } else {
+  //       // Error - Show messages.
+  //       console.log(err);
+  //     }
+  //   });
+
+}
+
+function doLogin(that, user, authWindow) {
+    if (!user)
+        user = wilddog.auth().currentUser;
+
     // 设置用户到service中（session 的作用）
     that.get('loginUser').setToSession("uid", user.uid);
     that.get('loginUser').setToSession("email", user.email);
@@ -283,7 +359,20 @@ function doLogin(that) {
         // 已经登录过，不需要在初始化
         if (isExests) {
             //保存成功跳转到笔记本列表页面
-            location.href = `/#/v2/notebook/list/${defaultNotebookId}`;
+            // location.href = `/#/v2/notebook/list/${defaultNotebookId}`;
+
+            const electron             = require('electron');
+            const path                 = require('path');
+            const app                  = electron.app;
+            const BrowserWindow        = electron.BrowserWindow;
+            const dirname              = __dirname || path.resolve(path.dirname());
+            const emberAppLocation     = `file://${dirname}/dist/index.html`;
+
+            sessionStorage.setItem('loginFlag', 'login');
+
+            location.href = emberAppLocation;
+
+            // authWindow.destroy();
         } else {  // 如果遍历完所有笔记本都没有说明是首次使用qq登录，需要初始化一个默认的笔记本
             that.store.createRecord('notebook', {
                 title: '我的笔记本',
@@ -291,7 +380,18 @@ function doLogin(that) {
                 isDeletable: 0
             }).save().then((nb) => {
                 //保存成功跳转到笔记本列表页面
-                location.href = `/#/v2/notebook/list/${nb.get('id')}`;
+                // location.href = `/#/v2/notebook/list/${nb.get('id')}`;
+                const electron             = require('electron');
+                const path                 = require('path');
+                const app                  = electron.app;
+                const BrowserWindow        = electron.BrowserWindow;
+                const dirname              = __dirname || path.resolve(path.dirname());
+                const emberAppLocation     = `file://${dirname}/dist/index.html`;
+
+                sessionStorage.setItem('loginFlag', 'login');
+
+                location.href = emberAppLocation;
+                // authWindow.destroy();
             }, (error) => {
                 console.log('初始化笔记本失败：'+error);
             });
