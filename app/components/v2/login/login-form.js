@@ -201,11 +201,24 @@ export default Ember.Component.extend({
             const LoginWindow = remote.BrowserWindow;
 
             var win = new LoginWindow({ width: 400, height: 600 });
-            var url = "https://github.com/login/oauth/authorize"+
-                        "?client_id=8c9d12f4c5b920b291c4" +
-                        "&redirect_uri=http://ape-note.com/#/oauth2/oschina" +
-                        "&scope=user" +
-                        "&state="+guid();
+
+            // oschina
+            var client_id = "v7z5CBAoqIVBClvNcXnj";
+            var redirect_uri = "http://test.ape-note.com/oauth2/oschina";
+            // https://www.oschina.net/action/oauth2/authorize
+
+            // qq
+            // var client_id = "101276357";  //a7b213419a27ea9e7cdf92d58a678452
+            // var redirect_uri = "http://test.ape-note.com/oauth2/oschina";
+
+            // var url = "https://auth.wilddog.com/v2/ape-note1/auth/qq/callback";
+            // var url = "https://github.com/login/oauth/authorize"+
+            //             "?client_id=8c9d12f4c5b920b291c4" +
+            //             "&redirect_uri=http://test.ape-note.com" +
+            //             "&scope=user" +
+            //             "&state="+guid();
+            var url = `https://www.oschina.net/action/oauth2/authorize?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}`;
+            console.log('url == ',url);
             win.loadURL(url);
 
 
