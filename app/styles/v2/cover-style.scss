@@ -248,3 +248,17 @@ body,
     position: absolute;
     margin-top: -2px;
 }
+// 左侧搜索功能
+.ape-note-nav-search .ape-note-nav-search-input .dropdown {
+    z-index: 900;
+}
+.ape-note-nav-search .ape-note-nav-search-input .dropdown .dropdown-menu {
+    padding: 5px 0 !important;
+    // width: 240px;
+}
+.ape-note-nav-search .ape-note-nav-search-input .dropdown .dropdown-menu li {
+    width: 202px;
+}
+.ape-note-nav-search .ape-note-nav-search-input .dropdown .dropdown-menu a {
+    white-space: normal;
+}
