@@ -1,6 +1,7 @@
 // app/components/v2/ape-note-left-nav.js
 //
 import Ember from 'ember';
+import markdownToHTML from '../../utils/markdown-to-html';
 
 export default Ember.Component.extend({
 
@@ -19,7 +20,7 @@ export default Ember.Component.extend({
     allNotebooks: Ember.computed(function() {
         return this.store.findAll("notebook");
     }),
-    noteboos: Ember.computed('allNotebooks.@each.userId', function() {
+    notebooks: Ember.computed('allNotebooks.@each.userId', function() {
         var uid = this.get('loginUser').getBySession('uid');
         return this.get('allNotebooks').filterBy('userId', uid);
     }),
@@ -49,7 +50,71 @@ export default Ember.Component.extend({
         }
     }),
 
+    // 搜索框
+    searchValue: '',
+    // notebooks得到已经是当前用户所有的笔记本
+    searchNoteList: Ember.computed('searchValue', 'notebooks', function() {
+
+        var retArr = new Array();
+        //  根据笔记标题模糊搜索
+         var searchValue = this.get('searchValue');
+         // 搜索内容为空不显示列表框，只有搜索东西的时候才显示
+         if (!searchValue) {
+             return retArr;
+         }
+
+         var nbs = this.get('notebooks');
+         var nbsLen = nbs.get('length');
+         var notes = null;
+         var note_len = 0;
+         var title = "";
+         var noteId = "";
+         for (var i = 0; i < nbsLen; i++) {
+             notes = nbs.objectAt(i).get('notes');
+            //  notes.forEach((item) => console.log(item.get('id')));
+             note_len = notes.get('length');
+             for (var j = 0; j < note_len; j++) {
+                //  通过notes.objectAt(j).get('title')只能获取关联的缓存数据需要重新获取笔记数据
+                 noteId = notes.objectAt(j).get('id');
+                 this.store.findRecord('note', noteId).then((n) => {
+                     title = n.get('title');
+                     if (n.get('status') === 1 && title && title.indexOf(searchValue) >= 0) {
+                         retArr.pushObject(n);
+                     }
+                 });
+             }
+         }
+         return retArr;
+    }),
+
     actions: {
+        // 显示搜索框，得到焦点并且输入了搜索内容才触发
+        showSearchList() {
+            // Ember.$("#dropdownMenu3").dropdown('toggle');
+        },
+        hideSearchList() {
+            // Ember.$("#dropdownMenu3").dropdown('toggle');
+        },
+        // 点击结果列表转到相应的显示界面
+        setSelectedNote(noteId) {
+            //清空搜索框
+            this.set('searchValue', '');
+            // 在show-markdown.hbs中指定的div的id属性值
+            Ember.$("#editormd-view").empty();  //先清空原有记录
+            // self = "#"+self;
+            //debugger;
+            //重置选中状态
+            Ember.$(".content-list .posts-list .note-list").each(function() {
+                Ember.$(this).removeClass('active');
+            });
+            //设置当前笔记的被点击的为选中状态
+            Ember.$(("#"+noteId)).addClass('active');
+            // 设置右边笔记内容区的内容
+            this.store.findRecord('note', noteId).then((note) => {
+                // 手动设置右边预览面板的HTML值，在此之前记得要首先清空editormd-view里的内容
+                markdownToHTML({markdown : note.get('content')});
+            });
+        },
         /**
          * 根据选中的笔记本做处理
          */
