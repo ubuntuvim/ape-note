@@ -8,7 +8,8 @@ export default Ember.Component.extend({
             // 需要根据空格分割
             var content = this.get('insertLink');
             // 根据空格分割，空格可能有多个
-            var arr = content.split("\\s+");
+            var arr = content.split(/\s+/);
+            var length = arr.length;
             if (arr && length === 2) {
                 window.editor.cm.replaceSelection(`[${arr[1]}](${arr[0]})`);
             } else if (arr && length === 1) {
