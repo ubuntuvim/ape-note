@@ -381,7 +381,9 @@
                 }
             };
 
-            settings.pluginPath = (settings.pluginPath === "") ? settings.path + "../plugins/" : settings.pluginPath;
+            // settings.pluginPath = (settings.pluginPath === "") ? settings.path + "../plugins/" : settings.pluginPath;
+            // 设置插件路径
+            settings.pluginPath = (settings.pluginPath === "") ? settings.path + "/plugins/" : settings.pluginPath;
 
             this.state.watching = (settings.watch) ? true : false;
 
@@ -2714,8 +2716,8 @@
 
             path = settings.pluginPath + path;
 
-            if (typeof define === "function")
-            {
+            if (typeof define === "function") {
+
                 if (typeof this[name] === "undefined")
                 {
                     alert("Error: " + name + " plugin is not found, you are not load this plugin.");

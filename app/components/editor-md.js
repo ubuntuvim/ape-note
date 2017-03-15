@@ -61,6 +61,11 @@ export default Ember.Component.extend({
             Ember.$(".retunNoteList").show();
         });
 
+        // 当上传图片的模态框关闭的时候触发
+        // Ember.$("#imgageUploadModal").on('hidden.bs.modal', function (e) {
+        //   console.log('xxxxxxxxx');
+        // });
+
     },  // didInsertElement
     didRender() {
         this._super(...arguments);
@@ -74,6 +79,7 @@ function createEditor(that, content) {
     var editor = editormd("editormd", {
         // 指定codemirror插件路径，
         path : "assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+        pluginPath: 'assets/editormd/plugins/',
         // width: "100%",
        // height: 740,
         // autoHeight: true,
@@ -97,22 +103,23 @@ function createEditor(that, content) {
         tex : true,                   // 开启科学公式TeX语言支持，默认关闭
         flowChart : true,             // 开启流程图支持，默认关闭
         sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
-        dialogLockScreen : true,   // 设置弹出层对话框不锁屏，全局通用，默认为true
-        dialogShowMask : true,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
-        dialogDraggable : true,    // 设置弹出层对话框不可拖动，全局通用，默认为true
-        dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
-        dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
-        imageUpload : true,
-        imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-        imageUploadURL : "./php/upload.php",
+        // dialogLockScreen : true,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+        // dialogShowMask : true,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+        // dialogDraggable : true,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+        // dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+        // dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+        // imageUpload : true,
+        // imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        // imageUploadURL : "./php/upload.php",
         toolbarIcons : function() {
             return [
                 "bold", "del", "italic", "quote", "|",
                 "h1", "h2", "h3", "h4", "h5", "h6", "|",
                 "list-ul", "list-ol", "hr", "|",
-                //"link", "image", "code", "table", "emoji", "|",
+                // "link", "imageUpload", "code", "table", "emoji", "|",
+                "imageUpload", "|",
                 "watch", "preview", "|",  //"fullscreen",
-                "help", "info", "|",
+                // "help", "info", "|",
                 "returnPreLevel", "|",
                 "autosave"
             ];
@@ -122,12 +129,15 @@ function createEditor(that, content) {
             toolbar: {
                 preview          : "全窗口预览",
                 returnPreLevel:   "保存",
-                autosave			 :  "自动保存"
+                autosave			 :  "自动保存",
+                imageUpload: "插入图片"
             }
         },
         // 指定自定义工具栏的图标
         toolbarIconsClass : {
-            returnPreLevel : "fa-floppy-o"  // 指定一个FontAawsome的图标类
+            returnPreLevel : "fa-floppy-o",  // 指定一个FontAawsome的图标类
+            // 弹出一个模态框插入图片
+            imageUpload: "fa-image"
         },
         // 指定自定义工具栏的图标的提示文字
         toolbarIconTexts : {
@@ -167,10 +177,16 @@ function createEditor(that, content) {
                             </div>\
                         </div>\
                     </a>"
+            // 弹出一个模态框插入图片
+            // imageUpload: "<i class=\"fa fa-image\" name=\"imageUpload\" unselectable=\"on\"></i>"
         },
 
         // 自定义工具栏按钮的事件处理
         toolbarHandlers : {
+            // 上传图片并插入到光标所在位置
+            imageUpload: function(cm, icon, cursor, selection) {
+                Ember.$("#imgageUploadModal").modal('show');
+            },
             //
              // @param {Object}      cm         CodeMirror对象
              // @param {Object}      icon       图标按钮jQuery元素对象
@@ -178,8 +194,6 @@ function createEditor(that, content) {
              // @param {String}      selection  编辑器选中的文本
              //
             returnPreLevel : function(cm, icon, cursor, selection) {
-                //已经存在则删除再增加
-
                 var id = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
                 if (!id)
                     id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
@@ -301,6 +315,7 @@ function createEditor(that, content) {
     });  // editor
 
     editor.setToolbarAutoFixed();
+    window.editor = editor;
 }  // end createEditor
 
 // 暂时作废

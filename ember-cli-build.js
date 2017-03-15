@@ -29,5 +29,10 @@ module.exports = function(defaults) {
   // // app.import("bower_components/intro.js/intro.js");
   // app.import("bower_components/intro.js/minified/introjs.min.css");
 
+  // 图片上传插件
+  app.import("bower_components/plupload/js/moxie.js");
+  app.import("bower_components/plupload/js/plupload.full.min.js");
+  app.import("bower_components/qiniu/dist/qiniu.js");
+
   return app.toTree();
 };

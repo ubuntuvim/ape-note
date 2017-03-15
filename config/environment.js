@@ -22,7 +22,7 @@ module.exports = function(environment) {
         'img-src': "'self' *",
         'style-src': "'self' 'unsafe-inline' *",
         'frame-src': "*"
-
+        ,'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
         // 'script-src': "'self' 'unsafe-eval' apis.google.com'",
         // 'frame-src': ''self' https://*.firebaseapp.com',
         // 'connect-src': ''self' wss://*.firebaseio.com https://*.googleapis.com'
@@ -49,7 +49,11 @@ module.exports = function(environment) {
       // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
       includeLocales: ['zh-cn'],
       includeTimezone: 'all'
-    }
+  },
+  // 七牛上传文件所需获取token的URL
+  QINIU: {
+      tokenUrl : 'http://oauth2.ape-note.com/uptoken'
+  }
 };  //ENV
 
   if (environment === 'development') {

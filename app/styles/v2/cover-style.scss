@@ -30,6 +30,15 @@ body,
 .editormd-toolbar .editormd-toolbar-container .editormd-menu .fa-floppy-o {
     color: green;
 }
+// 设置预览面板图片样式
+.content-preview-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+
 .ape-note-nav-menu-icon i {
     font-size: 45px;
     margin-left: -12px;
@@ -261,4 +270,21 @@ body,
 }
 .ape-note-nav-search .ape-note-nav-search-input .dropdown .dropdown-menu a {
     white-space: normal;
+}
+
+// 图片上传模态框
+.imgage-upload-modal .modal-content .modal-body .form-group {
+    max-width: 100%;
+}
+.imgage-upload-modal .modal-content .modal-body #profile {
+    padding-top: 40px;
+}
+.imgage-upload-modal .modal-content .modal-body #home {
+    padding-top: 15px;
+}
+.imgage-upload-modal .modal-content .modal-body a.thumbnail:hover,
+.imgage-upload-modal .modal-content .modal-body a.thumbnail:focus,
+.imgage-upload-modal .modal-content .modal-body a.thumbnail.active {
+    border-color: #337ab7;
+    border: 2px solid;
 }
