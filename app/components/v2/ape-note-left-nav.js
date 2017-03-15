@@ -55,7 +55,7 @@ export default Ember.Component.extend({
     // notebooks得到已经是当前用户所有的笔记本
     searchNoteList: Ember.computed('searchValue', 'notebooks', function() {
 
-        var retArr = new Array();
+        var retArr = [];
         //  根据笔记标题模糊搜索
          var searchValue = this.get('searchValue');
          // 搜索内容为空不显示列表框，只有搜索东西的时候才显示
@@ -133,7 +133,7 @@ export default Ember.Component.extend({
         },
 
         // 点击左下角按钮关闭左侧菜单
-        closeMenu(self) {
+        closeMenu(/*self*/) {
             // var viewport;
             // var isClazz = (viewport = Ember.$('.ape-note-viewport')).hasClass("ape-note-autonav");
             // var isClazzMobile = (viewport = Ember.$('.ape-note-viewport')).hasClass("mobile-menu-expanded");
@@ -192,8 +192,9 @@ export default Ember.Component.extend({
         // 设置选中状态
         //得到选中的笔记本id。这个值是在list.hbs中设置的
         var id = Ember.$("#selectedNotebookIdInListTpl").val();
-        if (!id)
+        if (!id) {
             id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
+        }
         var ids = `#${id}`;
         Ember.$(ids).addClass('active');
 

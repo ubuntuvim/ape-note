@@ -43,9 +43,9 @@ export default Ember.Component.extend({
 
         //得到选中的笔记本id。这个值是在newnote.hbs中设置的
         var id = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-        if (!id)
+        if (!id) {
             id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
-
+        }
         // 设置选中状态
         var ids = `#${id}`;
         Ember.$(ids).addClass('active');
@@ -78,8 +78,8 @@ function createEditor(that, content) {
     // createMarkdownEditor(this.get('md'), this.store, this.get('type'));
     var editor = editormd("editormd", {
         // 指定codemirror插件路径，
-        path : "assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
-        pluginPath: 'assets/editormd/plugins/',
+        // path : "/assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+        // pluginPath: 'assets/editormd/plugins/',
         // width: "100%",
        // height: 740,
         // autoHeight: true,
@@ -150,33 +150,33 @@ function createEditor(that, content) {
             // returnPreLevel: "<i class=\"fa fa-save\" name=\"returnPreLevel\" unselectable=\"on\"></i>",
 
             //<i class=\"iconfont btn-save\" name=\"check\" unselectable=\"on\">&#xe633;</i>\
-            autosave : "<a class=\"save-link\" href=\"javascript:;\" title=\"保存\" unselectable=\"on\">\
-                        <div class=\"GIKW210DKB\">\
-                            <div>\
-                                <div data-reactroot=\"\" class=\"focus-editor-SaveAnimation-SaveAnimation-container\">\
-                                    <div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-gray\"></div>\
-                                    <div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-in-progress\"></div>\
-                                    <div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-green\"></div>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class=\"GIKW210BKB\">\
-                            <div class=\"GIKW210DJB\" aria-hidden=\"true\" style=\"\">\
-                                <div tabindex=\"0\" class=\"GIKW210EJB\">\
-                                    <input type=\"text\" tabindex=\"-1\" role=\"presentation\" \
-                                        style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">\
-                                </div>\
-                                <div tabindex=\"0\" class=\"GIKW210OF GIKW210PF GIKW210FJB\">\
-                                        <input type=\"text\" tabindex=\"-1\" role=\"presentation\" \
-                                            style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">\
-                                        <div>\
-                                            <div class=\"GIKW210MF\">\</div>\
-                                            <div class=\"GIKW210AD\">\</div>\
-                                        </div>\
-                                </div>\
-                            </div>\
-                        </div>\
-                    </a>"
+            autosave : "<a class=\"save-link\" href=\"javascript:;\" title=\"保存\" unselectable=\"on\">" +
+                        "<div class=\"GIKW210DKB\">" +
+                            "<div>" +
+                                "<div data-reactroot=\"\" class=\"focus-editor-SaveAnimation-SaveAnimation-container\">" +
+                                    "<div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-gray\"></div>" +
+                                    "<div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-in-progress\"></div>" +
+                                    "<div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-green\"></div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                        "<div class=\"GIKW210BKB\">" +
+                            "<div class=\"GIKW210DJB\" aria-hidden=\"true\" style=\"\">" +
+                                "<div tabindex=\"0\" class=\"GIKW210EJB\">" +
+                                    "<input type=\"text\" tabindex=\"-1\" role=\"presentation\"" +
+                                        "style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">" +
+                                "</div>" +
+                                "<div tabindex=\"0\" class=\"GIKW210OF GIKW210PF GIKW210FJB\">" +
+                                        "<input type=\"text\" tabindex=\"-1\" role=\"presentation\"" +
+                                            "style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">" +
+                                        "<div>" +
+                                            "<div class=\"GIKW210MF\"></div>" +
+                                            "<div class=\"GIKW210AD\"></div>" +
+                                        "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                    "</a>"
             // 弹出一个模态框插入图片
             // imageUpload: "<i class=\"fa fa-image\" name=\"imageUpload\" unselectable=\"on\"></i>"
         },
@@ -206,7 +206,7 @@ function createEditor(that, content) {
                 var href = "";
                 // saveOrUpdateId还是为空，说明是刚从新建进来页面并且还没做任何保存
                 if (saveOrUpdateId) {
-                    href = `/#/v2/notebook/list/${id}/${saveOrUpdateId}/detail`
+                    href = `/#/v2/notebook/list/${id}/${saveOrUpdateId}/detail`;
                 } else {
                     href = `/#/v2/notebook/list/${id}`;
                 }
@@ -241,15 +241,15 @@ function createEditor(that, content) {
             // 从页面获取选中的笔记本
             //得到选中的笔记本id。这个值是在list.hbs中设置的
             var notebookId = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-            if (!notebookId)
+            if (!notebookId) {
                 notebookId = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
+            }
             //  笔记标题
             var title = Ember.$("#noteTitldInputId").val() || "无标题";
             // 输入Markdown内容。
             var content = this.getMarkdown();
             //简单校验
-            if (!(notebookId && content))
-                return;
+            if (!(notebookId && content)) { return; }
 
             // 显示提示保存成功按钮
             Ember.$(".focus-editor-SaveAnimation-Icon-icon").css('opacity', "1");
@@ -262,9 +262,9 @@ function createEditor(that, content) {
             }
             if (saveOrUpdateId) {
                 that.store.findRecord('note', saveOrUpdateId).then((n) => {
-                    n.set('title', title),
-                    n.set('timestamp', new Date().getTime()),
-                    n.set('content', content)
+                    n.set('title', title);
+                    n.set('timestamp', new Date().getTime());
+                    n.set('content', content);
                     // notebookId: notebookId,
                     // notebook: notebook
                     n.save().then(() => {
@@ -344,9 +344,9 @@ function prependReturnBtn(Ember) {
     }
     // 编辑状态在编辑器右上角显示一个查看按钮
     // http://localhost:4200/#/v2/notebook/list/-KeYIOP38Lp8uIedDFsZ/-Ke_2QrLRirbYSCXJkch/detail
-    var html = '<a href="'+href+'" class="reture-list" title="查看" id="retunNoteList">\
-                   <i class="icon-arrow2-left"></i>\
-                </a>';
+    var html = '<a href="'+href+'" class="reture-list" title="查看" id="retunNoteList">' +
+                   '<i class="icon-arrow2-left"></i>' +
+                '</a>';
 
     Ember.$("#editormd .editormd-preview-container").prepend(html);
 }
