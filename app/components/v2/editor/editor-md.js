@@ -88,7 +88,7 @@ function createEditor(that, content) {
                 "h1", "h2", "h3", "h4", "h5", "h6", "|",
                 "list-ul", "list-ol", "hr", "|",
                 // "link", "imageUpload", "code", "table", "emoji", "|",
-                "imageUpload", "|",
+                "insertLink", "imageUpload", "|",
                 "watch", "preview", "|",  //"fullscreen",
                 // "help", "info", "|",
                 "returnPreLevel", "|",
@@ -108,7 +108,8 @@ function createEditor(that, content) {
         toolbarIconsClass : {
             returnPreLevel : "fa-floppy-o",  // 指定一个FontAawsome的图标类
             // 弹出一个模态框插入图片
-            imageUpload: "fa-image"
+            imageUpload: "fa-image",
+            insertLink: "fa-link"
         },
         // 指定自定义工具栏的图标的提示文字
         toolbarIconTexts : {
@@ -157,6 +158,10 @@ function createEditor(that, content) {
             // 上传图片并插入到光标所在位置
             imageUpload: function(cm, icon, cursor, selection) {
                 Ember.$("#imgageUploadModal").modal('show');
+            },
+            // 插入链接到光标所在位置
+            insertLink: function(cm, icon, cursor, selection) {
+                Ember.$("#insertLinkModal").modal('show');
             },
             //
              // @param {Object}      cm         CodeMirror对象
