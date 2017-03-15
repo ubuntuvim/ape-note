@@ -196,24 +196,7 @@ export default Ember.Component.extend({
         }
     }, //actions
     didInsertElement() {
-        // Ember.$("#register").click(function () {
-        //     var $btn = $(this).button('loading');
-        //
-        //
-        //
-        //     Ember.run.later({}, function() {
-        //         $btn.button('reset');
-        //     }, 3000);
-        // });
-        // Ember.$("#emailLogin").click(function () {
-        //     var $btn = $(this).button('loading');
-        //
-        //
-        //
-        //     Ember.run.later({}, function() {
-        //         $btn.button('reset');
-        //     }, 3000);
-        // });
+        Ember.$('body').css('overflow', "auto");
     }
 });
 

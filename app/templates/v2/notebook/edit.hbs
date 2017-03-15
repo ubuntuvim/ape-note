@@ -11,5 +11,5 @@
 <input type="hidden" value={{model.note.id}} id="">
 <input type="hidden" value={{model.note.id}} id="editedNoteId">
 
-
-{{editor-md store=store model=model type='edit' content=model.note.content title=model.note.title}}
+{{! 编辑笔记}}
+{{v2/editor/editor-md store=store model=model type='edit' content=model.note.content title=model.note.title}}

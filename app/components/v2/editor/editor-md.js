@@ -11,16 +11,6 @@ export default Ember.Component.extend({
 
     didInsertElement() {  //didRender  didInsertElement
 
-        //页面手动刷新后需要手动设置选中的笔记本、笔记本标题等
-        //隐藏笔记本标题输入框
-        // if ('edit' === this.get('type') || 'new' === this.get('type')) {
-        //     showNoteHideNotebook(Ember);
-            // prependReturnBtn(Ember);
-        // } else {
-        //     // Ember.$("#notebookTitldInputId").hide();
-        //     // Ember.$("#noteTitldInputId").show();
-            // prependReturnBtn(Ember);
-        // }
         // 页面手动刷新后需要手动设置选中的笔记本、笔记本标题等
         showNoteHideNotebook(Ember);
         var content = '';
@@ -29,7 +19,6 @@ export default Ember.Component.extend({
             // 编辑摸下下还要初始化已经有的笔记内容
            content = this.get('content');
            //    设置顶部标题
-            // showNoteHideNotebook(Ember);
             Ember.$("#noteTitldInputId").val(this.get("title"));
         }
         // 新建模式
@@ -38,14 +27,13 @@ export default Ember.Component.extend({
             Ember.$("#noteTitldInputId").val("");
         }
 
-    	// this.$("#appMainPanel").empty().append("<div id=\"editormd\"></div>");
 		createEditor(this, content);
 
         //得到选中的笔记本id。这个值是在newnote.hbs中设置的
         var id = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-        if (!id)
+        if (!id) {
             id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
-
+        }
         // 设置选中状态
         var ids = `#${id}`;
         Ember.$(ids).addClass('active');
@@ -53,8 +41,6 @@ export default Ember.Component.extend({
         // 设置新建按钮链接的href属性
         var href = `/#/v2/notebook/${id}/newnote`;
         Ember.$("#newNoteLinkId").attr('href', href);
-
-        // prependReturnBtn(Ember);
 
         // 退出全屏预览时设置返回按钮显示
         Ember.$('.editormd-preview-close-btn').click(function() {
@@ -69,11 +55,10 @@ export default Ember.Component.extend({
 
 function createEditor(that, content) {
 
-    //md, store, type
-    // createMarkdownEditor(this.get('md'), this.store, this.get('type'));
     var editor = editormd("editormd", {
         // 指定codemirror插件路径，
-        path : "assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+        path : "/assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+        // pluginPath: 'assets/editormd/plugins/',
         // width: "100%",
        // height: 740,
         // autoHeight: true,
@@ -97,22 +82,15 @@ function createEditor(that, content) {
         tex : true,                   // 开启科学公式TeX语言支持，默认关闭
         flowChart : true,             // 开启流程图支持，默认关闭
         sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
-        dialogLockScreen : true,   // 设置弹出层对话框不锁屏，全局通用，默认为true
-        dialogShowMask : true,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
-        dialogDraggable : true,    // 设置弹出层对话框不可拖动，全局通用，默认为true
-        dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
-        dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
-        imageUpload : true,
-        imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-        imageUploadURL : "./php/upload.php",
         toolbarIcons : function() {
             return [
                 "bold", "del", "italic", "quote", "|",
                 "h1", "h2", "h3", "h4", "h5", "h6", "|",
                 "list-ul", "list-ol", "hr", "|",
-                //"link", "image", "code", "table", "emoji", "|",
+                // "link", "imageUpload", "code", "table", "emoji", "|",
+                "insertLink", "imageUpload", "|",
                 "watch", "preview", "|",  //"fullscreen",
-                "help", "info", "|",
+                // "help", "info", "|",
                 "returnPreLevel", "|",
                 "autosave"
             ];
@@ -122,12 +100,16 @@ function createEditor(that, content) {
             toolbar: {
                 preview          : "全窗口预览",
                 returnPreLevel:   "保存",
-                autosave			 :  "自动保存"
+                autosave			 :  "自动保存",
+                imageUpload: "插入图片"
             }
         },
         // 指定自定义工具栏的图标
         toolbarIconsClass : {
-            returnPreLevel : "fa-floppy-o"  // 指定一个FontAawsome的图标类
+            returnPreLevel : "fa-floppy-o",  // 指定一个FontAawsome的图标类
+            // 弹出一个模态框插入图片
+            imageUpload: "fa-image",
+            insertLink: "fa-link"
         },
         // 指定自定义工具栏的图标的提示文字
         toolbarIconTexts : {
@@ -140,37 +122,47 @@ function createEditor(that, content) {
             // returnPreLevel: "<i class=\"fa fa-save\" name=\"returnPreLevel\" unselectable=\"on\"></i>",
 
             //<i class=\"iconfont btn-save\" name=\"check\" unselectable=\"on\">&#xe633;</i>\
-            autosave : "<a class=\"save-link\" href=\"javascript:;\" title=\"保存\" unselectable=\"on\">\
-                        <div class=\"GIKW210DKB\">\
-                            <div>\
-                                <div data-reactroot=\"\" class=\"focus-editor-SaveAnimation-SaveAnimation-container\">\
-                                    <div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-gray\"></div>\
-                                    <div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-in-progress\"></div>\
-                                    <div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-green\"></div>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class=\"GIKW210BKB\">\
-                            <div class=\"GIKW210DJB\" aria-hidden=\"true\" style=\"\">\
-                                <div tabindex=\"0\" class=\"GIKW210EJB\">\
-                                    <input type=\"text\" tabindex=\"-1\" role=\"presentation\" \
-                                        style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">\
-                                </div>\
-                                <div tabindex=\"0\" class=\"GIKW210OF GIKW210PF GIKW210FJB\">\
-                                        <input type=\"text\" tabindex=\"-1\" role=\"presentation\" \
-                                            style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">\
-                                        <div>\
-                                            <div class=\"GIKW210MF\">\</div>\
-                                            <div class=\"GIKW210AD\">\</div>\
-                                        </div>\
-                                </div>\
-                            </div>\
-                        </div>\
-                    </a>"
+            autosave : "<a class=\"save-link\" href=\"javascript:;\" title=\"保存\" unselectable=\"on\">" +
+                        "<div class=\"GIKW210DKB\">" +
+                            "<div>" +
+                                "<div data-reactroot=\"\" class=\"focus-editor-SaveAnimation-SaveAnimation-container\">" +
+                                    "<div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-gray\"></div>" +
+                                    "<div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-in-progress\"></div>" +
+                                    "<div class=\"focus-editor-SaveAnimation-Icon-icon focus-editor-SaveAnimation-Icon-green\"></div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                        "<div class=\"GIKW210BKB\">" +
+                            "<div class=\"GIKW210DJB\" aria-hidden=\"true\" style=\"\">" +
+                                "<div tabindex=\"0\" class=\"GIKW210EJB\">" +
+                                    "<input type=\"text\" tabindex=\"-1\" role=\"presentation\"" +
+                                        "style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">" +
+                                "</div>" +
+                                "<div tabindex=\"0\" class=\"GIKW210OF GIKW210PF GIKW210FJB\">" +
+                                        "<input type=\"text\" tabindex=\"-1\" role=\"presentation\"" +
+                                            "style=\"opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;\">" +
+                                        "<div>" +
+                                            "<div class=\"GIKW210MF\"></div>" +
+                                            "<div class=\"GIKW210AD\"></div>" +
+                                        "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                    "</a>"
+            // 弹出一个模态框插入图片
+            // imageUpload: "<i class=\"fa fa-image\" name=\"imageUpload\" unselectable=\"on\"></i>"
         },
 
         // 自定义工具栏按钮的事件处理
         toolbarHandlers : {
+            // 上传图片并插入到光标所在位置
+            imageUpload: function(cm, icon, cursor, selection) {
+                Ember.$("#imgageUploadModal").modal('show');
+            },
+            // 插入链接到光标所在位置
+            insertLink: function(cm, icon, cursor, selection) {
+                Ember.$("#insertLinkModal").modal('show');
+            },
             //
              // @param {Object}      cm         CodeMirror对象
              // @param {Object}      icon       图标按钮jQuery元素对象
@@ -178,11 +170,10 @@ function createEditor(that, content) {
              // @param {String}      selection  编辑器选中的文本
              //
             returnPreLevel : function(cm, icon, cursor, selection) {
-                //已经存在则删除再增加
-
                 var id = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-                if (!id)
+                if (!id) {
                     id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
+                }
                 // 获取当前笔记的
                 var saveOrUpdateId = Ember.$("#autosaveFlag").val();  //新增笔记时会有值
                 //  编辑笔记
@@ -192,7 +183,7 @@ function createEditor(that, content) {
                 var href = "";
                 // saveOrUpdateId还是为空，说明是刚从新建进来页面并且还没做任何保存
                 if (saveOrUpdateId) {
-                    href = `/#/v2/notebook/list/${id}/${saveOrUpdateId}/detail`
+                    href = `/#/v2/notebook/list/${id}/${saveOrUpdateId}/detail`;
                 } else {
                     href = `/#/v2/notebook/list/${id}`;
                 }
@@ -200,42 +191,25 @@ function createEditor(that, content) {
             }
         },
         onload : function() {
-            //console.log('onload', this);
-            //this.fullscreen();
-            //this.unwatch();
-            //this.watch().fullscreen();
-            //this.setMarkdown("#PHP");
-            //this.width("100%");
-            //this.height(480);
-            //this.resize("100%", 640);
-
-            // prependReturnBtn(Ember);
-
             lastLinecodePaddingBottom(Ember);
             // 手动设置自动保存提示按钮位置
             Ember.$(".editormd-toolbar .editormd-menu li:last-child").css({'position': 'fixed', 'top': '70px', 'right': '30px'});
-            //  Ember.$(".editormd-menu > li > .save-link").parent().css({'float': 'right', 'top': '4px', 'right': '15px'});
         },
         // 监听输入变化，可在此方法中保存数据（自动保存）
         onchange : function() {
             lastLinecodePaddingBottom(Ember);
-
-            // this.setToolbarAutoFixed();
-            // prependReturnBtn(Ember);
-            // $("#output").html("onchange : this.id =>" + this.id + ", markdown =>" + this.getValue());
-            // console.log("onchange =>", this, this.id, this.settings, this.state);
             // 从页面获取选中的笔记本
             //得到选中的笔记本id。这个值是在list.hbs中设置的
             var notebookId = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-            if (!notebookId)
+            if (!notebookId) {
                 notebookId = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
+            }
             //  笔记标题
             var title = Ember.$("#noteTitldInputId").val() || "无标题";
             // 输入Markdown内容。
             var content = this.getMarkdown();
             //简单校验
-            if (!(notebookId && content))
-                return;
+            if (!(notebookId && content)) { return; }
 
             // 显示提示保存成功按钮
             Ember.$(".focus-editor-SaveAnimation-Icon-icon").css('opacity', "1");
@@ -248,9 +222,9 @@ function createEditor(that, content) {
             }
             if (saveOrUpdateId) {
                 that.store.findRecord('note', saveOrUpdateId).then((n) => {
-                    n.set('title', title),
-                    n.set('timestamp', new Date().getTime()),
-                    n.set('content', content)
+                    n.set('title', title);
+                    n.set('timestamp', new Date().getTime());
+                    n.set('content', content);
                     // notebookId: notebookId,
                     // notebook: notebook
                     n.save().then(() => {
@@ -290,51 +264,19 @@ function createEditor(that, content) {
         //编辑窗口滚动事件
         onscroll : function(event) {
             // this.setToolbarAutoFixed();
-            lastLinecodePaddingBottom(Ember)
+            lastLinecodePaddingBottom(Ember);
         },
         // 预览窗口滚动
         onpreviewscroll : function(event) {
-            lastLinecodePaddingBottom(Ember)
+            lastLinecodePaddingBottom(Ember);
         }
 
     //toolbarIcons: 'simple'
     });  // editor
 
     editor.setToolbarAutoFixed();
+    window.editor = editor;
 }  // end createEditor
-
-// 暂时作废
-function prependReturnBtn(Ember) {
-
-    //已经存在则删除再增加
-    var returnBtn = Ember.$("#editormd .editormd-preview-container .reture-list");
-    if (returnBtn) {
-        returnBtn.remove();
-    }
-    var id = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-    if (!id)
-        id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
-    // 获取当前笔记的
-    var saveOrUpdateId = Ember.$("#autosaveFlag").val();  //新增笔记时会有值
-    //  编辑笔记
-    if (!saveOrUpdateId) {
-        saveOrUpdateId = Ember.$("#editedNoteId").val();  //修改笔记时会有值
-    }
-    var href = "";
-    // saveOrUpdateId还是为空，说明是刚从新建进来页面并且还没做任何保存
-    if (saveOrUpdateId) {
-        href = `/#/v2/notebook/list/${id}/${saveOrUpdateId}/detail`
-    } else {
-        href = `/#/v2/notebook/list/${id}`;
-    }
-    // 编辑状态在编辑器右上角显示一个查看按钮
-    // http://localhost:4200/#/v2/notebook/list/-KeYIOP38Lp8uIedDFsZ/-Ke_2QrLRirbYSCXJkch/detail
-    var html = '<a href="'+href+'" class="reture-list" title="查看" id="retunNoteList">\
-                   <i class="icon-arrow2-left"></i>\
-                </a>';
-
-    Ember.$("#editormd .editormd-preview-container").prepend(html);
-}
 
 /**
  * 隐藏笔记本标题输入框
@@ -355,7 +297,6 @@ function showNoteHideNotebook(Ember) {
 }
 
 function lastLinecodePaddingBottom(Ember) {
-    // #editormd .CodeMirror-scroll .CodeMirror-lines .CodeMirror-code
     //先清空之前滚动设置的底部样式
     Ember.$("#editormd .CodeMirror-code div").each(function() {
         Ember.$(this).css({'padding-bottom': '0'});

@@ -3,6 +3,7 @@ import Ember from 'ember';
 // 此类已经作废，不使用。暂时保留
 
 export default Ember.Component.extend({
+    /*
     didInsertElement() {
 
         // 用户使用引导，在user-guides.js和app-main-header.hbs调用
@@ -62,4 +63,5 @@ export default Ember.Component.extend({
         intro.start();
         //
     }
+    */
 });

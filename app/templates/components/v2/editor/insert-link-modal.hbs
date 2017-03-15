@@ -1,0 +1,27 @@
+{{! app/templates/components/v2/editor/insert-link-modal.hbs 插入链接}}
+
+<div class="modal fade insert-link-modal" id="insertLinkModal" tabindex="-1" role="dialog" aria-labelledby="insertLinkLabelldby">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h6 class="modal-title">插入链接</h6>
+      </div>
+      <div class="modal-body">
+          <form onkeydown="if(event.keyCode==13)return false;">
+              <div class="form-group has-default has-feedback">
+                   <div class="input-group">
+                       <span class="input-group-addon"><i class="icon-link"></i></span>
+                       {{input type="text" class="form-control" value=insertLink placeholder="http://ape-note.com 可选标题"}}
+                   </div>
+             </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" {{action 'insertLink'}}
+            id="closeInsertLinkModalBtn" disabled={{if insertLink false true}}>插入</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>

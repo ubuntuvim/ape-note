@@ -1,0 +1,80 @@
+{{! app/templates/components/imgage-upload.hbs 上传图片页面}}
+
+<div class="modal fade imgage-upload-modal" id="imgageUploadModal" tabindex="-1" role="dialog" aria-labelledby="imgageUploadLabelldby">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">插入图片</h4>
+      </div>
+      <div class="modal-body">
+          <div>
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                    我的图库
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                    上传新图片
+                </a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                {{! 我的图库，显示所有我的已经上传过的图片，使用query做分页 }}
+                <div class="row">
+                    {{#each imgs as |img|}}
+                      <div class="col-xs-4 col-md-4">
+                        <a href="javascript: ;" class="thumbnail" {{action 'selected' img.url}} id="selected_img_{{img.id}}">
+                          <img src={{img.url}} alt="">
+                        </a>
+                      </div>
+                  {{/each}}
+                </div>
+                {{!选中某个图片设置图片URL，点击插入的时候获取这个URL，并插入到编辑器的内容中}}
+                {{input type="hidden" value=selectedImgUrl}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <form>
+                    <div class="form-group">
+                        <div id="container">
+                              <a class="btn btn-default btn-lg " id="pickfiles" href="javascript:;">
+                                  <i class="glyphicon glyphicon-plus"></i>
+                                  <span>选择文件</span>
+                              </a>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="progress" id="uploadProgress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                              aria-valuenow={{valuenow}} aria-valuemin="0" aria-valuemax="100" style={{valuenowWithStyle}}>
+                                {{valuenow}}%
+                            </div>
+                        </div>
+                        <p class="text-success" id="uploadProgressTipText"></p>
+                    </div>
+                    {{! 预览上传成功的图片}}
+                    <div class="form-group">
+                        <img src={{imgUrl}}>
+                        {{input type="hidden" value=imgUrl}}
+                    </div>
+                </form>
+            </div>
+        </div>  <!-- tab-content-->
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" {{action 'insertImageUrl'}} id="closeImageUploadModalBtn">插入</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>

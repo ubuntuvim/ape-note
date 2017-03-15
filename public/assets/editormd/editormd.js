@@ -99,7 +99,7 @@
         appendMarkdown       : "",             // if in init textarea value not empty, append markdown to textarea
         width                : "100%",
         height               : "100%",
-        path                 : "./lib/",       // Dependents module file directory
+        path                 : "/assets/editormd/lib/",       // Dependents module file directory
         pluginPath           : "",             // If this empty, default use settings.path + "../plugins/"
         delay                : 300,            // Delay parse markdown to html, Uint : ms
         autoLoadModules      : true,           // Automatic load dependent module files
@@ -381,7 +381,9 @@
                 }
             };
 
-            settings.pluginPath = (settings.pluginPath === "") ? settings.path + "../plugins/" : settings.pluginPath;
+            // settings.pluginPath = (settings.pluginPath === "") ? settings.path + "../plugins/" : settings.pluginPath;
+            // 设置插件路径
+            settings.pluginPath = (settings.pluginPath === "") ? settings.path + "/plugins/" : settings.pluginPath;
 
             this.state.watching = (settings.watch) ? true : false;
 
@@ -2714,8 +2716,8 @@
 
             path = settings.pluginPath + path;
 
-            if (typeof define === "function")
-            {
+            if (typeof define === "function") {
+
                 if (typeof this[name] === "undefined")
                 {
                     alert("Error: " + name + " plugin is not found, you are not load this plugin.");
