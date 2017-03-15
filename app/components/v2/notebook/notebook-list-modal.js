@@ -7,9 +7,14 @@ export default Ember.Component.extend({
     allNotebooks: Ember.computed(function() {
         return this.store.findAll("notebook");
     }),
-    noteboos: Ember.computed('allNotebooks.@each.userId', function() {
+    notebooks: Ember.computed('allNotebooks.@each.userId', function() {
         var uid = this.get('loginUser').getBySession('uid');
         return this.get('allNotebooks').filterBy('userId', uid);
+        // console.log('list == ',list);
+        // return this.get('allNotebooks').filter((nb) => {
+        //     console.log(nb.get('userId'));
+        //     return nb.get('userId') === uid;
+        // });
     }),
     actions: {
         delNotebook(id) {

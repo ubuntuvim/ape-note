@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import RSVP from 'rsvp'
+import RSVP from 'rsvp';
 import LogoutMixin from '../../mixins/logout';
 
 export default Ember.Route.extend(LogoutMixin, {
