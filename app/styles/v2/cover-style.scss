@@ -236,6 +236,11 @@ body,
 .ape-note-nav-header .dropdown-menu li a {
     cursor: pointer;
 }
+.ape-note-nav-list .active {
+    background: #88beec;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+}
 // 笔记本管理页面，输入表单
 .notebook-list-modal .modal-body .table .del-notebook-title-input {
     height: 30px;

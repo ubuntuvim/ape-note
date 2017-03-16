@@ -20,8 +20,8 @@
         <ul class="dropdown-menu dropdown-triangle-top js-user-menu-dropdown-menu dropdown-menu-right"
             role="menu" style="right:-20px;left:auto;" aria-labelledby="dropdownMenu2">
             <li role="presentation">
-                {{#link-to 'v2.notebook' class="ape-note-nav-menu-about dropdown-item js-nav-item ape-note-nav-menu-about dropdown-item js-nav-item"}}
-                    <i class="fa fa-home"></i>笔记首页
+                {{#link-to 'intro' class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item"}}
+                    <i class="fa fa-home"></i>猿笔记主页
                 {{/link-to}}
             </li>
             <li class="divider"></li>
@@ -31,30 +31,25 @@
                     <i class="icon-list"></i>笔记本管理
                 </a>
             </li>
-            <li role="presentation">
+            <!-- <li role="presentation">
                 <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
                     <i class="icon-tag"></i>tag管理
                 </a>
-            </li>
+            </li> -->
             <li class="divider"></li>
             <li role="presentation">
                 <a tabindex="-1" data-toggle="modal" data-target=".recycle-bin-modal" tabindex="-1"
                     class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
                     <i class="fa fa-recycle"></i>回收站</a>
             </li>
-            <li role="presentation">
+            <!-- <li role="presentation">
                 <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
                     <i class="icon-settings"></i>设置
                 </a>
-            </li>
+            </li> -->
             <li role="presentation">
-                <a tabindex="-1" class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item">
+                {{#link-to 'help' class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item" target="_blank"}}
                     <i class="icon-question"></i>使用帮助
-                </a>
-            </li>
-            <li role="presentation">
-                {{#link-to 'intro' class="dropdown-item user-menu-profile js-nav-item dropdown-item user-menu-profile js-nav-item"}}
-                    <i class="fa fa-home"></i>猿笔记主页
                 {{/link-to}}
             </li>
             <li class="divider"></li>
