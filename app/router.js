@@ -26,7 +26,27 @@ Router.map(function() {
 
   this.route('icon');
   this.route('login');
+
   this.route('intro');
+  
+  this.route('help', function() {
+    this.route('introduce');
+    this.route('notebook', function() {
+      this.route('new');
+      this.route('edit');
+      this.route('del');
+    });
+    this.route('main-interface');
+
+    this.route('note', function() {
+      this.route('del');
+      this.route('edit');
+      this.route('new');
+      this.route('share');
+      this.route('search');
+    });
+    this.route('recycle');
+  });
 });
 
 export default Router;

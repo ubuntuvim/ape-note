@@ -7,7 +7,7 @@
         <h4 class="modal-title">新增笔记本</h4>
       </div>
       <div class="modal-body">
-          <form>
+          <form onkeydown="if(event.keyCode==13)return false;">
               <div class="form-group">
                 <!-- <label for="title">笔记本</label> -->
                 {{input type="text" value=title class="form-control" id="title" placeholder="笔记本"}}

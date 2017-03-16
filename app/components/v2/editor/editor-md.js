@@ -2,12 +2,10 @@
 // 创建Markdown编辑器
 // TODO 重要提示： 只有在edit.hbs和newnote.hbs两个模板中才会调用到此组件
 import Ember from 'ember';
-// import createMarkdownEditor from '../utils/create-markdown-editor';
+import setNotebookSelectedStatus from '../../../utils/set-notebook-selected-status';
 
 export default Ember.Component.extend({
     loginUser: Ember.inject.service('login-user'),
-    // attributeBindings: ['id'],
-    // id: 'editormd',
 
     didInsertElement() {  //didRender  didInsertElement
 
@@ -30,13 +28,7 @@ export default Ember.Component.extend({
 		createEditor(this, content);
 
         //得到选中的笔记本id。这个值是在newnote.hbs中设置的
-        var id = Ember.$("#selectedNotebookIdInNewNoteTpl").val();
-        if (!id) {
-            id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
-        }
-        // 设置选中状态
-        var ids = `#${id}`;
-        Ember.$(ids).addClass('active');
+        var id = setNotebookSelectedStatus(Ember);
 
         // 设置新建按钮链接的href属性
         var href = `/#/v2/notebook/${id}/newnote`;
@@ -191,6 +183,10 @@ function createEditor(that, content) {
             }
         },
         onload : function() {
+            //得到选中的笔记本id。这个值是在list.hbs中设置的
+            setNotebookSelectedStatus(Ember);
+            // debugger;
+
             lastLinecodePaddingBottom(Ember);
             // 手动设置自动保存提示按钮位置
             Ember.$(".editormd-toolbar .editormd-menu li:last-child").css({'position': 'fixed', 'top': '70px', 'right': '30px'});
@@ -278,6 +274,7 @@ function createEditor(that, content) {
     window.editor = editor;
 }  // end createEditor
 
+
 /**
  * 隐藏笔记本标题输入框
  * 显示笔记标题输入框
@@ -288,10 +285,6 @@ function showNoteHideNotebook(Ember) {
     Ember.$("#notebookTitldInputId").hide(function() {
         //显示新建笔记的标题输入框
         Ember.$("#noteTitldInputId").show(function() {
-            //清空标题输入框
-            // Ember.$("#noteTitldInputId").val('');
-            //  使其取得焦点
-            Ember.$("#noteTitldInputId").focus();
         });
     });
 }

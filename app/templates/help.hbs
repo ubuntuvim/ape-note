@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse intro-navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{#link-to 'intro' class="navbar-brand"}}
+          <i class="iconfont">&#xe609;</i><span class="navbar-brand-text">猿笔记</span>
+      {{/link-to}}
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container help-container">
+
+    <div class="row">
+        <div class="col-md-4 col-xs-4">
+            <ul>
+                <li>{{#link-to 'help.introduce'}}猿笔记介绍{{/link-to}}</li>
+                <li>{{link-to '主界面' 'help.main-interface'}}</li>
+                <li>新建、编辑、删除笔记本
+                    <ul>
+                        <li>{{link-to '新建笔记本' 'help.notebook.new'}}</li>
+                        <li>{{link-to '编辑笔记本' 'help.notebook.edit'}}</li>
+                        <li>{{link-to '删除笔记本' 'help.notebook.del'}}</li>
+                    </ul>
+                </li>
+                <li>新建、编辑、删除、分享笔记
+                    <ul>
+                        <li>{{link-to '新建笔记' 'help.note.new'}}</li>
+                        <li>{{link-to '编辑笔记' 'help.note.edit'}}</li>
+                        <li>{{link-to '删除笔记' 'help.note.del'}}</li>
+                        <li>{{link-to '分享笔记' 'help.note.share'}}</li>
+                    </ul>
+                </li>
+                <li>{{link-to '搜索笔记' 'help.note.search'}}</li>
+                <li>{{link-to '回收站' 'help.recycle'}}</li>
+            </ul>
+        </div>
+
+        <div class="col-md-8 col-xs-8">
+            {{outlet}}
+        </div>
+    </div>
+
+
+</div>
+
+{{common/reset-body-overflow}}

@@ -2,6 +2,7 @@
 //
 import Ember from 'ember';
 import markdownToHTML from '../../utils/markdown-to-html';
+import setNotebookSelectedStatus from '../../utils/set-notebook-selected-status';
 
 export default Ember.Component.extend({
 
@@ -88,13 +89,6 @@ export default Ember.Component.extend({
     }),
 
     actions: {
-        // 显示搜索框，得到焦点并且输入了搜索内容才触发
-        showSearchList() {
-            // Ember.$("#dropdownMenu3").dropdown('toggle');
-        },
-        hideSearchList() {
-            // Ember.$("#dropdownMenu3").dropdown('toggle');
-        },
         // 点击结果列表转到相应的显示界面
         setSelectedNote(noteId) {
             //清空搜索框
@@ -129,50 +123,13 @@ export default Ember.Component.extend({
             // 设置底部新建笔记按钮对应的笔记本id
             var href = `/#/v2/notebook/${id}/newnote`;
             Ember.$("#newNoteLinkId").attr('href', href);
-
-        },
-
-        // 点击左下角按钮关闭左侧菜单
-        closeMenu(/*self*/) {
-            // var viewport;
-            // var isClazz = (viewport = Ember.$('.ape-note-viewport')).hasClass("ape-note-autonav");
-            // var isClazzMobile = (viewport = Ember.$('.ape-note-viewport')).hasClass("mobile-menu-expanded");
-            // if (isClazz || isClazzMobile) {  //菜单收缩
-            //     this.set('isShowLeftMenu', true);  //显示菜单
-            //     this.set('isCloseIcon', true);  //显示关闭菜单按钮
-            //     viewport.removeClass('ape-note-autonav');  //右侧主内容区缩小，腾出显示菜单的空间
-            //     viewport.removeClass('mobile-menu-expanded');  //
-            //     // 工具条紧靠左边235px
-            //     // Ember.$(".editormd-toolbar").css({'left': '235px !important'});
-            // } else {  //显示左侧笔记本列表
-            //     this.set('isShowLeftMenu', false);  // 隐藏菜单
-            //     this.set('isCloseIcon', false);  //显示展开按钮
-            //     viewport.addClass('ape-note-autonav');  //右侧主内容区最大化
-            //     viewport.addClass('mobile-menu-expanded');  //
-            //     // 工具条紧靠左边
-            //     // Ember.$(".editormd-toolbar").css({'left': '0 !important'});
-            // }
-        },
-        //鼠标移到左边收缩面板显示左侧菜单
-        showLeftMenu() {
-            // this.set('isShowLeftMenu', true);
-            // this.set('isCloseIcon', !Ember.$('.ape-note-viewport').hasClass("ape-note-autonav"));
+            Ember.$("#selectedNotebookIdInleftNavCmp").val(id);
         },
         logout() {
             this.get('loginUser').clear();  //清空session中的信息
             location.href = `/#/login`;
         }
     },  // actions
-    // 给组件本身增加一个事件
-    //鼠标移开左边搜索面板显示左侧菜单
-    mouseLeave() {
-        // this.set('isShowLeftMenu', false);
-        // this.set('isCloseIcon', !Ember.$('.ape-note-viewport').hasClass("ape-note-autonav"));
-    },
-    mouseEnter() {
-        // this.set('isShowLeftMenu', true);
-        // this.set('isCloseIcon', !Ember.$('.ape-note-viewport').hasClass("ape-note-autonav"));
-    },
     didInsertElement() {
         this._super(...arguments);
         // 重置选中的笔记本高亮状态
@@ -191,12 +148,7 @@ export default Ember.Component.extend({
         //页面手动刷新后需要手动设置选中的笔记本、笔记本标题等
         // 设置选中状态
         //得到选中的笔记本id。这个值是在list.hbs中设置的
-        var id = Ember.$("#selectedNotebookIdInListTpl").val();
-        if (!id) {
-            id = Ember.$("#selectedNotebookIdInEditNoteTpl").val();
-        }
-        var ids = `#${id}`;
-        Ember.$(ids).addClass('active');
+        var id = setNotebookSelectedStatus(Ember);
 
         // 隐藏顶部笔记标题输入框
         Ember.$("#noteTitldInputId").hide();

@@ -40,6 +40,14 @@ export default Ember.Component.extend({
            drop_element: 'container',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
            chunk_size: '4mb',                //分块上传时，每片的体积
            auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
+           filters : {
+                max_file_size : '10mb',
+                prevent_duplicates: true,
+                // Specify what files to browse for
+                mime_types: [
+                    {title : "只允许上传jpg,gif,png,jpeg图片格式。", extensions : "jpg,gif,png,jpeg"}, // 限定jpg,gif,png后缀上传
+                ]
+            },
            init: {
                'FilesAdded': function(up, files) {
 
@@ -47,6 +55,7 @@ export default Ember.Component.extend({
                 'BeforeUpload': function(up, file) {
                     that.$("#uploadProgress").show();
                     that.$("#uploadProgressTipText").empty();
+                    that.$("#uploadErrorTipText").empty();
                     // 设置进度条为百分之0
                     that.set('valuenow', file.percent);
                 },
@@ -74,6 +83,12 @@ export default Ember.Component.extend({
                 },
 
                 'Error': function(up, err, errTip) {
+                    if (err.code === -601) {
+                        // 提示用户上传的文件格式有误
+                        that.$("#uploadErrorTipText").show(function() {
+                            that.$("#uploadErrorTipText").html("只允许上传<b>jpg，gif，png，jpeg</b>图片格式。");
+                        });
+                    }
                     console.log('Error = ',errTip);
                 },
                'FileUploaded': function(up, file, info) {
@@ -114,8 +129,11 @@ export default Ember.Component.extend({
                     });
                     var uploadFileName = file.name || "";
                     var fileNameSuffix = uploadFileName.substring(uploadFileName.indexOf('.'), uploadFileName.length);
+                    var date = new Date();
+                    var dateStr = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + "/";
                     // 组合一个新的文件名，防止中文名称问题
-                    return fileNamePrefix + fileNameSuffix;
+                    // 文件名格式：2017-2-4/xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx.jpg
+                    return dateStr + fileNamePrefix + fileNameSuffix;
                }
            } //init
      }); // uploader
