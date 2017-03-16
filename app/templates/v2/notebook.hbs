@@ -1,8 +1,5 @@
 {{! app/templates/v2/notebook.hbs
 笔记列表，当前页面划分为2部分，左边是固定宽度的笔记列表面板，右边是笔记信息（新建、编辑）}}
-
-{{!v2/ape-note-app store=store model=model}}
-
 <div class="ape-note-app">
     <a href="javascript:;" class="sr-only sr-only-focusable">Skip to main content</a>
     <aside class="ape-note-alerts">
@@ -20,7 +17,7 @@
                 {{v2/ape-note-right-main-header store=store model=model}}
 
                 <div class="view-container">
-                    {{! 笔记列表，某个笔记详细信息}}
+                    {{! 新建笔记、笔记列表，某个笔记详细信息}}
                     {{outlet}}
                 </div> <!-- // view-container -->
 
@@ -28,19 +25,19 @@
         </main>
 
 
-        <aside class="gh-notifications">
-            <!---->
+        <!-- <aside class="gh-notifications">
         </aside>
         <div class="content-cover">
-            <!---->
-        </div>
+        </div> -->
     </div>
 </div>
 
+{{!input type="hidden" id="selectedNotebookIdInleftNavCmp"}}
 
 {{!编辑器的图片上传按钮，点击按钮出现模态框，不能把此组件放在application.hbs因为有可能还没登录，
     无法获取数据导致不能显示已经上传的图片}}
 {{v2/editor/image-upload}}
+
 
 {{! 点击编辑器插入链接按钮出现插入模态框}}
 {{v2/editor/insert-link-modal}}
