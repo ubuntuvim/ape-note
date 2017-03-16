@@ -129,8 +129,11 @@ export default Ember.Component.extend({
                     });
                     var uploadFileName = file.name || "";
                     var fileNameSuffix = uploadFileName.substring(uploadFileName.indexOf('.'), uploadFileName.length);
+                    var date = new Date();
+                    var dateStr = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + "/";
                     // 组合一个新的文件名，防止中文名称问题
-                    return fileNamePrefix + fileNameSuffix;
+                    // 文件名格式：2017-2-4/xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx.jpg
+                    return dateStr + fileNamePrefix + fileNameSuffix;
                }
            } //init
      }); // uploader
