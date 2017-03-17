@@ -26,7 +26,7 @@ export default Ember.Component.extend({
             // 设置右边笔记内容区的内容
             this.store.findRecord('note', self).then((note) => {
                 // 手动设置右边预览面板的HTML值，在此之前记得要首先清空editormd-view里的内容
-                markdownToHTML({markdown : note.get('content')});
+                markdownToHTML("editormd-view", {markdown : note.get('content')});
             });
         }
     }

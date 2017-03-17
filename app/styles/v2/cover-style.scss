@@ -177,11 +177,15 @@ body,
     top: 85px;
 }
 .content-preview .post-controls .icon-edit {
-    color: #000;
+    // color: #000;
 }
 .content-preview .post-controls-del {
     position: fixed;
     top: 125px;
+}
+.content-preview .post-controls-share {
+    position: fixed;
+    top: 155px;
 }
 .content-preview .post-controls .icon-trash,
 .content-preview .post-controls .icon-x {
@@ -278,6 +282,7 @@ body,
 }
 
 // 图片上传模态框
+.share-modal-sm .modal-content .modal-body .form-group ,
 .imgage-upload-modal .modal-content .modal-body .form-group {
     max-width: 100%;
 }
@@ -298,4 +303,19 @@ body,
 }
 .imgage-upload-modal .modal-content .modal-body .form-group .text-danger {
     color: #a94442;
+}
+// ------------------ 查看分享笔记页面
+.read-share-note-nav-container {
+    border-radius: 0;
+}
+.read-share-note-nav-container .navbar-header .navbar-brand i {
+    font-size: 40px;
+}
+.read-share-note-nav-container .navbar-header .navbar-brand .navbar-brand-text {
+    // color: white;
+    font-family: segoe;
+    margin-top: 1px;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 24px;
 }

@@ -1,0 +1,47 @@
+{{! 查看共享笔记页面  app/templates/share.hs}}
+<nav class="navbar navbar-default read-share-note-nav-container">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{#link-to 'intro' class="navbar-brand"}}
+          <i class="iconfont">&#xe609;</i>
+      {{/link-to}}
+    </div>
+    <div class="navbar-header dropdown" style="float: right;">
+      <a class="navbar-brand" href="javascript: ;"
+          id="shareLoginBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true" style="font-size: 27px;right: -10px;"></span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="shareLoginBtn">
+          {{#if model.uid}}
+            <li>
+                {{#link-to 'v2.notebook'}}我的笔记{{/link-to}}
+            </li>
+          {{else}}
+            <li>
+                {{#link-to 'login'}}登录/注册{{/link-to}}
+            </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+
+{{! APP介绍}}
+<div class="container read-share-note-container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+            {{#if (eq model.note.isShare 1)}}
+                {{!使用editormd提供的Markdown转HTML的方法直接转换}}
+                {{#v2/editor/show-markdown}}{{model.note.content}}{{/v2/editor/show-markdown}}
+                <hr>
+                {{duoshuo-comment}}
+            {{else}}
+                笔记已经被作者取消了分享。
+            {{/if}}
+
+        </div>
+    </div>
+
+</div>  <!-- container -->
+
+{{common/reset-body-overflow}}
