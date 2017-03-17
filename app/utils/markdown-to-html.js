@@ -1,8 +1,8 @@
 // app/utils/markdown-to-html.js  转换Markdown为HTML标签
-export default function markdownToHTML(options) {
+export default function markdownToHTML(elem, options) {
     //  在ape-note-right-main-note-list.js中会根据点击的笔记手动设置右边预览区域的内容
      // 在show-markdown.hbs中指定的div的id属性值
-    editormd.markdownToHTML("editormd-view", options || {
+    editormd.markdownToHTML(elem, options || {
         path : "/assets/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
         // markdown        : null ,//+ "\r\n" + $("#append-test").text(),
        //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启

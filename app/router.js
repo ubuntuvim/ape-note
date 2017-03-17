@@ -28,7 +28,7 @@ Router.map(function() {
   this.route('login');
 
   this.route('intro');
-  
+
   this.route('help', function() {
     this.route('introduce');
     this.route('notebook', function() {
@@ -47,6 +47,7 @@ Router.map(function() {
     });
     this.route('recycle');
   });
+  this.route('share', { path: '/share/:note_id' });
 });
 
 export default Router;

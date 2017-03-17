@@ -3,6 +3,6 @@ import markdownToHTML from '../../../utils/markdown-to-html';
 
 export default Ember.Component.extend({
     didInsertElement() {
-        markdownToHTML({});
+        markdownToHTML("editormd-view", {});
     }
 });

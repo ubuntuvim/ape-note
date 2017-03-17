@@ -11,6 +11,10 @@ export default DS.Model.extend({
       //笔记状态：1-正常；0-删除
         defaultValue() { return 1; }
 	}),
+    isShare: DS.attr('number', {
+      //笔记是否分享笔记：1-分享；0-不分享
+        defaultValue() { return 1; }
+	}),
 	notebookId: DS.attr('string'),
     notebook: DS.belongsTo('notebook')
 });
