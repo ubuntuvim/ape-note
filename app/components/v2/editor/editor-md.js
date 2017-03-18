@@ -204,8 +204,11 @@ function createEditor(that, content) {
             var title = Ember.$("#noteTitldInputId").val() || "无标题";
             // 输入Markdown内容。
             var content = this.getMarkdown();
-            //简单校验
-            if (!(notebookId && content)) { return; }
+            // 简单校验，但是如果我清空了呢？所以不能校验content
+            if (!notebookId) {
+                alert("登录超时了，请刷新页面重试！");
+                return;
+            }
 
             // 显示提示保存成功按钮
             Ember.$(".focus-editor-SaveAnimation-Icon-icon").css('opacity', "1");
@@ -252,7 +255,7 @@ function createEditor(that, content) {
                     notebook.save().then(() => {
                         Ember.run.later({}, function() {
                           Ember.$(".focus-editor-SaveAnimation-Icon-icon").css('opacity', "0");
-                      }, 4000);
+                        }, 4000);
                     });
                 });
             }  // if
