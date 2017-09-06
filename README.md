@@ -15,7 +15,7 @@
 ## 运行项目
 
 * 在项目目录下执行命令`ember serve`启动项目
-* 访问[http://localhost:4200](http://localhost:4200).
+* 访问[http://localhost:4200/#/intro](http://localhost:4200/#/intro).
 
 ### 打包项目
 
